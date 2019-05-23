@@ -44,3 +44,5 @@ Users will be able to leave thumbs up or down on prices to validate them.
 * User can create shopping lists using the posts items.
 * User can watch an item and get notified when prices are lower than their set price.
 
+## Mock up
+* [PDF](fresh.pdf)
