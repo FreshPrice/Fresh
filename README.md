@@ -17,7 +17,8 @@ Location and items will be stored as strings.
 Prices of items will be stored as numbers.
 
 ### What will users be able to do with this data?
-Users will be able to compare the prices of groceries they want to purchase.
+Users will be able to see a list of posts with location, prices and grocery items.
+Users will be able to view location on a map, filter items by type and sort items by prices.
 
 ### What is some additional functionality you can add/remove based on the constraints?
 Create a shopping list which displays the lowest price found for each item and their location. 
