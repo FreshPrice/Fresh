@@ -1,12 +1,12 @@
-import React from 'react';
-import Hello from './Hello.jsx';
-import Info from './Info.jsx';
+import React from "react";
+import Map from "./components/Map.jsx";
+import CardList from "./components/CardList.jsx";
 
 const App = () => (
   <div>
     <h1>Welcome to Meteor!</h1>
-    <Hello />
-    <Info />
+    <Map />
+    <CardList />
   </div>
 );
 
