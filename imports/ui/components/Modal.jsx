@@ -1,8 +1,10 @@
-import Button from "@material-ui/core/Button";
 import MaterialModal from "@material-ui/core/Modal";
 import { withStyles } from "@material-ui/core/styles";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 import React, { Component } from "react";
 import FreshForm from "./FreshForm.jsx";
+import "./Modal.css";
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -37,9 +39,14 @@ class Modal extends Component {
 
     return (
       <div>
-        <Button variant="contained" color="secondary" onClick={this.handleOpen}>
-          Add New Post
-        </Button>
+        <Fab
+          color="secondary"
+          aria-label="Edit"
+          className="NewPostFab"
+          onClick={this.handleOpen}
+        >
+          <AddIcon />
+        </Fab>
 
         <MaterialModal
           aria-labelledby="modal-title"

@@ -11,7 +11,6 @@ class CardList extends Component {
         {/* TODO: add filter|search button */}
         <Card />
         <Card />
-        <FreshModal />
       </div>
       // TODO: Add new card button
     );

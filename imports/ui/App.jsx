@@ -2,6 +2,7 @@ import React from "react";
 import MapContainer from "./components/MapContainer.jsx";
 import CardList from "./components/CardList.jsx";
 import Typography from "@material-ui/core/Typography";
+import FreshModal from "./components/Modal.jsx";
 import "./App.css";
 
 const App = () => (
@@ -14,6 +15,9 @@ const App = () => (
     </div>
     <div className="card-list">
       <CardList />
+    </div>
+    <div className="new-post-fab">
+      <FreshModal />
     </div>
   </div>
 );
