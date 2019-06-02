@@ -1,0 +1,41 @@
+.AppContainer {
+  display: grid;
+  /* temporary background colour to help visualize layout */
+  background-color: rgb(209, 235, 245);
+  margin: 0 15%;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  grid-template-columns: 1fr auto;
+}
+
+.AppContainer > div {
+  /* temporary background colour to help visualize layout */
+  background-color: rgba(248, 202, 202, 0.8);
+  text-align: center;
+  font-size: 30px;
+}
+
+.fresh-header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.card-list {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.new-post-fab {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  position: sticky !important;
+  bottom: 50px !important;
+}
+
+.map-container {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  position: sticky !important;
+  top: 50px !important;
+  height: 50vh !important;
+}

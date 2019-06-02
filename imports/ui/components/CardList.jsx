@@ -5,7 +5,7 @@ import Search from "./Search";
 class CardList extends Component {
   render() {
     return (
-      <div>
+      <div id="CardList">
         <Search />
         {/* TODO: add filter|search button */}
         <Card />
