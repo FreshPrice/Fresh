@@ -4,7 +4,7 @@
   margin: 0 15%;
   grid-row-gap: 10px;
   grid-column-gap: 10px;
-  grid-template-columns: 1fr 1fr 500px;
+  grid-template-columns: 1fr auto;
 }
 
 .AppContainer > div {
@@ -15,17 +15,17 @@
 
 .fresh-header {
   grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-end: 3;
 }
 
 .card-list {
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 .map-container {
   grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-end: 2;
   position: sticky !important;
   top: 0 !important;
   height: 50vh !important;
