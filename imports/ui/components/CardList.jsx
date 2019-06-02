@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import Search from "./Search";
-import FreshModal from "./Modal.jsx";
 
 class CardList extends Component {
   render() {
