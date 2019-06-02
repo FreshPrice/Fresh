@@ -1,0 +1,32 @@
+.AppContainer {
+  display: grid;
+  background-color: rgb(209, 235, 245);
+  margin: 0 15%;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  grid-template-columns: 1fr 1fr 500px;
+}
+
+.AppContainer > div {
+  background-color: rgba(248, 202, 202, 0.8);
+  text-align: center;
+  font-size: 30px;
+}
+
+.fresh-header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.card-list {
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.map-container {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  position: sticky !important;
+  top: 0 !important;
+  height: 50vh !important;
+}

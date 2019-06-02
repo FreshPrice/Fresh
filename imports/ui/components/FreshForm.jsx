@@ -27,8 +27,6 @@ class FreshForm extends Component {
   handleSubmit = event => {
     // TODO: Add backend function to deal with data
     console.log("Ready to send data to backend");
-    // This is here to prevent refresh after a submit of form
-    // https://stackoverflow.com/questions/28479239/setting-onsubmit-in-react-js
     event.preventDefault();
   };
   render() {
