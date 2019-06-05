@@ -18,7 +18,7 @@ const Search = () => {
   };
 
   return (
-    <div className={style.root}>
+    <div className="search-bar">
       <AppBar position="static">
         <Toolbar>
           <div className={style.search}>
