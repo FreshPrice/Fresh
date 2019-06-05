@@ -6,12 +6,14 @@ class CardList extends Component {
   render() {
     return (
       <div id="CardList">
-        <Search />
+        <Search className="search-bar" />
         {/* TODO: add filter|search button */}
         <Card />
         <Card />
+        <Card />
+        <Card />
+        <Card />
       </div>
-      // TODO: Add new card button
     );
   }
 }

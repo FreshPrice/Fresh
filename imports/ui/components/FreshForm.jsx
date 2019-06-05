@@ -29,6 +29,7 @@ class FreshForm extends Component {
     console.log("Ready to send data to backend");
     event.preventDefault();
   };
+
   render() {
     return (
       <div>
