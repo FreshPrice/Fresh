@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import InputBase from "@material-ui/core/InputBase";
 import { makeStyles } from "@material-ui/core/styles";
@@ -8,16 +8,17 @@ import SearchIcon from "@material-ui/icons/Search";
 
 const Search = () => {
   const style = useStyles();
+  const [searchString, updateSearchString] = useState("");
 
   handleReturnKeyPressed = event => {
     // TODO: Add backend function to search
     if (event.key === "Enter") {
-      console.log("Search query is happening...");
+      console.log("Search query string is: " + searchString);
     }
   };
 
   return (
-    <div className={style.root}>
+    <div className="search-bar">
       <AppBar position="static">
         <Toolbar>
           <div className={style.search}>
@@ -31,6 +32,7 @@ const Search = () => {
                   root: style.inputRoot,
                   input: style.inputInput
                 }}
+                onChange={() => updateSearchString(event.target.value)}
                 onKeyPress={this.handleReturnKeyPressed}
               />
             </div>
