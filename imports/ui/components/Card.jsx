@@ -5,8 +5,6 @@ class Card extends Component {
   render() {
     return (
       <div>
-        {/* TODO: Display item, price, location and a picture */}
-        {/* TODO: thumbs up/down and favorite features */}
         <CardComponent />
       </div>
     );

@@ -7,7 +7,12 @@ class CardList extends Component {
     return (
       <div id="CardList">
         <Search className="search-bar" />
-        {/* TODO: add filter|search button */}
+        {/* TODO: add filter */}
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
         <Card />
         <Card />
         <Card />

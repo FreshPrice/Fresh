@@ -1,111 +1,76 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import red from "@material-ui/core/colors/red";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+import React, {Component} from 'react';
+import { withStyles } from "@material-ui/core/styles";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import FavoriteIcon from '@material-ui/icons/FavoriteBorder';
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 400,
-    marginTop: "5px"
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%" // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
-  },
-  avatar: {
-    backgroundColor: red[500]
+
+class CardComponent extends Component {
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <div>
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.cover}
+          image="/static/images/cards/live-from-space.jpg"
+          title="Live from space album cover"
+        />
+        <div className={classes.details}>
+          <CardContent className={classes.content}>
+            <Typography component="h5" variant="h5">
+              Bananas
+            </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              $5.99
+            </Typography>
+          </CardContent>
+          <div className={classes.controls}>
+            <IconButton aria-label="Previous">
+                <ThumbUpIcon className={classes.playIcon} />
+            </IconButton>
+            <IconButton aria-label="Play/pause">
+              <ThumbDownIcon className={classes.playIcon} />
+            </IconButton>
+            <IconButton aria-label="Next">
+               <FavoriteIcon className={classes.playIcon} />
+            </IconButton>
+          </div>
+        </div>
+      </Card>
+      </div>
+    );
   }
-}));
-
-function CardComponent() {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  function handleExpandClick() {
-    setExpanded(!expanded);
-  }
-
-  return (
-    <Card className={classes.card}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="Item" className={classes.avatar}>
-            A
-          </Avatar>
-        }
-        action={
-          <IconButton>
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="Bananas"
-        subheader="June 1, 2019"
-      />
-      <CardMedia
-        className={classes.media}
-        image="/static/images/cards/contemplative-reptile.jpg"
-        title="A banana"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive banana is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="Add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="Thumb Up">
-          <ThumbUpIcon />
-        </IconButton>
-        <IconButton aria-label="Thumb Down">
-          <ThumbDownIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="Show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Location:</Typography>
-          <Typography paragraph>Nearby!</Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
-  );
 }
+const useStyles = theme => ({
+  card: {
+    display: 'flex',
+    backgroundColor: 'rgba(52, 52, 52, 0.1)',
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  content: {
+    flex: '1 0 auto',
+  },
+  cover: {
+    width: 200,
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+  },
+});
 
-export default CardComponent;
+const CardWrapped = withStyles(useStyles)(CardComponent);
+
+export default CardWrapped;
