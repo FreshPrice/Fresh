@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import Search from "./Search";
+import SearchBar from './SearchBar';
 
 class CardList extends Component {
   render() {
     return (
       <div id="CardList">
-        <Search className="search-bar" />
+        
+        <SearchBar className="search-bar" />
         {/* TODO: add filter|search button */}
         <Card />
         <Card />

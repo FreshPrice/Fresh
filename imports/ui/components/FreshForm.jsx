@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-
+import SearchBar from './SearchBar';
 class FreshForm extends Component {
   constructor() {
     super();
@@ -56,6 +56,8 @@ class FreshForm extends Component {
             variant="outlined"
             required
           />
+          <br />
+          <SearchBar/>
           {/* TODO: Add location input field */}
           <br />
           <div>
