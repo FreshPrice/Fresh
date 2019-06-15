@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
   },
   chip: {
-    margin: theme.spacing(0.5, 0.5),
+    margin: theme.spacing(0.5, 0.25),
   },
   chipFocused: {
     backgroundColor: emphasize(
