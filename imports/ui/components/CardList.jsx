@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import Search from "./Search";
-import SearchBar from './SearchBar';
+import SearchBar from "./SearchBar";
 
 class CardList extends Component {
   constructor() {
@@ -19,8 +19,8 @@ class CardList extends Component {
       <div id="CardList">
         <SearchBar className="search-bar" />
         {/* TODO: add filter */}
-        {this.state.data.map(post => {
-          return <Card post={post} />;
+        {this.state.data.map((post, i) => {
+          return <Card post={post} key={i}/>;
         })}
       </div>
     );
