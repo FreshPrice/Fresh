@@ -1,5 +1,6 @@
   .AppContainer {
     display: grid;
+    width: 100%;
     /* temporary background colour to help visualize layout */
     background-color: rgb(209, 235, 245);
     margin: 0 15%;

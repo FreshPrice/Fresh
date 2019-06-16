@@ -1,3 +1,9 @@
 body {
   font-family: Roboto, sans-serif;
 }
+
+#react-target {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
