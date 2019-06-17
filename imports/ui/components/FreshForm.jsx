@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import SearchBar from './SearchBar';
+import SelectBar from "./SelectBar";
+import GeoSuggest from "./GeoSuggest";
 class FreshForm extends Component {
   constructor() {
     super();
@@ -57,7 +58,8 @@ class FreshForm extends Component {
             required
           />
           <br />
-          <SearchBar/>
+          <SelectBar />
+          <GeoSuggest />
           {/* TODO: Add location input field */}
           <br />
           <div>
