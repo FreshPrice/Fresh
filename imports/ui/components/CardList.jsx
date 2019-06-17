@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import Search from "./Search";
-import SearchBar from "./SearchBar";
+import SelectBar from "./SelectBar";
 
 class CardList extends Component {
   constructor() {
@@ -17,7 +16,7 @@ class CardList extends Component {
   render() {
     return (
       <div id="CardList">
-        <SearchBar className="search-bar" />
+        <SelectBar className="search-bar" />
         {/* TODO: add filter */}
         {this.state.data.map((post, i) => {
           return <Card post={post} key={i}/>;
