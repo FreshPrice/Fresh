@@ -15,9 +15,12 @@
     "meteor-node-stubs": "^0.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.5.0",
+    "react-places-autocomplete": "^7.2.1",
     "react-redux": "^7.0.3",
     "react-select": "^3.0.4",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "semantic-ui": "^2.4.2",
+    "semantic-ui-react": "^0.87.2"
   },
   "meteor": {
     "mainModule": {
