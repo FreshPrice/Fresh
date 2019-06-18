@@ -70,7 +70,7 @@ const itemReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: null,
-        items: state.items.concat(action.payload.items)
+        items: [action.payload.items].concat(state.items)
       };
 
     case FETCH_ITEMS_FAILURE:

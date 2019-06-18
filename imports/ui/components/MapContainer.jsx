@@ -9,8 +9,6 @@ export class MapContainer extends React.Component {
 
   displayMarkers = () => {
     return this.props.items.items.map(item => {
-      console.log(item);
-
       return (
         <Marker
           key={item.uuid}
