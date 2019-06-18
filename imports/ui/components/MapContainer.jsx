@@ -1,26 +1,27 @@
 import React from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { connect } from "react-redux";
 
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      stores: [{ latitude: 49.289554, longitude: -123.132621 }]
-    };
   }
 
   displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
+    return this.props.items.items.map(item => {
+      console.log(item);
+
       return (
         <Marker
-          key={index}
-          id={index}
+          key={item.uuid}
+          id={item.uuid}
           position={{
-            lat: store.latitude,
-            lng: store.longitude
+            lat: item.location.coords.lat,
+            lng: item.location.coords.lng
           }}
-          onClick={() => console.log("You clicked me!")}
+          onClick={() =>
+            console.log("You clicked " + item.item + " with uuid: " + item.uuid)
+          }
         />
       );
     });
@@ -44,6 +45,12 @@ export class MapContainer extends React.Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyBGF_EU531RFgoWyUuc7eCjfJ6J3EUUFpY"
-})(MapContainer);
+const mapStateToProps = state => {
+  return { items: state.items };
+};
+
+export default connect(mapStateToProps)(
+  GoogleApiWrapper({
+    apiKey: "AIzaSyBGF_EU531RFgoWyUuc7eCjfJ6J3EUUFpY"
+  })(MapContainer)
+);

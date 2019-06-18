@@ -9,7 +9,7 @@ class CardList extends Component {
   }
 
   render() {
-    const items = this.props.items;
+    const items = this.props.items.items;
 
     return (
       <div id="CardList">
@@ -24,7 +24,7 @@ class CardList extends Component {
 }
 
 const mapStateToProps = state => {
-  return { items: state.items.items };
+  return { items: state.items };
 };
 
 export default connect(mapStateToProps)(CardList);
