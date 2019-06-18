@@ -6,15 +6,7 @@ export class MapContainer extends React.Component {
     super(props);
 
     this.state = {
-      stores: [
-        { lat: 49.290338, lng: -123.134112 },
-        { latitude: 49.289554, longitude: -123.132621 },
-        { latitude: 49.290338, longitude: -123.134112 },
-        { latitude: 49.290198, longitude: -123.13234 },
-        { latitude: 49.288931, longitude: -123.13791 },
-        { latitude: 49.290254, longitude: -123.132653 },
-        { latitude: 49.286682, longitude: -123.139346 }
-      ]
+      stores: [{ latitude: 49.289554, longitude: -123.132621 }]
     };
   }
 
