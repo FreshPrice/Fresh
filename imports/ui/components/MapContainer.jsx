@@ -1,25 +1,48 @@
 import React from "react";
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import { connect } from "react-redux";
+import InfoWindowCard from "./InfoWindowCard.jsx";
 
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: null,
+      selectedPlace: {
+        name: ""
+      }
+    };
   }
 
+  onMarkerClick = (props, marker) => {
+    this.setState({
+      showingInfoWindow: true,
+      selectedPlace: props.item,
+      activeMarker: marker
+    });
+  };
+
+  onMapClicked = () => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
   displayMarkers = () => {
-    return this.props.items.items.map(item => {
+    return this.props.itemMarkers.map(item => {
       return (
         <Marker
           key={item.uuid}
-          id={item.uuid}
           position={{
             lat: item.location.coords.lat,
             lng: item.location.coords.lng
           }}
-          onClick={() =>
-            console.log("You clicked " + item.item + " with uuid: " + item.uuid)
-          }
+          onClick={this.onMarkerClick}
+          item={item}
         />
       );
     });
@@ -30,6 +53,7 @@ export class MapContainer extends React.Component {
       <div id="MapContainer">
         <Map
           google={this.props.google}
+          onClick={this.onMapClicked}
           zoom={15}
           initialCenter={{
             lat: 49.290338,
@@ -37,6 +61,14 @@ export class MapContainer extends React.Component {
           }}
         >
           {this.displayMarkers()}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+          >
+            <div>
+              <InfoWindowCard item={this.state.selectedPlace} />
+            </div>
+          </InfoWindow>
         </Map>
       </div>
     );
@@ -44,7 +76,7 @@ export class MapContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { items: state.items };
+  return { itemMarkers: state.items.items };
 };
 
 export default connect(mapStateToProps)(
