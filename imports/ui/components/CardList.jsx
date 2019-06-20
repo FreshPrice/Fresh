@@ -1,29 +1,30 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Card from "./Card";
 import Search from "./Search";
 
 class CardList extends Component {
   constructor() {
     super();
-    this.state = {
-      data: [
-        { item: "Bananas", price: "$0.99" },
-        { item: "Apple", price: "$1.39" },
-        { item: "Bananas", price: "$1.99" }
-      ]
-    };
   }
+
   render() {
+    const items = this.props.items.items;
+
     return (
       <div id="CardList">
         <Search className="search-bar" />
         {/* TODO: add filter */}
-        {this.state.data.map(post => {
-          return <Card post={post} />;
+        {items.map(post => {
+          return <Card key={post.uuid} post={post} />;
         })}
       </div>
     );
   }
 }
 
-export default CardList;
+const mapStateToProps = state => {
+  return { items: state.items };
+};
+
+export default connect(mapStateToProps)(CardList);
