@@ -1,34 +1,48 @@
 import React from "react";
-import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import { connect } from "react-redux";
+import InfoWindowCard from "./InfoWindowCard.jsx";
 
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      stores: [
-        { lat: 49.290338, lng: -123.134112 },
-        { latitude: 49.289554, longitude: -123.132621 },
-        { latitude: 49.290338, longitude: -123.134112 },
-        { latitude: 49.290198, longitude: -123.13234 },
-        { latitude: 49.288931, longitude: -123.13791 },
-        { latitude: 49.290254, longitude: -123.132653 },
-        { latitude: 49.286682, longitude: -123.139346 }
-      ]
+      showingInfoWindow: false,
+      activeMarker: null,
+      selectedPlace: {
+        name: ""
+      }
     };
   }
 
+  onMarkerClick = (props, marker) => {
+    this.setState({
+      showingInfoWindow: true,
+      selectedPlace: props.item,
+      activeMarker: marker
+    });
+  };
+
+  onMapClicked = () => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
   displayMarkers = () => {
-    return this.state.stores.map((store, index) => {
+    return this.props.itemMarkers.map(item => {
       return (
         <Marker
-          key={index}
-          id={index}
+          key={item.uuid}
           position={{
-            lat: store.latitude,
-            lng: store.longitude
+            lat: item.location.coords.lat,
+            lng: item.location.coords.lng
           }}
-          onClick={() => console.log("You clicked me!")}
+          onClick={this.onMarkerClick}
+          item={item}
         />
       );
     });
@@ -39,6 +53,7 @@ export class MapContainer extends React.Component {
       <div id="MapContainer">
         <Map
           google={this.props.google}
+          onClick={this.onMapClicked}
           zoom={15}
           initialCenter={{
             lat: 49.290338,
@@ -46,12 +61,26 @@ export class MapContainer extends React.Component {
           }}
         >
           {this.displayMarkers()}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+          >
+            <div>
+              <InfoWindowCard item={this.state.selectedPlace} />
+            </div>
+          </InfoWindow>
         </Map>
       </div>
     );
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyBGF_EU531RFgoWyUuc7eCjfJ6J3EUUFpY"
-})(MapContainer);
+const mapStateToProps = state => {
+  return { itemMarkers: state.items.items };
+};
+
+export default connect(mapStateToProps)(
+  GoogleApiWrapper({
+    apiKey: "AIzaSyBGF_EU531RFgoWyUuc7eCjfJ6J3EUUFpY"
+  })(MapContainer)
+);

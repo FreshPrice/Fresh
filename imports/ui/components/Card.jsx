@@ -82,7 +82,7 @@ const useStyles = theme => ({
     flexDirection: "column",
     paddingBottom: "10px"
   },
-  insideDetails:{
+  insideDetails: {
     flex: 1
   },
   content: {

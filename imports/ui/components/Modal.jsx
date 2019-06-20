@@ -34,6 +34,10 @@ class Modal extends Component {
     this.setState({ open: false });
   };
 
+  handleSubmit = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -55,7 +59,7 @@ class Modal extends Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <FreshForm />
+            <FreshForm closeModalOnSubmit={this.handleSubmit} />
           </div>
         </MaterialModal>
       </div>
