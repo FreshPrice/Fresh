@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import SelectBar from "./SelectBar";
+import GeoSuggest from "./GeoSuggest";
 import { connect } from "react-redux";
 import { addItem } from "../actions/CardActions.js";
 
@@ -75,6 +77,9 @@ class FreshForm extends Component {
             variant="outlined"
             required
           />
+          <br />
+          <SelectBar />
+          <GeoSuggest />
           {/* TODO: Add location input field */}
           <br />
           <div>

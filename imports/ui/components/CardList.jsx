@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
-import Search from "./Search";
+import SelectBar from "./SelectBar";
 
 class CardList extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class CardList extends Component {
 
     return (
       <div id="CardList">
-        <Search className="search-bar" />
+        <SelectBar className="search-bar" />
         {/* TODO: add filter */}
         {items.map(post => {
           return <Card key={post.uuid} post={post} />;
