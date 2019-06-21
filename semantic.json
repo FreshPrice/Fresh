@@ -15,8 +15,9 @@
     },
     "clean": "dist/"
   },
-  "permission": false,
+  "permission": 744,
   "autoInstall": false,
   "rtl": false,
+  "components": ["dropdown"],
   "version": "2.4.2"
 }
