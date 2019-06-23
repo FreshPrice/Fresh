@@ -28,11 +28,36 @@ class CardComponent extends Component {
     return (
       <div>
         <Card className={classes.card}>
-          <CardMedia
-            className={classes.cover}
-            image="/static/images/cards/live-from-space.jpg"
-            title="Live from space album cover"
-          />
+          {/* Thumbs Up and Down Counter */}
+          <div className={classes.rating}>
+            <div className={classes.thumbs}>
+              <IconButton>
+                <ThumbUpIcon />
+              </IconButton>
+              <div className={classes.count}>10</div>
+              <IconButton>
+                <ThumbDownIcon />
+              </IconButton>
+              {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
+              {/* <IconButton
+                style={{ display: this.state.isFav ? "none" : "" }}
+                onClick={this.onFavPressed}
+              >
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton
+                style={{ display: this.state.isFav ? "" : "none" }}
+                onClick={this.onFavPressed}
+              >
+                {" "}
+                
+                <FavoriteIconFilled />
+              </IconButton> */}
+            </div>
+          </div>
+          {/* Food Image */}
+          <CardMedia className={classes.image} image="/bananas.png" />
+          {/* Food Details */}
           <div className={classes.details}>
             <div className={classes.insideDetails}>
               <CardContent className={classes.content}>
@@ -43,28 +68,6 @@ class CardComponent extends Component {
                   {this.state.data.price}
                 </Typography>
               </CardContent>
-            </div>
-            <div className={classes.insideDetails}>
-              <div className={classes.controls}>
-                <IconButton>
-                  <ThumbUpIcon className={classes.playIcon} />
-                </IconButton>
-                <IconButton>
-                  <ThumbDownIcon className={classes.playIcon} />
-                </IconButton>
-                <IconButton
-                  style={{ display: this.state.isFav ? "none" : "" }}
-                  onClick={this.onFavPressed}
-                >
-                  <FavoriteIcon className={classes.playIcon} />
-                </IconButton>
-                <IconButton
-                  style={{ display: this.state.isFav ? "" : "none" }}
-                  onClick={this.onFavPressed}
-                >
-                  <FavoriteIconFilled />
-                </IconButton>
-              </div>
             </div>
           </div>
         </Card>
@@ -79,8 +82,7 @@ const useStyles = theme => ({
   },
   details: {
     display: "flex",
-    flexDirection: "column",
-    paddingBottom: "10px"
+    flexDirection: "column"
   },
   insideDetails: {
     flex: 1
@@ -88,11 +90,19 @@ const useStyles = theme => ({
   content: {
     flex: "1 0 auto"
   },
-  cover: {
+  image: {
     width: "100px"
   },
-  controls: {
-    width: "200px",
+  rating: {
+    display: "flex"
+  },
+  count: {
+    flex: 1,
+    alignSelf: "center",
+    fontSize: "20px"
+  },
+  thumbs: {
+    width: "50px",
     flex: 1
   }
 });
