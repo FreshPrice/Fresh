@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 import {
   FETCH_ITEMS_BEGIN,
   FETCH_ITEMS_SUCCESS,
-  FETCH_ITEMS_FAILURE
+  FETCH_ITEMS_FAILURE,
+  UPDATE_THUMBS_COUNT
 } from "../actions/CardActions.js";
 
 const initialState = {
@@ -61,6 +62,8 @@ const initialState = {
 };
 
 const itemReducer = (state = initialState, action) => {
+  console.log("inside item reducer before switch");
+
   switch (action.type) {
     case FETCH_ITEMS_BEGIN:
       return {
@@ -83,6 +86,15 @@ const itemReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload.error
       };
+
+    case UPDATE_THUMBS_COUNT:
+      let newState = { ...state };
+      newState.items.map(data => {
+        if (data.uuid === action.payload.item.uuid) {
+          data.count = action.payload.item.count;
+        }
+      });
+      return newState;
 
     default:
       return state;

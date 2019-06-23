@@ -9,6 +9,8 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
+import { connect } from "react-redux";
+import { changeCount } from "../actions/CardActions.js";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -23,6 +25,21 @@ class CardComponent extends Component {
     this.setState({ isFav: !this.state.isFav });
   };
 
+  onThumbsUpPressed = () => {
+    let item = this.state.data;
+    item.count = item.count + 1;
+    this.props.changeCount(item);
+
+    // TODO BUG: How come redux is change but this component doesn't rerender?
+    console.log(this.props);
+  };
+
+  onThumbsDownPressed = () => {
+    let item = this.state.data;
+    item.count = item.count - 1;
+    this.props.changeCount(item);
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -31,11 +48,11 @@ class CardComponent extends Component {
           {/* Thumbs Up and Down Counter */}
           <div className={classes.rating}>
             <div className={classes.thumbs}>
-              <IconButton>
+              <IconButton onClick={this.onThumbsUpPressed}>
                 <ThumbUpIcon />
               </IconButton>
               <div className={classes.count}>{this.state.data.count}</div>
-              <IconButton>
+              <IconButton onClick={this.onThumbsDownPressed}>
                 <ThumbDownIcon />
               </IconButton>
               {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
@@ -109,4 +126,7 @@ const useStyles = theme => ({
 
 const CardWrapped = withStyles(useStyles)(CardComponent);
 
-export default CardWrapped;
+export default connect(
+  null,
+  { changeCount }
+)(CardWrapped);
