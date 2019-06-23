@@ -29,8 +29,6 @@ class CardComponent extends Component {
     let item = this.state.data;
     item.count = item.count + 1;
     this.props.changeCount(item);
-
-    console.log(this.props.post);
   };
 
   onThumbsDownPressed = () => {

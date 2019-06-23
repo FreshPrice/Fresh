@@ -62,8 +62,6 @@ const initialState = {
 };
 
 const itemReducer = (state = initialState, action) => {
-  console.log("inside item reducer before switch");
-
   switch (action.type) {
     case FETCH_ITEMS_BEGIN:
       return {
