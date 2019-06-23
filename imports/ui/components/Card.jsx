@@ -30,8 +30,7 @@ class CardComponent extends Component {
     item.count = item.count + 1;
     this.props.changeCount(item);
 
-    // TODO BUG: How come redux is change but this component doesn't rerender?
-    console.log(this.props);
+    console.log(this.props.post);
   };
 
   onThumbsDownPressed = () => {
@@ -126,7 +125,11 @@ const useStyles = theme => ({
 
 const CardWrapped = withStyles(useStyles)(CardComponent);
 
+const mapStateToProps = state => {
+  return { items: state.items };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { changeCount }
 )(CardWrapped);
