@@ -34,7 +34,7 @@ class CardComponent extends Component {
               <IconButton>
                 <ThumbUpIcon />
               </IconButton>
-              <div className={classes.count}>10</div>
+              <div className={classes.count}>{this.state.data.count}</div>
               <IconButton>
                 <ThumbDownIcon />
               </IconButton>
