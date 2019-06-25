@@ -4,7 +4,7 @@ import PlacesAutocomplete, {
   getLatLng
 } from "react-places-autocomplete";
 import { GoogleApiWrapper } from "google-maps-react";
-import { Dropdown } from "semantic-ui-react";
+
 import "semantic-ui/dist/semantic.min.css";
 
 export class GeoSuggest extends React.Component {
@@ -20,7 +20,9 @@ export class GeoSuggest extends React.Component {
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
+      .then(latLng => this.props.setLatLng(latLng))
       .then(this.setState({ address }))
+      .then(this.props.setAddress(address))
       .catch(error => console.error("Error", error));
   };
 

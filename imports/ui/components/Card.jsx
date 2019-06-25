@@ -42,6 +42,9 @@ class CardComponent extends Component {
                 <Typography variant="subtitle1" color="textSecondary">
                   {this.state.data.price}
                 </Typography>
+                <Typography variant="subtitle1" color="textSecondary">
+                  {this.state.data.location.address}
+                </Typography>
               </CardContent>
             </div>
             <div className={classes.insideDetails}>

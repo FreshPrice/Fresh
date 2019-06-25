@@ -12,9 +12,14 @@ const uuidv4 = require("uuid/v4");
 class FreshForm extends Component {
   constructor() {
     super();
+    this.setAddress = this.setAddress.bind(this);
+    this.setLatLng = this.setLatLng.bind(this);
     this.state = {
       item: "",
-      price: ""
+      price: "",
+      add: "",
+      lat: 0,
+      lng: 0
     };
   }
 
@@ -31,7 +36,22 @@ class FreshForm extends Component {
 
   handleChangePrice = event => {
     this.setState({ price: event.target.value });
+    console.log(this.state.price);
   };
+
+  setAddress(address) {
+    console.log(typeof address);
+    this.setState({
+      add: address
+    });
+  }
+  setLatLng(latLng) {
+    console.log(typeof latLng);
+    this.setState({
+      lat: latLng.lat,
+      lng: latLng.lng
+    });
+  }
 
   handleSubmit = event => {
     let newItem = {
@@ -39,9 +59,10 @@ class FreshForm extends Component {
       price: "$" + this.state.price,
       uuid: uuidv4(),
       location: {
+        address: this.state.add,
         coords: {
-          lat: parseFloat(Math.random() * (49.2901 - 49.293) + 49.29),
-          lng: parseFloat(Math.random() * (-123.121 - -123.125) + -123.12927)
+          lat: this.state.lat,
+          lng: this.state.lng
         }
       }
     };
@@ -49,6 +70,7 @@ class FreshForm extends Component {
     this.clearInput();
     this.props.closeModalOnSubmit();
     event.preventDefault();
+    console.log(this.state.add);
   };
 
   render() {
@@ -79,7 +101,10 @@ class FreshForm extends Component {
           />
           <br />
           <SelectBar />
-          <GeoSuggest />
+          <GeoSuggest
+            setAddress={this.setAddress.bind(this)}
+            setLatLng={this.setLatLng.bind(this)}
+          />
           {/* TODO: Add location input field */}
           <br />
           <div>

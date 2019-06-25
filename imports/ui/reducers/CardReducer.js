@@ -12,6 +12,7 @@ const initialState = {
       price: "$0.99",
       uuid: "41048778-017e-44d6-9496-6b60a7c81d8f",
       location: {
+        address: "Vancouver",
         coords: {
           lat: 49.286682,
           lng: -123.139346
@@ -24,6 +25,7 @@ const initialState = {
       uuid: "7b5f84bb-a2d0-485e-98a5-a713a8578755",
       location: {
         coords: {
+          address: "Vancouver",
           lat: 49.290331,
           lng: -123.134111
         }
@@ -35,6 +37,7 @@ const initialState = {
       uuid: "fc77dc62-5078-4174-adb2-1fe4a03e10bf",
       location: {
         coords: {
+          address: "Vancouver",
           lat: 49.290198,
           lng: -123.13234
         }
@@ -46,6 +49,7 @@ const initialState = {
       uuid: "548d15cd-5ab2-4c10-bdab-cc511c11a1ca",
       location: {
         coords: {
+          address: "Vancouver",
           lat: 49.290254,
           lng: -123.132653
         }
