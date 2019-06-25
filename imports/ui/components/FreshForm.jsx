@@ -30,17 +30,14 @@ class FreshForm extends Component {
 
   handleChangePrice = event => {
     this.setState({ price: event.target.value });
-    console.log(this.state.price);
   };
 
   setAddress(address) {
-    console.log(typeof address);
     this.setState({
       add: address
     });
   }
   setLatLng(latLng) {
-    console.log(typeof latLng);
     this.setState({
       lat: latLng.lat,
       lng: latLng.lng
@@ -65,7 +62,6 @@ class FreshForm extends Component {
     this.clearInput();
     this.props.closeModalOnSubmit();
     event.preventDefault();
-    console.log(this.state.add);
   };
 
   render() {
