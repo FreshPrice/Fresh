@@ -13,20 +13,20 @@ class FreshForm extends Component {
   constructor() {
     super();
     this.state = {
-      item: "",
+      name: "",
       price: ""
     };
   }
 
   clearInput = () => {
     this.setState({
-      item: "",
+      name: "",
       price: ""
     });
   };
 
   handleChangeItem = event => {
-    this.setState({ item: event.target.value });
+    this.setState({ name: event.target.value });
   };
 
   handleChangePrice = event => {
@@ -35,7 +35,7 @@ class FreshForm extends Component {
 
   handleSubmit = event => {
     let newItem = {
-      item: this.state.item,
+      name: this.state.name,
       price: "$" + this.state.price,
       uuid: uuidv4(),
       location: {

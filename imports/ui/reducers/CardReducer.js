@@ -10,6 +10,7 @@ const initialState = {
     {
       name: "Bananas",
       price: "$0.99",
+      rating: 0,
       uuid: "41048778-017e-44d6-9496-6b60a7c81d8f",
       location: {
         coords: {
