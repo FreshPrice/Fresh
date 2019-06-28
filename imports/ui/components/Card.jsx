@@ -37,7 +37,7 @@ class CardComponent extends Component {
             <div className={classes.insideDetails}>
               <CardContent className={classes.content}>
                 <Typography component="h5" variant="h5">
-                  {this.state.data.item}
+                  {this.state.data.name}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
                   {this.state.data.price}
