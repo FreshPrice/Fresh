@@ -37,7 +37,7 @@ class FreshForm extends Component {
     let newItem = {
       item: this.state.item,
       price: "$" + this.state.price,
-      count: 0,
+      rating: 0,
       uuid: uuidv4(),
       location: {
         coords: {

@@ -1,7 +1,7 @@
 export const FETCH_ITEMS_BEGIN = "FETCH_ITEMS_BEGIN";
 export const FETCH_ITEMS_SUCCESS = "FETCH_ITEMS_SUCCESS";
 export const FETCH_ITEMS_FAILURE = "FETCH_ITEMS_FAILURE";
-export const UPDATE_THUMBS_COUNT = "UPDATE_THUMBS_COUNT";
+export const UPDATE_THUMBS_RATING = "UPDATE_THUMBS_RATING";
 
 export const addItem = item => {
   return fetchItemsSuccess(item);
@@ -38,8 +38,8 @@ export const getItems = () => {
   // };
 };
 
-export const changeCount = item => {
-  return updateThumbsCount(item);
+export const changeRating = item => {
+  return updateThumbsRating(item);
 };
 
 export const fetchItemsBegin = () => {
@@ -66,9 +66,9 @@ export const fetchItemsFailure = error => {
   };
 };
 
-export const updateThumbsCount = item => {
+export const updateThumbsRating = item => {
   return {
-    type: UPDATE_THUMBS_COUNT,
+    type: UPDATE_THUMBS_RATING,
     payload: {
       item
     }

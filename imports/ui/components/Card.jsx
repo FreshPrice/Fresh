@@ -10,7 +10,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
-import { changeCount } from "../actions/CardActions.js";
+import { changeRating } from "../actions/CardActions.js";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -27,14 +27,14 @@ class CardComponent extends Component {
 
   onThumbsUpPressed = () => {
     let item = this.state.data;
-    item.count = item.count + 1;
-    this.props.changeCount(item);
+    item.rating = item.rating + 1;
+    this.props.changeRating(item);
   };
 
   onThumbsDownPressed = () => {
     let item = this.state.data;
-    item.count = item.count - 1;
-    this.props.changeCount(item);
+    item.rating = item.rating - 1;
+    this.props.changeRating(item);
   };
 
   render() {
@@ -43,12 +43,12 @@ class CardComponent extends Component {
       <div>
         <Card className={classes.card}>
           {/* Thumbs Up and Down Counter */}
-          <div className={classes.rating}>
+          <div className={classes.ratingArea}>
             <div className={classes.thumbs}>
               <IconButton onClick={this.onThumbsUpPressed}>
                 <ThumbUpIcon />
               </IconButton>
-              <div className={classes.count}>{this.state.data.count}</div>
+              <div className={classes.rating}>{this.state.data.rating}</div>
               <IconButton onClick={this.onThumbsDownPressed}>
                 <ThumbDownIcon />
               </IconButton>
@@ -107,10 +107,10 @@ const useStyles = theme => ({
   image: {
     width: "100px"
   },
-  rating: {
+  ratingArea: {
     display: "flex"
   },
-  count: {
+  rating: {
     flex: 1,
     alignSelf: "center",
     fontSize: "20px"
@@ -129,5 +129,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { changeCount }
+  { changeRating }
 )(CardWrapped);
