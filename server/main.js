@@ -9,6 +9,7 @@ Meteor.startup(() => {
         name: "Bananas",
         price: "$0.99",
         rating: 0,
+        createdAt: new Date(),
         location: {
           coords: {
             lat: 49.286682,
@@ -20,6 +21,7 @@ Meteor.startup(() => {
         name: "Apples",
         price: "$1.99",
         rating: 0,
+        createdAt: new Date(),
         location: {
           coords: {
             lat: 49.290331,
@@ -31,6 +33,7 @@ Meteor.startup(() => {
         name: "Pears",
         price: "$2.99",
         rating: 0,
+        createdAt: new Date(),
         location: {
           coords: {
             lat: 49.290198,
@@ -42,6 +45,7 @@ Meteor.startup(() => {
         name: "Oranges",
         price: "$1.50",
         rating: 0,
+        createdAt: new Date(),
         location: {
           coords: {
             lat: 49.290254,
@@ -55,5 +59,25 @@ Meteor.startup(() => {
       console.log("Adding: " + item.name);
       Items.insert(item);
     });
+  }
+});
+
+Meteor.methods({
+  addItem: newItem => {
+    let _id = Items.insert(newItem);
+    console.log("New Item added with ID: " + _id);
+    return _id;
+  }
+});
+
+Meteor.methods({
+  getItems: () => {
+    return Items.find({}, { sort: { createdAt: -1 } }).fetch();
+  }
+});
+
+Meteor.methods({
+  updateItemRating: item => {
+    return Items.update({ _id: item._id }, item);
   }
 });

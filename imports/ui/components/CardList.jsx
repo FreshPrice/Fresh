@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
 import SelectBar from "./SelectBar";
+import { getItems } from "../actions/CardActions.js";
 
 class CardList extends Component {
   constructor() {
     super();
+  }
+
+  componentDidMount() {
+    this.props.getItems();
   }
 
   render() {
@@ -27,4 +32,7 @@ const mapStateToProps = state => {
   return { items: state.items };
 };
 
-export default connect(mapStateToProps)(CardList);
+export default connect(
+  mapStateToProps,
+  { getItems }
+)(CardList);
