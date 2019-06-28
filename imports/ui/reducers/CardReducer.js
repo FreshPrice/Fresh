@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 import {
   FETCH_ITEMS_BEGIN,
   FETCH_ITEMS_SUCCESS,
-  FETCH_ITEMS_FAILURE
+  FETCH_ITEMS_FAILURE,
+  UPDATE_THUMBS_RATING
 } from "../actions/CardActions.js";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
       item: "Bananas",
       price: "$0.99",
       uuid: "41048778-017e-44d6-9496-6b60a7c81d8f",
+      rating: 10,
       location: {
         coords: {
           lat: 49.286682,
@@ -22,6 +24,7 @@ const initialState = {
       item: "Apples",
       price: "$1.99",
       uuid: "7b5f84bb-a2d0-485e-98a5-a713a8578755",
+      rating: 0,
       location: {
         coords: {
           lat: 49.290331,
@@ -33,6 +36,7 @@ const initialState = {
       item: "Pears",
       price: "$2.99",
       uuid: "fc77dc62-5078-4174-adb2-1fe4a03e10bf",
+      rating: 2,
       location: {
         coords: {
           lat: 49.290198,
@@ -44,6 +48,7 @@ const initialState = {
       item: "Oranges",
       price: "$1.50",
       uuid: "548d15cd-5ab2-4c10-bdab-cc511c11a1ca",
+      rating: 0,
       location: {
         coords: {
           lat: 49.290254,
@@ -79,6 +84,15 @@ const itemReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload.error
       };
+
+    case UPDATE_THUMBS_RATING:
+      let newState = { ...state };
+      newState.items.map(data => {
+        if (data.uuid === action.payload.item.uuid) {
+          data.rating = action.payload.item.rating;
+        }
+      });
+      return newState;
 
     default:
       return state;
