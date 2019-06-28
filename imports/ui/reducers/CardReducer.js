@@ -2,7 +2,8 @@ import { combineReducers } from "redux";
 import {
   FETCH_ITEMS_BEGIN,
   FETCH_ITEMS_SUCCESS,
-  FETCH_ITEMS_FAILURE
+  FETCH_ITEMS_FAILURE,
+  UPDATE_THUMBS_RATING
 } from "../actions/CardActions.js";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
       price: "$0.99",
       rating: 0,
       uuid: "41048778-017e-44d6-9496-6b60a7c81d8f",
+      rating: 10,
       location: {
         coords: {
           lat: 49.286682,
@@ -47,6 +49,15 @@ const itemReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload.error
       };
+
+    case UPDATE_THUMBS_RATING:
+      let newState = { ...state };
+      newState.items.map(data => {
+        if (data.uuid === action.payload.item.uuid) {
+          data.rating = action.payload.item.rating;
+        }
+      });
+      return newState;
 
     default:
       return state;
