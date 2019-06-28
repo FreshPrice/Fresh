@@ -10,8 +10,6 @@ import { addItem } from "../actions/AppActions.js";
 class FreshForm extends Component {
   constructor() {
     super();
-    this.setAddress = this.setAddress.bind(this);
-    this.setLatLng = this.setLatLng.bind(this);
     this.state = {
       name: "",
       price: "",
@@ -32,12 +30,12 @@ class FreshForm extends Component {
     this.setState({ price: event.target.value });
   };
 
-  setAddress(address) {
+  setAddress = address => {
     this.setState({
       add: address
     });
   }
-  setLatLng(latLng) {
+  setLatLng = latLng => {
     this.setState({
       lat: latLng.lat,
       lng: latLng.lng
