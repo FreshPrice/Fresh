@@ -59,6 +59,7 @@ Users will be able to leave thumbs up or down on prices to validate them.
 
 ## Local
 Run `meteor run` in root directory to begin serving on `localhost:3000`
+
 Run `meteor reset` to start with a fresh local MongoDB instance
 
 ## Local, with Atlas hosted MongoDB
