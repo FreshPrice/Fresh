@@ -9,6 +9,8 @@ import ThumbDownIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
+import { connect } from "react-redux";
+import { changeRating } from "../actions/CardActions.js";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -23,16 +25,53 @@ class CardComponent extends Component {
     this.setState({ isFav: !this.state.isFav });
   };
 
+  onThumbsUpPressed = () => {
+    let item = this.state.data;
+    item.rating = item.rating + 1;
+    this.props.changeRating(item);
+  };
+
+  onThumbsDownPressed = () => {
+    let item = this.state.data;
+    item.rating = item.rating - 1;
+    this.props.changeRating(item);
+  };
+
   render() {
     const { classes } = this.props;
     return (
       <div>
         <Card className={classes.card}>
-          <CardMedia
-            className={classes.cover}
-            image="/static/images/cards/live-from-space.jpg"
-            title="Live from space album cover"
-          />
+          {/* Thumbs Up and Down Counter */}
+          <div className={classes.ratingArea}>
+            <div className={classes.thumbs}>
+              <IconButton onClick={this.onThumbsUpPressed}>
+                <ThumbUpIcon />
+              </IconButton>
+              <div className={classes.rating}>{this.state.data.rating}</div>
+              <IconButton onClick={this.onThumbsDownPressed}>
+                <ThumbDownIcon />
+              </IconButton>
+              {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
+              {/* <IconButton
+                style={{ display: this.state.isFav ? "none" : "" }}
+                onClick={this.onFavPressed}
+              >
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton
+                style={{ display: this.state.isFav ? "" : "none" }}
+                onClick={this.onFavPressed}
+              >
+                {" "}
+                
+                <FavoriteIconFilled />
+              </IconButton> */}
+            </div>
+          </div>
+          {/* Food Image */}
+          <CardMedia className={classes.image} image="/bananas.png" />
+          {/* Food Details */}
           <div className={classes.details}>
             <div className={classes.insideDetails}>
               <CardContent className={classes.content}>
@@ -47,28 +86,6 @@ class CardComponent extends Component {
                 </Typography>
               </CardContent>
             </div>
-            <div className={classes.insideDetails}>
-              <div className={classes.controls}>
-                <IconButton>
-                  <ThumbUpIcon className={classes.playIcon} />
-                </IconButton>
-                <IconButton>
-                  <ThumbDownIcon className={classes.playIcon} />
-                </IconButton>
-                <IconButton
-                  style={{ display: this.state.isFav ? "none" : "" }}
-                  onClick={this.onFavPressed}
-                >
-                  <FavoriteIcon className={classes.playIcon} />
-                </IconButton>
-                <IconButton
-                  style={{ display: this.state.isFav ? "" : "none" }}
-                  onClick={this.onFavPressed}
-                >
-                  <FavoriteIconFilled />
-                </IconButton>
-              </div>
-            </div>
           </div>
         </Card>
       </div>
@@ -82,8 +99,7 @@ const useStyles = theme => ({
   },
   details: {
     display: "flex",
-    flexDirection: "column",
-    paddingBottom: "10px"
+    flexDirection: "column"
   },
   insideDetails: {
     flex: 1
@@ -91,15 +107,30 @@ const useStyles = theme => ({
   content: {
     flex: "1 0 auto"
   },
-  cover: {
+  image: {
     width: "100px"
   },
-  controls: {
-    width: "200px",
+  ratingArea: {
+    display: "flex"
+  },
+  rating: {
+    flex: 1,
+    alignSelf: "center",
+    fontSize: "20px"
+  },
+  thumbs: {
+    width: "50px",
     flex: 1
   }
 });
 
 const CardWrapped = withStyles(useStyles)(CardComponent);
 
-export default CardWrapped;
+const mapStateToProps = state => {
+  return { items: state.items };
+};
+
+export default connect(
+  mapStateToProps,
+  { changeRating }
+)(CardWrapped);
