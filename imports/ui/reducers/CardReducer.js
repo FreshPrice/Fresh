@@ -12,7 +12,7 @@ const initialState = {
       name: "Bananas",
       price: "$0.99",
       rating: 0,
-      uuid: "41048778-017e-44d6-9496-6b60a7c81d8f",
+      _id: "MCa9A7upxq2MwE8Xd",
       rating: 10,
       location: {
         coords: {
@@ -53,7 +53,7 @@ const itemReducer = (state = initialState, action) => {
     case UPDATE_THUMBS_RATING:
       let newState = { ...state };
       newState.items.map(data => {
-        if (data.uuid === action.payload.item.uuid) {
+        if (data._id === action.payload.item._id) {
           data.rating = action.payload.item.rating;
         }
       });

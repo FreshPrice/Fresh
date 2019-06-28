@@ -16,7 +16,7 @@ class CardList extends Component {
         <SelectBar className="search-bar" />
         {/* TODO: add filter */}
         {items.map(post => {
-          return <Card key={post.uuid} post={post} />;
+          return <Card key={post._id} post={post} />;
         })}
       </div>
     );

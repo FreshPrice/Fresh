@@ -7,8 +7,6 @@ import GeoSuggest from "./GeoSuggest";
 import { connect } from "react-redux";
 import { addItem } from "../actions/CardActions.js";
 
-const uuidv4 = require("uuid/v4");
-
 class FreshForm extends Component {
   constructor() {
     super();
@@ -38,7 +36,6 @@ class FreshForm extends Component {
       name: this.state.name,
       price: "$" + this.state.price,
       rating: 0,
-      uuid: uuidv4(),
       location: {
         coords: {
           lat: parseFloat(Math.random() * (49.2901 - 49.293) + 49.29),
