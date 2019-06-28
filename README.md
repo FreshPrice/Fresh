@@ -54,8 +54,12 @@ Users will be able to leave thumbs up or down on prices to validate them.
 
 - [PDF](fresh.pdf)
 
+
 # Development
 
 ## Local
+Run `meteor run` in root directory to begin serving on `localhost:3000`
 
-Run `meteor` in root directory to begin serving on `localhost:3000`
+## Local, with Atlas hosted MongoDB
+Run `sh start.sh` in root directory to begin serving on `localhost:3000` while targetting the Atlas hosted MongoDB
+
