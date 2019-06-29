@@ -23,11 +23,6 @@ class FreshForm extends Component {
     });
   };
 
-  handleChangeItem = event => {
-    console.log(event);
-    this.setState({ name: event.target.value });
-  };
-
   handleChangePrice = event => {
     this.setState({ price: event.target.value });
   };
