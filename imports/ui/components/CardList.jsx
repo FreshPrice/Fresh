@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
-import SelectBar from "./SelectBar";
+import SearchBar from "./SearchBar";
+import { getItems } from "../actions/AppActions.js";
 
 class CardList extends Component {
   constructor() {
     super();
+  }
+
+  componentDidMount() {
+    this.props.getItems({});
   }
 
   render() {
@@ -13,10 +18,15 @@ class CardList extends Component {
 
     return (
       <div id="CardList">
-        <SelectBar className="search-bar" />
+        <SearchBar
+          className="search-bar"
+          allowAddOptions={false}
+          placeholder="Find Item"
+          onChange={true}
+        />
         {/* TODO: add filter */}
         {items.map(post => {
-          return <Card key={post.uuid} post={post} />;
+          return <Card key={post._id} post={post} />;
         })}
       </div>
     );
@@ -27,4 +37,7 @@ const mapStateToProps = state => {
   return { items: state.items };
 };
 
-export default connect(mapStateToProps)(CardList);
+export default connect(
+  mapStateToProps,
+  { getItems }
+)(CardList);

@@ -10,7 +10,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
-import { changeRating } from "../actions/CardActions.js";
+import { changeRating } from "../actions/AppActions.js";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -76,7 +76,7 @@ class CardComponent extends Component {
             <div className={classes.insideDetails}>
               <CardContent className={classes.content}>
                 <Typography component="h5" variant="h5">
-                  {this.state.data.item}
+                  {this.state.data.name}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
                   {this.state.data.price}

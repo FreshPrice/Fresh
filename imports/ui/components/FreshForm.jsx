@@ -2,31 +2,25 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import SelectBar from "./SelectBar";
+import SearchBar from "./SearchBar";
 import GeoSuggest from "./GeoSuggest";
 import { connect } from "react-redux";
-import { addItem } from "../actions/CardActions.js";
-
-const uuidv4 = require("uuid/v4");
+import { addItem } from "../actions/AppActions.js";
 
 class FreshForm extends Component {
   constructor() {
     super();
     this.state = {
-      item: "",
+      name: "",
       price: ""
     };
   }
 
   clearInput = () => {
     this.setState({
-      item: "",
+      name: "",
       price: ""
     });
-  };
-
-  handleChangeItem = event => {
-    this.setState({ item: event.target.value });
   };
 
   handleChangePrice = event => {
@@ -35,10 +29,10 @@ class FreshForm extends Component {
 
   handleSubmit = event => {
     let newItem = {
-      item: this.state.item,
+      name: this.state.name,
       price: "$" + this.state.price,
+      createdAt: new Date(),
       rating: 0,
-      uuid: uuidv4(),
       location: {
         coords: {
           lat: parseFloat(Math.random() * (49.2901 - 49.293) + 49.29),
@@ -60,13 +54,11 @@ class FreshForm extends Component {
         </Typography>
         <br />
         <form onSubmit={this.handleSubmit}>
-          <TextField
-            label="Item"
-            onChange={this.handleChangeItem}
-            placeholder="Enter a new item"
-            value={this.state.item}
-            variant="outlined"
-            required
+          <SearchBar
+            allowAddOptions={true}
+            placeholder="Choose Item"
+            onValueUpdate={value => this.setState({ name: value })}
+            onChange={false}
           />
           <br />
           <TextField
@@ -79,7 +71,6 @@ class FreshForm extends Component {
             required
           />
           <br />
-          <SelectBar />
           <GeoSuggest />
           {/* TODO: Add location input field */}
           <br />

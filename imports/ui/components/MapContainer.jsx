@@ -36,7 +36,7 @@ export class MapContainer extends React.Component {
     return this.props.itemMarkers.map(item => {
       return (
         <Marker
-          key={item.uuid}
+          key={item._id}
           position={{
             lat: item.location.coords.lat,
             lng: item.location.coords.lng
