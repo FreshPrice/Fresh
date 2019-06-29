@@ -27,8 +27,8 @@ const initialState = {
       uuid: "7b5f84bb-a2d0-485e-98a5-a713a8578755",
       rating: 0,
       location: {
+        address: "Safeway",
         coords: {
-          address: "Vancouver",
           lat: 49.290331,
           lng: -123.134111
         }
@@ -40,8 +40,8 @@ const initialState = {
       uuid: "fc77dc62-5078-4174-adb2-1fe4a03e10bf",
       rating: 2,
       location: {
+        address: "H-mart",
         coords: {
-          address: "Vancouver",
           lat: 49.290198,
           lng: -123.13234
         }
@@ -53,8 +53,8 @@ const initialState = {
       uuid: "548d15cd-5ab2-4c10-bdab-cc511c11a1ca",
       rating: 0,
       location: {
+        address: "T&T",
         coords: {
-          address: "Vancouver",
           lat: 49.290254,
           lng: -123.132653
         }
