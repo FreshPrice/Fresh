@@ -77,7 +77,11 @@ class FreshForm extends Component {
             required
           />
           <br />
-          <SearchBar allowAddOptions={true} />
+          <SearchBar
+            allowAddOptions={true}
+            placeholder="Choose Item"
+            onChange={false}
+          />
           <GeoSuggest />
           {/* TODO: Add location input field */}
           <br />

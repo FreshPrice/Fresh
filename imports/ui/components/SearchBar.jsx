@@ -17,7 +17,7 @@ class SearchBar extends Component {
     this.props.getDropwdownItems();
   }
 
-  updateSearchValue = searchValue => {
+  filterPostsForKey = searchValue => {
     console.log("Search query string now: " + searchValue);
     let filter = { name: searchValue };
     if (searchValue === "") {
@@ -41,7 +41,7 @@ class SearchBar extends Component {
     return (
       <div>
         <Dropdown
-          placeholder="Find..."
+          placeholder={this.props.placeholder}
           selectOnBlur={false}
           fluid
           search
@@ -51,7 +51,11 @@ class SearchBar extends Component {
           noResultsMessage="Not found."
           allowAdditions={this.props.allowAddOptions}
           onAddItem={(event, data) => this.addNewItem(data.value)}
-          onChange={(event, data) => this.updateSearchValue(data.value)}
+          onChange={
+            this.props.onChange
+              ? (event, data) => this.filterPostsForKey(data.value)
+              : null
+          }
           options={this.props.dropwdownItems}
         />
       </div>

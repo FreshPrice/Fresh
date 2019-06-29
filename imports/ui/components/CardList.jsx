@@ -18,7 +18,12 @@ class CardList extends Component {
 
     return (
       <div id="CardList">
-        <SearchBar className="search-bar" allowAddOptions={false} />
+        <SearchBar
+          className="search-bar"
+          allowAddOptions={false}
+          placeholder="Find Item"
+          onChange={true}
+        />
         {/* TODO: add filter */}
         {items.map(post => {
           return <Card key={post._id} post={post} />;
