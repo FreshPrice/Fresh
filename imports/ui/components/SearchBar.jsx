@@ -11,6 +11,9 @@ import {
 class SearchBar extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      value: ""
+    };
   }
 
   componentDidMount() {
@@ -54,7 +57,7 @@ class SearchBar extends Component {
           onChange={
             this.props.onChange
               ? (event, data) => this.filterPostsForKey(data.value)
-              : null
+              : (event, data) => this.props.onValueUpdate(data.value)
           }
           options={this.props.dropwdownItems}
         />

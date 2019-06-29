@@ -24,6 +24,7 @@ class FreshForm extends Component {
   };
 
   handleChangeItem = event => {
+    console.log(event);
     this.setState({ name: event.target.value });
   };
 
@@ -58,13 +59,11 @@ class FreshForm extends Component {
         </Typography>
         <br />
         <form onSubmit={this.handleSubmit}>
-          <TextField
-            label="Item"
-            onChange={this.handleChangeItem}
-            placeholder="Enter a new item"
-            value={this.state.item}
-            variant="outlined"
-            required
+          <SearchBar
+            allowAddOptions={true}
+            placeholder="Choose Item"
+            onValueUpdate={value => this.setState({ name: value })}
+            onChange={false}
           />
           <br />
           <TextField
@@ -77,11 +76,6 @@ class FreshForm extends Component {
             required
           />
           <br />
-          <SearchBar
-            allowAddOptions={true}
-            placeholder="Choose Item"
-            onChange={false}
-          />
           <GeoSuggest />
           {/* TODO: Add location input field */}
           <br />

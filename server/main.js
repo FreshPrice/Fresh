@@ -78,11 +78,15 @@ Meteor.startup(() => {
       {
         text: "Oranges",
         value: "Oranges"
+      },
+      {
+        text: "Pears",
+        value: "Pears"
       }
     ];
 
     dropdownItems.forEach(item => {
-      console.log("Adding dropwdown: " + item.name);
+      console.log("Adding dropwdown: " + item.value);
       DropdownItems.insert(item);
     });
   }
