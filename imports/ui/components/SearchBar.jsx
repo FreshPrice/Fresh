@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Dropdown } from "semantic-ui-react";
 import "semantic-ui/dist/semantic.min.css";
-import { addItemToDropdown, getDropwdownItems } from "../actions/AppActions.js";
+import {
+  addItemToDropdown,
+  getDropwdownItems,
+  getItems
+} from "../actions/AppActions.js";
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchValue: ""
-    };
   }
 
   componentDidMount() {
@@ -17,8 +18,13 @@ class SearchBar extends Component {
   }
 
   updateSearchValue = searchValue => {
-    this.setState({ searchValue: searchValue });
     console.log("Search query string now: " + searchValue);
+    let filter = { name: searchValue };
+    if (searchValue === "") {
+      this.props.getItems({});
+    } else {
+      this.props.getItems(filter);
+    }
   };
 
   addNewItem = newItem => {
@@ -35,7 +41,8 @@ class SearchBar extends Component {
     return (
       <div>
         <Dropdown
-          placeholder="Select..."
+          placeholder="Find..."
+          selectOnBlur={false}
           fluid
           search
           selection
@@ -58,5 +65,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { addItemToDropdown, getDropwdownItems }
+  { addItemToDropdown, getDropwdownItems, getItems }
 )(SearchBar);

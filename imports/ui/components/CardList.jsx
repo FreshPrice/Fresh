@@ -10,7 +10,7 @@ class CardList extends Component {
   }
 
   componentDidMount() {
-    this.props.getItems();
+    this.props.getItems({});
   }
 
   render() {

@@ -21,10 +21,10 @@ export const addItem = item => {
   };
 };
 
-export const getItems = () => {
+export const getItems = filter => {
   return async dispatch => {
     dispatch(fetchItemsBegin());
-    return Meteor.call("getItems", (err, res) => {
+    return Meteor.call("getItems", filter, (err, res) => {
       if (err) {
         dispatch(fetchItemsFailure(err));
       } else {

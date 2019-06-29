@@ -82,7 +82,7 @@ Meteor.startup(() => {
     ];
 
     dropdownItems.forEach(item => {
-      console.log("Adding dropwdown: " + item.text);
+      console.log("Adding dropwdown: " + item.name);
       DropdownItems.insert(item);
     });
   }
@@ -97,8 +97,8 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  getItems: () => {
-    return Items.find({}, { sort: { createdAt: -1 } }).fetch();
+  getItems: filter => {
+    return Items.find(filter, { sort: { createdAt: -1 } }).fetch();
   }
 });
 
