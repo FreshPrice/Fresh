@@ -12,7 +12,10 @@ class FreshForm extends Component {
     super();
     this.state = {
       name: "",
-      price: ""
+      price: "",
+      add: "",
+      lat: 0,
+      lng: 0
     };
   }
 
@@ -27,6 +30,13 @@ class FreshForm extends Component {
     this.setState({ price: event.target.value });
   };
 
+  setAddress = address => {
+    this.setState({ add: address });
+  };
+  setLatLng = latLng => {
+    this.setState({ lat: latLng.lat, lng: latLng.lng });
+  };
+
   handleSubmit = event => {
     let newItem = {
       name: this.state.name,
@@ -34,9 +44,10 @@ class FreshForm extends Component {
       createdAt: new Date(),
       rating: 0,
       location: {
+        address: this.state.add,
         coords: {
-          lat: parseFloat(Math.random() * (49.2901 - 49.293) + 49.29),
-          lng: parseFloat(Math.random() * (-123.121 - -123.125) + -123.12927)
+          lat: this.state.lat,
+          lng: this.state.lng
         }
       }
     };
@@ -52,7 +63,6 @@ class FreshForm extends Component {
         <Typography variant="h6" id="modal-title">
           Submit a new deal!
         </Typography>
-        <br />
         <form onSubmit={this.handleSubmit}>
           <SearchBar
             allowAddOptions={true}
@@ -71,8 +81,11 @@ class FreshForm extends Component {
             required
           />
           <br />
-          <GeoSuggest />
-          {/* TODO: Add location input field */}
+          <GeoSuggest
+            setAddress={this.setAddress.bind(this)}
+            setLatLng={this.setLatLng.bind(this)}
+            required
+          />
           <br />
           <div>
             <Button variant="outlined" color="secondary" type="submit">
