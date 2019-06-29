@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import SelectBar from "./SelectBar";
+import SearchBar from "./SearchBar";
 import GeoSuggest from "./GeoSuggest";
 import { connect } from "react-redux";
-import { addItem } from "../actions/CardActions.js";
+import { addItem } from "../actions/AppActions.js";
 
 class FreshForm extends Component {
   constructor() {
@@ -77,7 +77,7 @@ class FreshForm extends Component {
             required
           />
           <br />
-          <SelectBar />
+          <SearchBar allowAddOptions={true} />
           <GeoSuggest />
           {/* TODO: Add location input field */}
           <br />

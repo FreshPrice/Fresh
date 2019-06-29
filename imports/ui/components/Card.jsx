@@ -10,7 +10,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
-import { changeRating } from "../actions/CardActions.js";
+import { changeRating } from "../actions/AppActions.js";
 
 class CardComponent extends Component {
   constructor(props) {

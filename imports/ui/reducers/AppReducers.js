@@ -4,13 +4,19 @@ import {
   FETCH_ITEMS_SUCCESS,
   FETCH_ITEMS_FAILURE,
   UPDATE_THUMBS_RATING,
-  ADD_ITEM_SUCCESS
-} from "../actions/CardActions.js";
+  ADD_ITEM_SUCCESS,
+  GET_DROPDOWN_ITEMS,
+  ADD_NEW_DROPDOWN_ITEM
+} from "../actions/AppActions.js";
 
 const initialState = {
   items: [],
   loading: false,
   error: null
+};
+
+const initialItemState = {
+  itemOptions: []
 };
 
 const itemReducer = (state = initialState, action) => {
@@ -59,6 +65,25 @@ const itemReducer = (state = initialState, action) => {
   }
 };
 
+const itemSetReducer = (state = initialItemState, action) => {
+  switch (action.type) {
+    case GET_DROPDOWN_ITEMS:
+      return {
+        ...state,
+        itemOptions: action.payload.items
+      };
+
+    case ADD_NEW_DROPDOWN_ITEM:
+      return {
+        ...state,
+        itemOptions: state.itemOptions.concat(action.payload.item)
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
-  items: itemReducer
+  items: itemReducer,
+  itemSet: itemSetReducer
 });

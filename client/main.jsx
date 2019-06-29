@@ -5,7 +5,7 @@ import App from "/imports/ui/App.jsx";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import reducers from "../imports/ui/reducers/CardReducer.js";
+import reducers from "../imports/ui/reducers/AppReducers.js";
 
 Meteor.startup(() => {
   render(

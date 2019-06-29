@@ -1,5 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import Items from "../imports/api/items.js";
+import DropdownItems from "../imports/api/dropdownItems.js";
 
 Meteor.startup(() => {
   if (Items.find().count() === 0) {
@@ -60,6 +61,31 @@ Meteor.startup(() => {
       Items.insert(item);
     });
   }
+
+  if (DropdownItems.find().count() === 0) {
+    console.log(
+      "Uh oh... there's nothing here...Let's add some dropwdown items."
+    );
+    let dropdownItems = [
+      {
+        text: "Bananas",
+        value: "Bananas"
+      },
+      {
+        text: "Apples",
+        value: "Apples"
+      },
+      {
+        text: "Oranges",
+        value: "Oranges"
+      }
+    ];
+
+    dropdownItems.forEach(item => {
+      console.log("Adding dropwdown: " + item.text);
+      DropdownItems.insert(item);
+    });
+  }
 });
 
 Meteor.methods({
@@ -79,5 +105,17 @@ Meteor.methods({
 Meteor.methods({
   updateItemRating: item => {
     return Items.update({ _id: item._id }, item);
+  }
+});
+
+Meteor.methods({
+  getDropwdownItems: () => {
+    return DropdownItems.find({}).fetch();
+  }
+});
+
+Meteor.methods({
+  addItemToDropdown: item => {
+    return DropdownItems.insert(item);
   }
 });

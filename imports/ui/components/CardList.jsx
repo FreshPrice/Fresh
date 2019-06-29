@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
-import SelectBar from "./SelectBar";
-import { getItems } from "../actions/CardActions.js";
+import SearchBar from "./SearchBar";
+import { getItems } from "../actions/AppActions.js";
 
 class CardList extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class CardList extends Component {
 
     return (
       <div id="CardList">
-        <SelectBar className="search-bar" />
+        <SearchBar className="search-bar" allowAddOptions={false} />
         {/* TODO: add filter */}
         {items.map(post => {
           return <Card key={post._id} post={post} />;
