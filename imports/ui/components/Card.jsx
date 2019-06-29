@@ -95,27 +95,25 @@ class CardComponent extends Component {
 const useStyles = theme => ({
   card: {
     display: "flex",
-    backgroundColor: "rgba(52, 52, 52, 0.1)"
   },
   details: {
-    display: "flex",
-    flexDirection: "column"
+    width: "120px",
+    height: "150px"
   },
   insideDetails: {
-    flex: 1
   },
   content: {
     flex: "1 0 auto"
   },
   image: {
-    width: "100px"
+    width: "160px"
   },
   ratingArea: {
     display: "flex"
   },
   rating: {
     flex: 1,
-    alignSelf: "center",
+    alignSelf: "left",
     fontSize: "20px"
   },
   thumbs: {
