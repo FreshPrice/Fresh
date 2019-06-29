@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown } from "semantic-ui-react";
+import { Dropdown, Form } from "semantic-ui-react";
 import "semantic-ui/dist/semantic.min.css";
 
 const groceryOptions = [
@@ -21,13 +21,17 @@ const groceryOptions = [
 ];
 
 const DropdownExampleSelection = () => (
-  <Dropdown
-    placeholder="Select..."
-    fluid
-    search
-    selection
-    options={groceryOptions}
-  />
+  <Form>
+    <Form.Field>
+      <Dropdown
+        placeholder="Select..."
+        fluid
+        search
+        selection
+        options={groceryOptions}
+      />
+    </Form.Field>
+  </Form>
 );
 
 export default DropdownExampleSelection;

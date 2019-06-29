@@ -73,7 +73,7 @@ const styles = theme => ({
     width: theme.spacing(50),
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(4)
+    padding: theme.spacing(4),
   }
 });
 
