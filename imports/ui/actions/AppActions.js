@@ -35,6 +35,12 @@ export const getItems = filter => {
   };
 };
 
+export const sortItems = items => {
+  return dispatch => {
+    dispatch(fetchItemsSuccess(items));
+  };
+};
+
 export const changeRating = item => {
   return async dispatch => {
     return Meteor.call("updateItemRating", item, (err, res) => {
