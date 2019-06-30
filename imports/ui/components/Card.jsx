@@ -13,7 +13,6 @@ import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
 import Avatar from "@material-ui/core/Avatar";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -105,14 +104,6 @@ const useStyles = theme => ({
   card: {
     width: 300,
     margin: "10px"
-  },
-  details: {
-    width: "150px",
-    height: "150px"
-  },
-  insideDetails: {},
-  content: {
-    flex: "1 0 auto"
   },
   image: {
     width: "80%",
