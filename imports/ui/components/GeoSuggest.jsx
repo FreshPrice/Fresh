@@ -33,11 +33,16 @@ export class GeoSuggest extends React.Component {
   };
 
   render() {
+    const searchOptions = {
+      location: new google.maps.LatLng(49.290338, -123.134112),
+      radius: 100
+    };
     return (
       <PlacesAutocomplete
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        searchOptions={searchOptions}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
           {
