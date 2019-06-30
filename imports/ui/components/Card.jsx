@@ -44,7 +44,7 @@ class CardComponent extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <Card className={classes.card}>
+        <Card className={classes.card} align="center">
           {/* Food Description */}
 
           <CardHeader
@@ -65,16 +65,13 @@ class CardComponent extends Component {
           {/* Thumbs Up and Down Counter */}
 
           <CardActions disableSpacing>
-            <IconButton
-              onClick={this.onThumbsUpPressed}
-              aria-label="Add to favorites"
-            >
+            <IconButton onClick={this.onThumbsUpPressed}>
               <ThumbUpIcon />
             </IconButton>
             <Typography  variant="h5">
               {this.state.data.rating}
             </Typography>
-            <IconButton onClick={this.onThumbsDownPressed} aria-label="Share">
+            <IconButton onClick={this.onThumbsDownPressed}>
               <ThumbDownIcon />
             </IconButton>
             {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
@@ -95,10 +92,8 @@ class CardComponent extends Component {
 
             {/* Food Details */}
 
-            <div>
-              <Typography component="h5" variant="h5">
-                {this.state.data.price} lb
-              </Typography>
+            <div className={classes.price}>
+              <Typography variant="h6">{this.state.data.price} lb</Typography>
             </div>
           </CardActions>
         </Card>
@@ -118,6 +113,9 @@ const useStyles = theme => ({
   },
   header: {
     height: 70
+  },
+  price: {
+    alignSelf: "center"
   }
 });
 
