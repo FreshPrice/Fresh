@@ -18,21 +18,11 @@ class CardList extends Component {
 
     if (items.length > 1) {
       items.sort(function(a, b) {
-        // TODO: Refactor after card with $h is remove from database
-        let aValue =
-          a.price.substr(1) && parseFloat(a.price.substr(1))
-            ? parseFloat(a.price.substr(1))
-            : 0;
-        let bValue =
-          b.price.substr(1) && parseFloat(b.price.substr(1))
-            ? parseFloat(b.price.substr(1))
-            : 0;
-
         // If price is the same, sort by rating
-        if (aValue === bValue) {
+        if (a.price === b.price) {
           return a.rating - b.rating;
         } else {
-          return aValue - bValue;
+          return a.price - b.price;
         }
       });
 

@@ -79,7 +79,7 @@ class CardComponent extends Component {
                   {this.state.data.name}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
-                  {this.state.data.price}
+                  ${this.state.data.price}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
                   {this.state.data.location.address}
@@ -94,14 +94,13 @@ class CardComponent extends Component {
 }
 const useStyles = theme => ({
   card: {
-    display: "flex",
+    display: "flex"
   },
   details: {
     width: "120px",
     height: "150px"
   },
-  insideDetails: {
-  },
+  insideDetails: {},
   content: {
     flex: "1 0 auto"
   },

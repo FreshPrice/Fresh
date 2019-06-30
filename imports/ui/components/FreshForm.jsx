@@ -40,7 +40,7 @@ class FreshForm extends Component {
   handleSubmit = event => {
     let newItem = {
       name: this.state.name,
-      price: "$" + this.state.price,
+      price: this.state.price,
       createdAt: new Date(),
       rating: 0,
       location: {
@@ -78,6 +78,8 @@ class FreshForm extends Component {
             value={this.state.price}
             margin="normal"
             variant="outlined"
+            type="number"
+            inputProps={{ min: "0", step: "any" }}
             required
           />
           <br />
