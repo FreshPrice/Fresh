@@ -50,7 +50,7 @@ class CardComponent extends Component {
           <CardHeader
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar}>
-                F
+                {this.state.data.name.substr(0,1)}
               </Avatar>
             }
             title={this.state.data.name}
@@ -59,18 +59,16 @@ class CardComponent extends Component {
           />
 
           {/* Food Image */}
-
-          <CardMedia className={classes.image} image="/bananas.png" />
-
+          <CardMedia
+            className={classes.image}
+            image={`/images/` + this.state.data.name + `.png`}
+          />
           {/* Thumbs Up and Down Counter */}
-
           <CardActions disableSpacing>
             <IconButton onClick={this.onThumbsUpPressed}>
               <ThumbUpIcon />
             </IconButton>
-            <Typography  variant="h5">
-              {this.state.data.rating}
-            </Typography>
+            <Typography variant="h5">{this.state.data.rating}</Typography>
             <IconButton onClick={this.onThumbsDownPressed}>
               <ThumbDownIcon />
             </IconButton>
@@ -96,6 +94,8 @@ class CardComponent extends Component {
               <Typography variant="h6">{this.state.data.price} lb</Typography>
             </div>
           </CardActions>
+          {/* Food Image */}
+          {/* Food Details */}
         </Card>
       </div>
     );
@@ -106,10 +106,17 @@ const useStyles = theme => ({
     width: 300,
     margin: "10px"
   },
+  details: {
+    width: "150px",
+    height: "150px"
+  },
+  insideDetails: {},
+  content: {
+    flex: "1 0 auto"
+  },
   image: {
-    width: "100%",
-    height: 200,
-    paddingBottom: "0%"
+    width: "80%",
+    height: 200
   },
   header: {
     height: 70
