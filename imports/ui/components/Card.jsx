@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+import CardActions from "@material-ui/core/CardActions";
+import CardHeader from "@material-ui/core/CardHeader";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import ThumbDownIcon from "@material-ui/icons/ThumbDownOutlined";
+import ThumbUpIcon from "@material-ui/icons/ThumbUpOutlined";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
+import Avatar from "@material-ui/core/Avatar";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -42,18 +45,40 @@ class CardComponent extends Component {
     return (
       <div>
         <Card className={classes.card}>
+          {/* Food Description */}
+
+          <CardHeader
+            avatar={
+              <Avatar aria-label="Recipe" className={classes.avatar}>
+                F
+              </Avatar>
+            }
+            title={this.state.data.name}
+            subheader={this.state.data.location.address}
+            className={classes.header}
+          />
+
+          {/* Food Image */}
+
+          <CardMedia className={classes.image} image="/bananas.png" />
+
           {/* Thumbs Up and Down Counter */}
-          <div className={classes.ratingArea}>
-            <div className={classes.thumbs}>
-              <IconButton onClick={this.onThumbsUpPressed}>
-                <ThumbUpIcon />
-              </IconButton>
-              <div className={classes.rating}>{this.state.data.rating}</div>
-              <IconButton onClick={this.onThumbsDownPressed}>
-                <ThumbDownIcon />
-              </IconButton>
-              {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
-              {/* <IconButton
+
+          <CardActions disableSpacing>
+            <IconButton
+              onClick={this.onThumbsUpPressed}
+              aria-label="Add to favorites"
+            >
+              <ThumbUpIcon />
+            </IconButton>
+            <Typography  variant="h5">
+              {this.state.data.rating}
+            </Typography>
+            <IconButton onClick={this.onThumbsDownPressed} aria-label="Share">
+              <ThumbDownIcon />
+            </IconButton>
+            {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
+            {/* <IconButton
                 style={{ display: this.state.isFav ? "none" : "" }}
                 onClick={this.onFavPressed}
               >
@@ -67,26 +92,15 @@ class CardComponent extends Component {
                 
                 <FavoriteIconFilled />
               </IconButton> */}
+
+            {/* Food Details */}
+
+            <div>
+              <Typography component="h5" variant="h5">
+                {this.state.data.price} lb
+              </Typography>
             </div>
-          </div>
-          {/* Food Image */}
-          <CardMedia className={classes.image} image="/bananas.png" />
-          {/* Food Details */}
-          <div className={classes.details}>
-            <div className={classes.insideDetails}>
-              <CardContent className={classes.content}>
-                <Typography component="h5" variant="h5">
-                  {this.state.data.name}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                  {this.state.data.price}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                  {this.state.data.location.address}
-                </Typography>
-              </CardContent>
-            </div>
-          </div>
+          </CardActions>
         </Card>
       </div>
     );
@@ -94,31 +108,16 @@ class CardComponent extends Component {
 }
 const useStyles = theme => ({
   card: {
-    display: "flex",
-  },
-  details: {
-    width: "120px",
-    height: "150px"
-  },
-  insideDetails: {
-  },
-  content: {
-    flex: "1 0 auto"
+    width: 300,
+    margin: "10px"
   },
   image: {
-    width: "160px"
+    width: "100%",
+    height: 200,
+    paddingBottom: "0%"
   },
-  ratingArea: {
-    display: "flex"
-  },
-  rating: {
-    flex: 1,
-    alignSelf: "left",
-    fontSize: "20px"
-  },
-  thumbs: {
-    width: "50px",
-    flex: 1
+  header: {
+    height: 70
   }
 });
 
