@@ -11,8 +11,9 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUpOutlined";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
-import { changeRating } from "../actions/AppActions.js";
+import { changeRating, changeStarRating } from "../actions/AppActions.js";
 import Avatar from "@material-ui/core/Avatar";
+import { Rating } from "semantic-ui-react";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -39,6 +40,17 @@ class CardComponent extends Component {
     this.props.changeRating(item);
   };
 
+  handleRate = (e, { rating, maxRating }) => {
+    let item = this.state.data;
+
+    item.ratingCount = item.ratingCount + 1;;
+    item.rating = (item.rating + rating) / (item.ratingCount);
+    // this.setState({ star, maxRating });
+    this.props.changeRating(item);
+    this.props.changeStarRating(item);
+    console.log(this.state.data.rating);
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -49,7 +61,7 @@ class CardComponent extends Component {
           <CardHeader
             avatar={
               <Avatar aria-label="Recipe" className={classes.avatar}>
-                {this.state.data.name.substr(0,1)}
+                {this.state.data.name.substr(0, 1)}
               </Avatar>
             }
             title={this.state.data.name}
@@ -64,6 +76,7 @@ class CardComponent extends Component {
           />
           {/* Thumbs Up and Down Counter */}
           <CardActions disableSpacing>
+            <Rating maxRating={5} onRate={this.handleRate} defaultRating={this.state.data.rating} />
             <IconButton onClick={this.onThumbsUpPressed}>
               <ThumbUpIcon />
             </IconButton>
@@ -125,5 +138,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { changeRating }
+  { changeRating, changeStarRating }
 )(CardWrapped);

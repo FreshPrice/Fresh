@@ -4,6 +4,7 @@ import {
   FETCH_ITEMS_SUCCESS,
   FETCH_ITEMS_FAILURE,
   UPDATE_THUMBS_RATING,
+  UPDATE_STAR_RATING,
   ADD_ITEM_SUCCESS,
   GET_DROPDOWN_ITEMS,
   ADD_NEW_DROPDOWN_ITEM
@@ -55,10 +56,19 @@ const itemReducer = (state = initialState, action) => {
       let newState = { ...state };
       newState.items.map(data => {
         if (data._id === action.payload.item._id) {
-          data.rating = action.payload.item.rating;
+          data.ratingCount = action.payload.item.ratingCount;
         }
       });
       return newState;
+
+    case UPDATE_STAR_RATING:
+      let newStarState = { ...state };
+      newStarState.items.map(data => {
+        if (data._id === action.payload.item._id) {
+          data.rating = action.payload.item.rating;
+        }
+      });
+      return newStarState;
 
     default:
       return state;

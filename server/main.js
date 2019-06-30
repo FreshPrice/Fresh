@@ -12,6 +12,7 @@ Meteor.startup(() => {
         rating: 0,
         createdAt: new Date(),
         location: {
+          address: "H-mart",
           coords: {
             lat: 49.286682,
             lng: -123.139346

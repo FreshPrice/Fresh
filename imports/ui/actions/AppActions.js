@@ -2,6 +2,7 @@ export const FETCH_ITEMS_BEGIN = "FETCH_ITEMS_BEGIN";
 export const FETCH_ITEMS_SUCCESS = "FETCH_ITEMS_SUCCESS";
 export const FETCH_ITEMS_FAILURE = "FETCH_ITEMS_FAILURE";
 export const UPDATE_THUMBS_RATING = "UPDATE_THUMBS_RATING";
+export const UPDATE_STAR_RATING = "UPDATE_STAR_RATING";
 export const ADD_ITEM_SUCCESS = "ADD_ITEM_SUCCESS";
 export const GET_DROPDOWN_ITEMS = "GET_DROPDOWN_ITEMS";
 export const ADD_NEW_DROPDOWN_ITEM = "ADD_NEW_DROPDOWN_ITEM";
@@ -38,6 +39,18 @@ export const getItems = filter => {
 export const changeRating = item => {
   return async dispatch => {
     return Meteor.call("updateItemRating", item, (err, res) => {
+      if (err) {
+        dispatch(fetchItemsFailure(err));
+      } else {
+        dispatch(updateThumbsRating(item));
+      }
+    });
+  };
+};
+
+export const changeStarRating = item => {
+  return async dispatch => {
+    return Meteor.call("updateStarRating", item, (err, res) => {
       if (err) {
         dispatch(fetchItemsFailure(err));
       } else {
@@ -110,6 +123,15 @@ export const addItemSuccess = item => {
 export const updateThumbsRating = item => {
   return {
     type: UPDATE_THUMBS_RATING,
+    payload: {
+      item
+    }
+  };
+};
+
+export const updateStarRating = item => {
+  return {
+    type: UPDATE_STAR_RATING,
     payload: {
       item
     }

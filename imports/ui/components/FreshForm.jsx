@@ -45,6 +45,7 @@ class FreshForm extends Component {
       price: "$" + this.state.price,
       createdAt: new Date(),
       rating: 0,
+      ratingCount: 0,
       location: {
         address: this.state.add,
         coords: {
