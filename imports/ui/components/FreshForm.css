@@ -1,0 +1,17 @@
+/* makes geo suggest bar second priority */
+.geo-suggest {
+  position: relative !important;
+  z-index: 80;
+}
+/* makes search bar highest priority */
+.search-bar {
+    position: relative !important;
+    z-index: 100;
+  }
+
+/* submit button on the form */
+.submit-button {
+  position: absolute !important;
+  bottom: 30px; right: 30px;
+  z-index: 40;
+}

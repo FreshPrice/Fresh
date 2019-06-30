@@ -58,8 +58,8 @@ class Modal extends Component {
           open={this.state.open}
           onClose={this.handleClose}
         >
-          <div style={getModalStyle()} className={classes.paper}>
-            <FreshForm closeModalOnSubmit={this.handleSubmit} />
+          <div style={getModalStyle()} className={classes.paper} >
+            <FreshForm closeModalOnSubmit={this.handleSubmit}/>
           </div>
         </MaterialModal>
       </div>
@@ -74,6 +74,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing(4),
+    height: "400px"
   }
 });
 

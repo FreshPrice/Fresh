@@ -12,10 +12,6 @@ html {
 
 .Demo__search-bar-container {
   width: 100%;
-  max-width: 500px;
-  margin: 0px auto 0;
-  max-height: 100px;
-  margin-top: 8px;
 }
 
 .Demo__search-input-container {
@@ -54,11 +50,12 @@ html {
   border-left: honeydew;
   border-right: honeydew;
   border-top: 1px solid #e6e6e6;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 0 0 2px 2px;
-  max-height: 0px;
+  z-index: 100;
 }
-
+.Demo_inner_container {
+  background-color: darkblue
+}
 .Demo__suggestion-item {
   padding: 8px;
   text-align: left;

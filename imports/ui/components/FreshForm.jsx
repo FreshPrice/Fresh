@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchBar from "./SearchBar";
 import GeoSuggest from "./GeoSuggest";
 import { connect } from "react-redux";
 import { addItem } from "../actions/AppActions.js";
+import "./FreshForm.css";
 
 class FreshForm extends Component {
   constructor() {
@@ -61,33 +63,46 @@ class FreshForm extends Component {
     return (
       <div>
         <Typography variant="h6" id="modal-title">
-          Submit a new deal!
+          SUBMIT A NEW DEAL
         </Typography>
-        <form onSubmit={this.handleSubmit}>
-          <SearchBar
-            allowAddOptions={true}
-            placeholder="Choose Item"
-            onValueUpdate={value => this.setState({ name: value })}
-            onChange={false}
-          />
+        <br />
+        <form onSubmit={this.handleSubmit} className="Form">
+          <Typography variant="subtitle1" id="modal-title">
+            Select an item from the list!
+          </Typography>
+          <div className="search-bar">
+            <SearchBar
+              allowAddOptions={true}
+              placeholder="Item..."
+              onValueUpdate={value => this.setState({ name: value })}
+              onChange={false}
+            />
+          </div>
           <br />
           <TextField
+            variant="outlined"
             label="Price"
             onChange={this.handleChangePrice}
-            placeholder="Enter the price"
             value={this.state.price}
-            margin="normal"
-            variant="outlined"
             required
+            fullWidth
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">$</InputAdornment>
+              ),
+              endAdornment: <InputAdornment position="end">lb</InputAdornment>
+            }}
           />
+          <div className="geo-suggest">
+            <br />
+            <GeoSuggest
+              setAddress={this.setAddress.bind(this)}
+              setLatLng={this.setLatLng.bind(this)}
+              required
+            />
+          </div>
           <br />
-          <GeoSuggest
-            setAddress={this.setAddress.bind(this)}
-            setLatLng={this.setLatLng.bind(this)}
-            required
-          />
-          <br />
-          <div>
+          <div className="submit-button">
             <Button variant="outlined" color="secondary" type="submit">
               Submit
             </Button>
