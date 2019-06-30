@@ -70,7 +70,10 @@ class CardComponent extends Component {
             </div>
           </div>
           {/* Food Image */}
-          <CardMedia className={classes.image} image="/bananas.png" />
+          <CardMedia
+            className={classes.image}
+            image={`/images/` + this.state.data.name + `.png`}
+          />
           {/* Food Details */}
           <div className={classes.details}>
             <div className={classes.insideDetails}>
@@ -94,14 +97,13 @@ class CardComponent extends Component {
 }
 const useStyles = theme => ({
   card: {
-    display: "flex",
+    display: "flex"
   },
   details: {
-    width: "120px",
+    width: "150px",
     height: "150px"
   },
-  insideDetails: {
-  },
+  insideDetails: {},
   content: {
     flex: "1 0 auto"
   },
