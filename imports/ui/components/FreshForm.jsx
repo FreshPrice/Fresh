@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { Form, Radio } from "semantic-ui-react";
 import SearchBar from "./SearchBar";
 import GeoSuggest from "./GeoSuggest";
 import { connect } from "react-redux";
@@ -13,6 +14,7 @@ class FreshForm extends Component {
     this.state = {
       name: "",
       price: "",
+      unit: "",
       add: "",
       lat: 0,
       lng: 0
@@ -30,6 +32,10 @@ class FreshForm extends Component {
     this.setState({ price: event.target.value });
   };
 
+  handleChangeUnit = (event, { value }) => {
+    this.setState({ unit: value });
+  };
+
   setAddress = address => {
     this.setState({ add: address });
   };
@@ -41,6 +47,7 @@ class FreshForm extends Component {
     let newItem = {
       name: this.state.name,
       price: parseFloat(this.state.price),
+      unit: this.state.unit,
       createdAt: new Date(),
       rating: 0,
       location: {
@@ -64,6 +71,7 @@ class FreshForm extends Component {
           Submit a new deal!
         </Typography>
         <form onSubmit={this.handleSubmit}>
+          {/* Item Selection */}
           <SearchBar
             allowAddOptions={true}
             placeholder="Choose Item"
@@ -71,6 +79,8 @@ class FreshForm extends Component {
             onChange={false}
           />
           <br />
+
+          {/* Price Input */}
           <TextField
             label="Price"
             onChange={this.handleChangePrice}
@@ -82,7 +92,38 @@ class FreshForm extends Component {
             inputProps={{ min: "0", step: "0.01" }}
             required
           />
+
+          {/* Select Unit Choices */}
+          <Form.Field>
+            <Radio
+              label="per kg"
+              name="radioGroup"
+              value="per kg"
+              checked={this.state.unit === "per kg"}
+              onChange={this.handleChangeUnit}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Radio
+              label="per lb"
+              name="radioGroup"
+              value="per lb"
+              checked={this.state.unit === "per lb"}
+              onChange={this.handleChangeUnit}
+            />
+          </Form.Field>
+          <Form.Field>
+            <Radio
+              label="per 100g"
+              name="radioGroup"
+              value="per 100g"
+              checked={this.state.unit === "per 100g"}
+              onChange={this.handleChangeUnit}
+            />
+          </Form.Field>
           <br />
+
+          {/* Location Input */}
           <GeoSuggest
             setAddress={this.setAddress.bind(this)}
             setLatLng={this.setLatLng.bind(this)}
