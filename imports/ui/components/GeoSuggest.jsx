@@ -33,10 +33,15 @@ export class GeoSuggest extends React.Component {
   };
 
   render() {
+    /* -----------------------------------------------------------
+   These options will bias the autocomplete predictions toward 
+         Vancouver, Canada with a radius of 200 meters.
+	-------------------------------------------------------------*/
     const searchOptions = {
       location: new google.maps.LatLng(49.290338, -123.134112),
-      radius: 100
+      radius: 200
     };
+
     return (
       <PlacesAutocomplete
         value={this.state.address}
@@ -44,7 +49,7 @@ export class GeoSuggest extends React.Component {
         onSelect={this.handleSelect}
         searchOptions={searchOptions}
       >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
+        {({ getInputProps, suggestions, getSuggestionItemProps }) => {
           {
             return (
               <div className="Demo__search-bar-container">
