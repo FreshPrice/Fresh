@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import GeoSuggest from "./GeoSuggest";
 import { connect } from "react-redux";
 import { addItem } from "../actions/AppActions.js";
+import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
 
 class FreshForm extends Component {
   constructor() {
@@ -96,28 +97,28 @@ class FreshForm extends Component {
           {/* Select Unit Choices */}
           <Form.Field>
             <Radio
-              label="per kg"
+              label={PER_KILOGRAM}
               name="radioGroup"
-              value="per kg"
-              checked={this.state.unit === "per kg"}
+              value={PER_KILOGRAM}
+              checked={this.state.unit === PER_KILOGRAM}
               onChange={this.handleChangeUnit}
             />
           </Form.Field>
           <Form.Field>
             <Radio
-              label="per lb"
+              label={PER_POUND}
               name="radioGroup"
-              value="per lb"
-              checked={this.state.unit === "per lb"}
+              value={PER_POUND}
+              checked={this.state.unit === PER_POUND}
               onChange={this.handleChangeUnit}
             />
           </Form.Field>
           <Form.Field>
             <Radio
-              label="per 100g"
+              label={PER_HUNDRED_GRAMS}
               name="radioGroup"
-              value="per 100g"
-              checked={this.state.unit === "per 100g"}
+              value={PER_HUNDRED_GRAMS}
+              checked={this.state.unit === PER_HUNDRED_GRAMS}
               onChange={this.handleChangeUnit}
             />
           </Form.Field>

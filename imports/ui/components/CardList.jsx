@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import { getItems, sortItems } from "../actions/AppActions.js";
+import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
 
 class CardList extends Component {
   constructor() {
@@ -20,18 +21,20 @@ class CardList extends Component {
       items.sort(function(a, b) {
         // Function must be inside here or else cannot be used because of scope
         let convertToKg = unitString => {
-          if (unitString == "per 100g") {
-            return 0.1;
-          } else if (unitString == "per lb") {
-            return 0.4536;
-          } else {
-            return 1;
+          switch (unitString) {
+            case PER_HUNDRED_GRAMS:
+              return 0.1;
+            case PER_POUND:
+              0.4536;
+            case PER_KILOGRAM:
+              return 1;
+            default:
+              return null;
           }
         };
 
         let aPriceInKg = a.price * convertToKg(a.unit);
         let bPriceInKg = b.price * convertToKg(b.unit);
-        console.log(aPriceInKg.toFixed(2), bPriceInKg.toFixed(2));
         // If price is the same, sort by rating
         if (aPriceInKg.toFixed(2) === bPriceInKg.toFixed(2)) {
           return b.rating - a.rating;
