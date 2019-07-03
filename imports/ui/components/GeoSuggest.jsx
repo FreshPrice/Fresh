@@ -35,11 +35,11 @@ export class GeoSuggest extends React.Component {
   render() {
     /* -----------------------------------------------------------
    These options will bias the autocomplete predictions toward 
-         Vancouver, Canada with a radius of 200 meters.
+         Vancouver, Canada with a radius of 80 kilometers.
 	-------------------------------------------------------------*/
     const searchOptions = {
-      location: new google.maps.LatLng(49.290338, -123.134112),
-      radius: 200
+      location: new google.maps.LatLng(49.220037, -122.974283),
+      radius: 80000
     };
 
     return (

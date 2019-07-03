@@ -51,9 +51,9 @@ export class MapContainer extends React.Component {
   render() {
     return (
       <div id="MapContainer">
-        {/*---------------------------------------------------------------------
-           These options will center the map at Queen Elizabeth Park, Vancouver.
-           ----------------------------------------------------------------------*/}
+        {/*---------------------------------------------------------------------------------
+           These options will center the map at lat: 49.220037, lng: -122.974283, Vancouver.
+           ---------------------------------------------------------------------------------*/}
         <Map
           google={this.props.google}
           onClick={this.onMapClicked}
