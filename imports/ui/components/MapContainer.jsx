@@ -51,13 +51,16 @@ export class MapContainer extends React.Component {
   render() {
     return (
       <div id="MapContainer">
+        {/*---------------------------------------------------------------------------------
+           These options will center the map at lat: 49.220037, lng: -122.974283, Vancouver.
+           ---------------------------------------------------------------------------------*/}
         <Map
           google={this.props.google}
           onClick={this.onMapClicked}
-          zoom={15}
+          zoom={10}
           initialCenter={{
-            lat: 49.290338,
-            lng: -123.134112
+            lat: 49.220037,
+            lng: -122.974283
           }}
         >
           {this.displayMarkers()}
