@@ -57,7 +57,7 @@ export class MapContainer extends React.Component {
         <Map
           google={this.props.google}
           onClick={this.onMapClicked}
-          zoom={11}
+          zoom={10}
           initialCenter={{
             lat: 49.220037,
             lng: -122.974283
