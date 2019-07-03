@@ -35,7 +35,7 @@ export class GeoSuggest extends React.Component {
   render() {
     /* -----------------------------------------------------------
    These options will bias the autocomplete predictions toward 
-         Vancouver, Canada with a radius of 80 kilometers.
+        Vancouver, Canada with a radius of 80 kilometers.
 	-------------------------------------------------------------*/
     const searchOptions = {
       location: new google.maps.LatLng(49.220037, -122.974283),
@@ -52,17 +52,17 @@ export class GeoSuggest extends React.Component {
         {({ getInputProps, suggestions, getSuggestionItemProps }) => {
           {
             return (
-              <div className="Demo__search-bar-container">
-                <div className="Demo__search-input-container">
+              <div className="search-bar-container">
+                <div className="search-input-container">
                   <input
                     {...getInputProps({
                       placeholder: "Search Places...",
-                      className: "Demo__search-input"
+                      className: "search-input"
                     })}
                   />
                   {this.state.address.length > 0 && (
                     <button
-                      className="Demo__clear-button"
+                      className="clear-button"
                       onClick={this.handleCloseClick}
                     >
                       x
@@ -70,10 +70,10 @@ export class GeoSuggest extends React.Component {
                   )}
                 </div>
                 {suggestions.length > 0 && (
-                  <div className="Demo__autocomplete-container">
+                  <div className="autocomplete-container">
                     {suggestions.map(suggestion => {
-                      const className = classnames("Demo__suggestion-item", {
-                        "Demo__suggestion-item--active": suggestion.active
+                      const className = classnames("suggestion-item", {
+                        "suggestion-item--active": suggestion.active
                       });
 
                       return (
@@ -89,9 +89,6 @@ export class GeoSuggest extends React.Component {
                         </div>
                       );
                     })}
-                    <div className="Demo__dropdown-footer">
-                      <div />
-                    </div>
                   </div>
                 )}
               </div>
