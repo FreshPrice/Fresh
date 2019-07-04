@@ -82,7 +82,7 @@ class CardComponent extends Component {
                   {this.state.data.name}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
-                  {this.state.data.price}
+                  ${this.state.data.price} {this.state.data.unit}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary">
                   {this.state.data.location.address}

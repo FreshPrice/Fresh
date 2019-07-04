@@ -8,7 +8,8 @@ Meteor.startup(() => {
     let items = [
       {
         name: "Bananas",
-        price: "$0.99",
+        price: 0.99,
+        unit: "per lb",
         rating: 0,
         createdAt: new Date(),
         location: {
@@ -20,7 +21,8 @@ Meteor.startup(() => {
       },
       {
         name: "Apples",
-        price: "$1.99",
+        price: 1.99,
+        unit: "per kg",
         rating: 0,
         createdAt: new Date(),
         location: {
@@ -32,7 +34,8 @@ Meteor.startup(() => {
       },
       {
         name: "Pears",
-        price: "$2.99",
+        price: 2.99,
+        unit: "per lb",
         rating: 0,
         createdAt: new Date(),
         location: {
@@ -44,8 +47,9 @@ Meteor.startup(() => {
       },
       {
         name: "Oranges",
-        price: "$1.50",
+        price: 1.5,
         rating: 0,
+        unit: "per lb",
         createdAt: new Date(),
         location: {
           coords: {
