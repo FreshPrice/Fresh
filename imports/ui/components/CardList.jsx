@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
-import SearchBar from "./SearchBar";
 import { getItems, sortItems } from "../actions/AppActions.js";
 import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
 
@@ -66,19 +65,19 @@ class CardList extends Component {
     const items = this.props.items.items;
 
     return (
-      <div id="CardList">
-        <SearchBar
-          className="search-bar"
-          allowAddOptions={false}
-          placeholder="Find Item"
-          onChange={true}
-        />
-        {/* Sort by price and rating */}
-        <p onClick={this.sortByPricePressed}>Sort by price</p>
-        <p onClick={this.sortByLatestPressed}>Sort by latest</p>
-        {items.map(post => {
-          return <Card key={post._id} post={post} />;
-        })}
+      <div>
+        {/* Styling for SortButton inside App.css */}
+        <div id="SortButtons">
+          {/* Sort by price and rating */}
+          <p onClick={this.sortByPricePressed}>Sort by price</p>
+          <p onClick={this.sortByLatestPressed}>Sort by latest</p>
+        </div>
+        {/* Styling for CardList inside App.css */}
+        <div id="CardList">
+          {items.map(post => {
+            return <Card key={post._id} post={post} />;
+          })}
+        </div>
       </div>
     );
   }

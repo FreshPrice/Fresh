@@ -97,7 +97,8 @@ class CardComponent extends Component {
 }
 const useStyles = theme => ({
   card: {
-    display: "flex"
+    display: "flex",
+    marginBottom: "5%"
   },
   details: {
     width: "150px",
