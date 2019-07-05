@@ -1,8 +1,8 @@
 import React from "react";
 import MapContainer from "./components/MapContainer.jsx";
 import CardList from "./components/CardList.jsx";
-import Typography from "@material-ui/core/Typography";
 import FreshModal from "./components/Modal.jsx";
+import SearchBar from "./components/SearchBar.jsx";
 import "./App.css";
 
 const App = () => (
@@ -16,6 +16,13 @@ const App = () => (
       </div>
     </div>
     <div className="right-section">
+      <div className="search-bar">
+        <SearchBar
+          allowAddOptions={false}
+          placeholder="Find Item"
+          onChange={true}
+        />
+      </div>
       <div className="card-list">
         <CardList />
       </div>
