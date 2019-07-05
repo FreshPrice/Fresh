@@ -7,17 +7,21 @@ import "./App.css";
 
 const App = () => (
   <div className="AppContainer">
-    <div className="fresh-header">
-      <Typography variant="h3">Fresh</Typography>
+    <div className="left-section">
+      <div className="fresh-header">
+        <img src="/logo.png" height="100%" />
+      </div>
+      <div className="map-container">
+        <MapContainer />
+      </div>
     </div>
-    <div className="map-container">
-      <MapContainer />
-    </div>
-    <div className="card-list">
-      <CardList />
-    </div>
-    <div className="new-post-fab">
-      <FreshModal />
+    <div className="right-section">
+      <div className="card-list">
+        <CardList />
+      </div>
+      <div className="new-post-fab">
+        <FreshModal />
+      </div>
     </div>
   </div>
 );
