@@ -9,7 +9,7 @@ const App = () => (
   <div className="AppContainer">
     <div className="left-section">
       <div className="fresh-header">
-        <img src="/logo.png" height="100%" />
+        <img className="logo" src="/logo.png" />
       </div>
       <div className="map-container">
         <MapContainer />
