@@ -131,6 +131,7 @@ class FreshForm extends Component {
               options={options}
               defaultValue={PER_HUNDRED_GRAMS}
               onChange={(event, data) => this.handleChangeUnit(data.value)}
+              className="unit-select"
             />
           </Form.Input>
           </div>

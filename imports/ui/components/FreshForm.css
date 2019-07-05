@@ -14,6 +14,11 @@
     z-index: 90;
   }
 
+/* makes unit bar set width */
+.unit-select {
+    width: 110px;
+  }
+
 /* submit button on the form */
 .submit-button {
   z-index: 40;
