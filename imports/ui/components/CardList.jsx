@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import Card from "./Card";
 import { getItems, sortItems } from "../actions/AppActions.js";
 import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
+import IconButton from "@material-ui/core/IconButton";
+import Renew from "@material-ui/icons/Autorenew";
 
 class CardList extends Component {
   constructor() {
@@ -12,6 +14,10 @@ class CardList extends Component {
   componentDidMount() {
     this.props.getItems({});
   }
+
+  refresh = () => {
+    this.props.getItems({});
+  };
 
   sortByPricePressed = () => {
     let items = this.props.items.items;
@@ -66,6 +72,9 @@ class CardList extends Component {
 
     return (
       <div>
+        <IconButton onClick={this.refresh}>
+          <Renew color="secondary" />
+        </IconButton>
         {/* Styling for SortButton inside App.css */}
         <div id="SortButtons">
           {/* Sort by price and rating */}
