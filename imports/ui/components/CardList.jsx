@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
+import SearchBar from "./SearchBar";
+import SortButtons from "./SortButtons.jsx";
 import { getItems, sortItems } from "../actions/AppActions.js";
 import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
 
 class CardList extends Component {
   constructor() {
     super();
+    this.state = {
+      toggleOnState: "LATEST"
+    };
   }
 
   componentDidMount() {
@@ -44,6 +49,9 @@ class CardList extends Component {
 
       this.props.sortItems(items);
     }
+
+    // UPDATE SORT BUTTON
+    this.setState({ toggleOnState: "PRICE" });
   };
 
   sortByLatestPressed = () => {
@@ -59,6 +67,9 @@ class CardList extends Component {
     }
 
     this.props.sortItems(items);
+
+    // UPDATE SORT BUTTON
+    this.setState({ toggleOnState: "LATEST" });
   };
 
   render() {
@@ -66,13 +77,13 @@ class CardList extends Component {
 
     return (
       <div>
-        {/* Styling for SortButton inside App.css */}
-        <div id="SortButtons">
-          {/* Sort by price and rating */}
-          <p onClick={this.sortByPricePressed}>Sort by price</p>
-          <p onClick={this.sortByLatestPressed}>Sort by latest</p>
+        <div>
+          <SortButtons
+            sortByLatestPressed={this.sortByLatestPressed}
+            sortByPricePressed={this.sortByPricePressed}
+            toggleOnState={this.state.toggleOnState}
+          />
         </div>
-        {/* Styling for CardList inside App.css */}
         <div id="CardList">
           {items.map(post => {
             return <Card key={post._id} post={post} />;
