@@ -77,7 +77,7 @@ class CardList extends Component {
 
     return (
       <div>
-        <div>
+        <div id="SortButtons">
           <SortButtons
             sortByLatestPressed={this.sortByLatestPressed}
             sortByPricePressed={this.sortByPricePressed}
