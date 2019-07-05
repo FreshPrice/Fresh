@@ -1,4 +1,4 @@
-/* makes geo suggest bar second priority */
+/* makes geo suggest bar third priority */
 .geo-suggest {
   position: relative !important;
   z-index: 80;
@@ -8,6 +8,11 @@
   position: relative !important;
   z-index: 100;
 }
+/* makes search bar second priority */
+.price-bar {
+    position: relative !important;
+    z-index: 90;
+  }
 
 /* submit button on the form */
 .submit-button {

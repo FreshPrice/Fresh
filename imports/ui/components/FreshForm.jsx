@@ -112,6 +112,7 @@ class FreshForm extends Component {
           <br />
           {/* Price Input */}
           Price
+          <div className="price-bar">
           <Form.Input
             fluid
             labelPosition="right"
@@ -132,8 +133,9 @@ class FreshForm extends Component {
               onChange={(event, data) => this.handleChangeUnit(data.value)}
             />
           </Form.Input>
+          </div>
           {/* Location Input */}
-          
+          <br/>
           Location
           <div className="geo-suggest">
             <GeoSuggest
