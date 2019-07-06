@@ -5,8 +5,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import ThumbDownIcon from "@material-ui/icons/ThumbDown";
-import ThumbUpIcon from "@material-ui/icons/ThumbUp";
+import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
+import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
 import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
@@ -64,11 +64,11 @@ class CardComponent extends Component {
           <div className={classes.ratingArea}>
             <div className={classes.thumbs}>
               <IconButton onClick={this.onThumbsUpPressed}>
-                <ThumbUpIcon />
+                <ThumbUpOutlinedIcon />
               </IconButton>
               <div className={classes.rating}>{this.state.data.rating}</div>
               <IconButton onClick={this.onThumbsDownPressed}>
-                <ThumbDownIcon />
+                <ThumbDownOutlinedIcon />
               </IconButton>
               {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
               {/* <IconButton
@@ -102,12 +102,13 @@ class CardComponent extends Component {
               onMouseOut={this.mouseOut}
             >
               {this.state.isMouseOver && this.state.data.location.address ? (
-                // Mousing over and have address to show
-                <CardContent className={classes.content}>
-                  <Typography variant="subtitle1" color="textSecondary">
-                    {this.state.data.location.address}
-                  </Typography>
-                </CardContent>
+                // TODO: Fix mousing over to be a different way to show address
+                // <CardContent className={classes.content}>
+                //   <Typography variant="subtitle1" color="textSecondary">
+                //     {this.state.data.location.address}
+                //   </Typography>
+                // </CardContent>
+                <p>Placeholder</p>
               ) : (
                 // Not mousing over
                 <CardContent className={classes.content}>
@@ -136,15 +137,21 @@ class CardComponent extends Component {
 const useStyles = theme => ({
   card: {
     display: "flex",
-    marginBottom: "5%",
-    maxHeight: "113px"
+    marginBottom: "4%",
+    maxHeight: "113px",
+    margin: "4%",
+    "&:hover": {
+      boxShadow: "5px 10px rgba(0, 0, 0, 0.5)"
+    }
   },
   details: {
     display: "flex",
     flexGrow: 1,
-    maxWidth: "300px",
     flexDirection: "column",
-    justifyContent: "center"
+    justifyContent: "center",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
   },
   longAddress: {
     whiteSpace: "nowrap",
