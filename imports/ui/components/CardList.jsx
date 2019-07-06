@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
-import SearchBar from "./SearchBar";
 import SortButtons from "./SortButtons.jsx";
 import { getItems, sortItems } from "../actions/AppActions.js";
 import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
-import IconButton from "@material-ui/core/IconButton";
-import Renew from "@material-ui/icons/Autorenew";
+import RefreshButton from "./RefreshButton";
 
 class CardList extends Component {
   constructor() {
@@ -20,7 +18,7 @@ class CardList extends Component {
     this.props.getItems({});
   }
 
-  refresh = () => {
+  refreshItems = () => {
     this.props.getItems({});
   };
 
@@ -83,11 +81,11 @@ class CardList extends Component {
 
     return (
       <div>
+        <div id="RefreshButton">
+        <RefreshButton refreshItems={this.refreshItems}/>
+        </div>
         {/* Styling for SortButton inside App.css */}
         <div id="SortButtons">
-          <IconButton onClick={this.refresh}>
-            <Renew color="secondary" />
-          </IconButton>
           <SortButtons
             sortByLatestPressed={this.sortByLatestPressed}
             sortByPricePressed={this.sortByPricePressed}
