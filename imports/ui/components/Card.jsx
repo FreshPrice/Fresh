@@ -23,7 +23,7 @@ class CardComponent extends Component {
       data: this.props.post,
       isFav: false,
       imageSrc: `/images/` + this.props.post.name + `.png`,
-      isMouseOver: false
+      showDetails: false
     };
   }
 
@@ -47,12 +47,9 @@ class CardComponent extends Component {
     this.setState({ imageSrc: "/images/missing.png" });
   };
 
-  mouseOver = () => {
-    this.setState({ isMouseOver: true });
-  };
-
-  mouseOut = () => {
-    this.setState({ isMouseOver: false });
+  toggleDetails = () => {
+    this.setState({ showDetails: !this.state.showDetails });
+    console.log("showDetails?", this.state.showDetails);
   };
 
   render() {
@@ -96,21 +93,24 @@ class CardComponent extends Component {
 
           {/* Food Details */}
           <div className={classes.details}>
-            <div
-              className={classes.insideDetails}
-              onMouseOver={this.mouseOver}
-              onMouseOut={this.mouseOut}
-            >
-              {this.state.isMouseOver && this.state.data.location.address ? (
-                // TODO: Fix mousing over to be a different way to show address
-                // <CardContent className={classes.content}>
-                //   <Typography variant="subtitle1" color="textSecondary">
-                //     {this.state.data.location.address}
-                //   </Typography>
-                // </CardContent>
-                <p>Placeholder</p>
-              ) : (
-                // Not mousing over
+            {this.state.showDetails && this.state.data.location.address ? (
+              // Address Only Side
+              <div
+                className={classes.insideDetails}
+                onClick={this.toggleDetails}
+              >
+                <CardContent className={classes.content}>
+                  <Typography variant="subtitle1" color="textSecondary">
+                    {this.state.data.location.address}
+                  </Typography>
+                </CardContent>
+              </div>
+            ) : (
+              // All Card Details Info
+              <div
+                className={classes.insideDetails}
+                onClick={this.toggleDetails}
+              >
                 <CardContent className={classes.content}>
                   <Typography component="h5" variant="h5">
                     {this.state.data.name}
@@ -126,8 +126,8 @@ class CardComponent extends Component {
                     {this.state.data.location.address}
                   </Typography>
                 </CardContent>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </Card>
       </div>
@@ -145,14 +145,13 @@ const useStyles = theme => ({
   },
   details: {
     display: "flex",
-    flexGrow: 1,
     flexDirection: "column",
     justifyContent: "center",
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis"
+    flexGrow: 1
   },
   longAddress: {
+    margin: "auto",
+    maxWidth: "200px",
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis"
