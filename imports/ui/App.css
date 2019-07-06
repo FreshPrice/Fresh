@@ -51,19 +51,10 @@
   overflow: scroll;
 }
 
-#RefreshButton {
-  float: left !important;
-  margin-bottom: 10px;
-}
-
-#clear {
-  clear: both;
-}
-
 #SortButtons {
   margin-top: 3%;
   margin-bottom: 3%;
-  float: right !important;
+  text-align: right !important;
 }
 
 ::-webkit-scrollbar {

@@ -83,14 +83,11 @@ class CardList extends Component {
 
     return (
       <div>
-        <div id="RefreshButton">
+        {/* Styling for SortButton inside App.css */}
+        <div id="SortButtons">
           <IconButton onClick={this.refresh}>
             <Renew color="secondary" />
           </IconButton>
-        </div>
-
-        {/* Styling for SortButton inside App.css */}
-        <div id="SortButtons">
           <SortButtons
             sortByLatestPressed={this.sortByLatestPressed}
             sortByPricePressed={this.sortByPricePressed}
