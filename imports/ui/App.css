@@ -45,11 +45,13 @@
   }
   
   #CardList {
-    height: 100vh !important;
+    height: 60% !important;
     overflow: scroll;
+    background-color: pink;
   }
 
   #SortButtons {
+    height: 10% !important;
     margin-top: 3%;
     margin-bottom: 3%;
   }
@@ -65,8 +67,9 @@
 
 
   /* TODO: Refactor. This code does nothing right now. */
-  /* .search-bar {
-    z-index: 100;
+  .search-bar {
+    /* z-index: 100;
     position: sticky !important;
-    top: 50px !important;
-  } */
+    top: 50px !important; */
+    height: 20% !important;
+  }

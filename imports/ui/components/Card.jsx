@@ -12,6 +12,9 @@ import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
 
+// Filesystem API from node
+const fs = require("fs");
+
 class CardComponent extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +39,15 @@ class CardComponent extends Component {
     item.rating = item.rating - 1;
     this.props.changeRating(item);
   };
+
+  // imageExists = filename => {
+  //   let path = `/images/` + filename + `.png`;
+  //   let file = new File(path);
+
+  //   if (file) {
+  //     console.log("exists");
+  //   }
+  // };
 
   render() {
     const { classes } = this.props;
@@ -98,30 +110,46 @@ class CardComponent extends Component {
 const useStyles = theme => ({
   card: {
     display: "flex",
-    marginBottom: "5%"
+    marginBottom: "5%",
+    maxHeight: "113px"
   },
+  cardhover: { position: "relative", top: "-5px" },
   details: {
-    width: "150px",
-    height: "150px"
+    border: "1px solid blue",
+    flexGrow: 1,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
-  insideDetails: {},
+  insideDetails: {
+    border: "1px solid red"
+  },
   content: {
     flex: "1 0 auto"
   },
   image: {
-    width: "160px"
+    maxWidth: "113px",
+    minWidth: "113px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
   ratingArea: {
-    display: "flex"
+    display: "flex",
+    border: "2px solid green",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
   rating: {
     flex: 1,
     alignSelf: "left",
-    fontSize: "20px"
+    fontSize: "20px",
+    border: "2px solid orange",
+    justifyItems: "center"
   },
   thumbs: {
-    width: "50px",
-    flex: 1
+    border: "1px solid blue"
   }
 });
 
