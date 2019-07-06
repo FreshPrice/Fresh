@@ -47,7 +47,6 @@
   #CardList {
     height: 80vh !important;
     overflow: scroll;
-    background-color: pink;
   }
 
   #SortButtons {

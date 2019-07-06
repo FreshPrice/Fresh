@@ -11,6 +11,7 @@ import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
+import { NONAME } from "dns";
 
 // Filesystem API from node
 const fs = require("fs");
@@ -20,7 +21,9 @@ class CardComponent extends Component {
     super(props);
     this.state = {
       data: this.props.post,
-      isFav: false
+      isFav: false,
+      imageSrc: `/images/` + this.props.post.name + `.png`,
+      isMouseOver: false
     };
   }
 
@@ -40,14 +43,17 @@ class CardComponent extends Component {
     this.props.changeRating(item);
   };
 
-  // imageExists = filename => {
-  //   let path = `/images/` + filename + `.png`;
-  //   let file = new File(path);
+  imageNotFoundError = () => {
+    this.setState({ imageSrc: "/images/missing.png" });
+  };
 
-  //   if (file) {
-  //     console.log("exists");
-  //   }
-  // };
+  mouseOver = () => {
+    this.setState({ isMouseOver: true });
+  };
+
+  mouseOut = () => {
+    this.setState({ isMouseOver: false });
+  };
 
   render() {
     const { classes } = this.props;
@@ -82,24 +88,44 @@ class CardComponent extends Component {
             </div>
           </div>
           {/* Food Image */}
-          <CardMedia
+          <img
             className={classes.image}
-            image={`/images/` + this.state.data.name + `.png`}
+            src={this.state.imageSrc}
+            onError={this.imageNotFoundError}
           />
+
           {/* Food Details */}
           <div className={classes.details}>
-            <div className={classes.insideDetails}>
-              <CardContent className={classes.content}>
-                <Typography component="h5" variant="h5">
-                  {this.state.data.name}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                  ${this.state.data.price} {this.state.data.unit}
-                </Typography>
-                <Typography variant="subtitle1" color="textSecondary">
-                  {this.state.data.location.address}
-                </Typography>
-              </CardContent>
+            <div
+              className={classes.insideDetails}
+              onMouseOver={this.mouseOver}
+              onMouseOut={this.mouseOut}
+            >
+              {this.state.isMouseOver && this.state.data.location.address ? (
+                // Mousing over and have address to show
+                <CardContent className={classes.content}>
+                  <Typography variant="subtitle1" color="textSecondary">
+                    {this.state.data.location.address}
+                  </Typography>
+                </CardContent>
+              ) : (
+                // Not mousing over
+                <CardContent className={classes.content}>
+                  <Typography component="h5" variant="h5">
+                    {this.state.data.name}
+                  </Typography>
+                  <Typography variant="subtitle1" color="textSecondary">
+                    ${this.state.data.price} {this.state.data.unit}
+                  </Typography>
+                  <Typography
+                    variant="subtitle2"
+                    className={classes.longAddress}
+                    color="textSecondary"
+                  >
+                    {this.state.data.location.address}
+                  </Typography>
+                </CardContent>
+              )}
             </div>
           </div>
         </Card>
@@ -113,16 +139,20 @@ const useStyles = theme => ({
     marginBottom: "5%",
     maxHeight: "113px"
   },
-  cardhover: { position: "relative", top: "-5px" },
   details: {
-    border: "1px solid blue",
-    flexGrow: 1,
     display: "flex",
+    flexGrow: 1,
+    maxWidth: "300px",
     flexDirection: "column",
     justifyContent: "center"
   },
+  longAddress: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  },
   insideDetails: {
-    border: "1px solid red"
+    maxHeight: "113px"
   },
   content: {
     flex: "1 0 auto"
@@ -136,8 +166,6 @@ const useStyles = theme => ({
   },
   ratingArea: {
     display: "flex",
-    border: "2px solid green",
-    display: "flex",
     flexDirection: "column",
     justifyContent: "center"
   },
@@ -145,12 +173,9 @@ const useStyles = theme => ({
     flex: 1,
     alignSelf: "left",
     fontSize: "20px",
-    border: "2px solid orange",
     justifyItems: "center"
   },
-  thumbs: {
-    border: "1px solid blue"
-  }
+  thumbs: {}
 });
 
 const CardWrapped = withStyles(useStyles)(CardComponent);
