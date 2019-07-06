@@ -139,7 +139,6 @@ const useStyles = theme => ({
     display: "flex",
     marginBottom: "4%",
     maxHeight: "113px",
-    margin: "4%",
     "&:hover": {
       boxShadow: "5px 10px rgba(0, 0, 0, 0.5)"
     }
