@@ -137,10 +137,8 @@ const useStyles = theme => ({
   card: {
     display: "flex",
     marginBottom: "4%",
-    marginRight: "4%", // for card shadow to be not cut off
     maxHeight: "113px",
     "&:hover": {
-      boxShadow: "5px 10px rgba(0, 0, 0, 0.5)",
       border: "2.5px solid #F50057",
       cursor: "pointer"
     }
