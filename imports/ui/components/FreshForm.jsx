@@ -38,7 +38,6 @@ class FreshForm extends Component {
 
   handleChangeUnit = value => {
     this.setState({ unit: value });
-    console.log(value);
   };
 
   setAddress = address => {
