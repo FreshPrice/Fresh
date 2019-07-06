@@ -45,11 +45,12 @@ class FreshForm extends Component {
   };
   setLatLng = latLng => {
     this.setState({ lat: latLng.lat, lng: latLng.lng });
+    console.log(this.state.lat);
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    !this.state.add || !this.state.price || !this.state.name
+    !this.state.add || !this.state.price || !this.state.name || !this.state.lat
       ? this.setState({ stateError: true })
       : this.addNewItem();
   };
@@ -152,7 +153,7 @@ class FreshForm extends Component {
                   color="pink"
                   type="submit"
                   disabled={
-                    !this.state.add || !this.state.price || !this.state.name
+                    !this.state.add || !this.state.price || !this.state.name || (this.state.lat === 0)
                   }
                 >
                   Submit
