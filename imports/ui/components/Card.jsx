@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
+import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
@@ -49,7 +49,6 @@ class CardComponent extends Component {
 
   toggleDetails = () => {
     this.setState({ showDetails: !this.state.showDetails });
-    console.log("showDetails?", this.state.showDetails);
   };
 
   render() {
@@ -95,16 +94,16 @@ class CardComponent extends Component {
           <div className={classes.details}>
             {this.state.showDetails && this.state.data.location.address ? (
               // Address Only Side
-              <div
-                className={classes.insideDetails}
+              <CardActions
                 onClick={this.toggleDetails}
+                className={classes.addressOnly}
               >
-                <CardContent className={classes.content}>
+                <CardContent>
                   <Typography variant="subtitle1" color="textSecondary">
                     {this.state.data.location.address}
                   </Typography>
                 </CardContent>
-              </div>
+              </CardActions>
             ) : (
               // All Card Details Info
               <div
@@ -138,9 +137,12 @@ const useStyles = theme => ({
   card: {
     display: "flex",
     marginBottom: "4%",
+    marginRight: "4%", // for card shadow to be not cut off
     maxHeight: "113px",
     "&:hover": {
-      boxShadow: "5px 10px rgba(0, 0, 0, 0.5)"
+      boxShadow: "5px 10px rgba(0, 0, 0, 0.5)",
+      border: "2.5px solid #F50057",
+      cursor: "pointer"
     }
   },
   details: {
@@ -155,6 +157,10 @@ const useStyles = theme => ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis"
+  },
+  addressOnly: {
+    margin: "auto",
+    flexGrow: 1
   },
   insideDetails: {
     maxHeight: "113px"
