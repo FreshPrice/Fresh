@@ -121,7 +121,8 @@ class FreshForm extends Component {
             onChange={this.handleChangePrice}
             value={this.state.price}
             type="number"
-            inputprops={{ min: "0", step: "0.01" }}
+            min= "0"
+            step= "0.01" 
           >
             <Label basic>$</Label>
             <input />
