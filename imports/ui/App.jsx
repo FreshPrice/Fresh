@@ -3,11 +3,13 @@ import MapContainer from "./components/MapContainer.jsx";
 import CardList from "./components/CardList.jsx";
 import FreshModal from "./components/Modal.jsx";
 import SearchBar from "./components/SearchBar.jsx";
+import LoginBar from "./components/AccountsUIWrapper";
 import "./App.css";
 
 const App = () => (
   <div className="AppContainer">
     <div className="left-section">
+      <LoginBar />
       <div className="fresh-header">
         <img className="logo" src="/logo.png" />
       </div>

@@ -2,6 +2,8 @@ import React from "react";
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import { connect } from "react-redux";
 import InfoWindowCard from "./InfoWindowCard.jsx";
+import ShoppingList from "./ShoppingListButton";
+import { Meteor } from "meteor/meteor";
 
 export class MapContainer extends React.Component {
   constructor(props) {
@@ -51,6 +53,7 @@ export class MapContainer extends React.Component {
   render() {
     return (
       <div id="MapContainer">
+        <ShoppingList currentUser={Meteor.user()} />
         {/*---------------------------------------------------------------------------------
            These options will center the map at lat: 49.220037, lng: -122.974283, Vancouver.
            ---------------------------------------------------------------------------------*/}

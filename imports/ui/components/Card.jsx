@@ -11,10 +11,7 @@ import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
-import { NONAME } from "dns";
-
-// Filesystem API from node
-const fs = require("fs");
+import { Meteor } from "meteor/meteor";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -56,6 +53,13 @@ class CardComponent extends Component {
     return (
       <div>
         <Card className={classes.card}>
+        {Meteor.user() ? (
+            <IconButton>
+              <FavoriteIcon />
+            </IconButton>
+          ) : (
+            ""
+          )}
           {/* Thumbs Up and Down Counter */}
           <div className={classes.ratingArea}>
             <div className={classes.thumbs}>
