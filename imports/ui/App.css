@@ -23,7 +23,9 @@
     display: grid;
     padding: 8%;
     background-image: url("/background.jpg");
+    background-size: 100% 100%;
     background-position: center;
+    background-size: cover;
   }
 
   
@@ -45,11 +47,12 @@
   }
   
   #CardList {
-    height: 100vh !important;
+    height: 80vh !important;
     overflow: scroll;
   }
 
   #SortButtons {
+    height: 5vh !important;
     margin-top: 3%;
     margin-bottom: 3%;
     text-align: right !important;
@@ -66,8 +69,8 @@
 
 
   /* TODO: Refactor. This code does nothing right now. */
-  /* .search-bar {
-    z-index: 100;
+  .search-bar {
+    /* z-index: 100;
     position: sticky !important;
-    top: 50px !important;
-  } */
+    top: 50px !important; */
+  }
