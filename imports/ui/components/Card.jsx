@@ -12,10 +12,6 @@ import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
 import { Meteor } from "meteor/meteor";
-import { NONAME } from "dns";
-
-// Filesystem API from node
-const fs = require("fs");
 
 class CardComponent extends Component {
   constructor(props) {
