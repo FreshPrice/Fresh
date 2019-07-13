@@ -38,7 +38,7 @@ class App extends Component {
             <CardList currentUser = {this.props.currentUser}/>
           </div>
           <div className="new-post-fab">
-            <FreshModal />
+            <FreshModal currentUser = {this.props.currentUser}/>
           </div>
         </div>
       </div>

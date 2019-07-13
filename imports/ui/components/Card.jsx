@@ -7,8 +7,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
-import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
-import FavoriteIconFilled from "@material-ui/icons/Favorite";
+import AddIcon from "@material-ui/icons/PlaylistAdd";
+import CheckedIcon from "@material-ui/icons/PlaylistAddCheck";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
 
@@ -63,21 +63,6 @@ class CardComponent extends Component {
               <IconButton onClick={this.onThumbsDownPressed}>
                 <ThumbDownOutlinedIcon />
               </IconButton>
-              {/* TODO: Favorite icon is a part of the stretch goal to add wishlist, use later */}
-              {/* <IconButton
-                style={{ display: this.state.isFav ? "none" : "" }}
-                onClick={this.onFavPressed}
-              >
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton
-                style={{ display: this.state.isFav ? "" : "none" }}
-                onClick={this.onFavPressed}
-              >
-                {" "}
-                
-                <FavoriteIconFilled />
-              </IconButton> */}
             </div>
           </div>
           {/* Food Image */}
@@ -125,10 +110,22 @@ class CardComponent extends Component {
               </div>
             )}
           </div>
+          {/* Favorite icon is a part of the stretch goal to add wishlist, use later */}
           {this.props.currentUser ? (
-            <IconButton>
-              <FavoriteIcon />
-            </IconButton>
+            <div>
+              <IconButton
+                style={{ display: this.state.isFav ? "none" : "" }}
+                onClick={this.onFavPressed}
+              >
+                <AddIcon />
+              </IconButton>
+              <IconButton
+                style={{ display: this.state.isFav ? "" : "none" }}
+                onClick={this.onFavPressed}
+              >
+                <CheckedIcon />
+              </IconButton>
+            </div>
           ) : (
             ""
           )}
