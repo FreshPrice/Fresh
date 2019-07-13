@@ -53,13 +53,6 @@ class CardComponent extends Component {
     return (
       <div>
         <Card className={classes.card}>
-          {this.props.currentUser ? (
-            <IconButton>
-              <FavoriteIcon />
-            </IconButton>
-          ) : (
-            ""
-          )}
           {/* Thumbs Up and Down Counter */}
           <div className={classes.ratingArea}>
             <div className={classes.thumbs}>
@@ -132,6 +125,13 @@ class CardComponent extends Component {
               </div>
             )}
           </div>
+          {this.props.currentUser ? (
+            <IconButton>
+              <FavoriteIcon />
+            </IconButton>
+          ) : (
+            ""
+          )}
         </Card>
       </div>
     );
