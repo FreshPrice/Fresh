@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 
-class ShoppingList extends Component {
+
+class ShoppingListButton extends Component {
   constructor(props) {
     super(props);
   }
@@ -14,4 +15,4 @@ class ShoppingList extends Component {
   }
 }
 
-export default ShoppingList;
+export default ShoppingListButton

@@ -11,7 +11,6 @@ import FavoriteIcon from "@material-ui/icons/FavoriteBorder";
 import FavoriteIconFilled from "@material-ui/icons/Favorite";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
-import { Meteor } from "meteor/meteor";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -20,7 +19,8 @@ class CardComponent extends Component {
       data: this.props.post,
       isFav: false,
       imageSrc: `/images/` + this.props.post.name + `.png`,
-      showDetails: false
+      showDetails: false,
+      isLogginIn: false
     };
   }
 
@@ -53,7 +53,7 @@ class CardComponent extends Component {
     return (
       <div>
         <Card className={classes.card}>
-        {Meteor.user() ? (
+          {this.props.currentUser ? (
             <IconButton>
               <FavoriteIcon />
             </IconButton>
