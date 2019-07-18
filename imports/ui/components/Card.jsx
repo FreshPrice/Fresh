@@ -111,7 +111,7 @@ class CardComponent extends Component {
             )}
           </div>
           {/* Favorite icon is a part of the stretch goal to add wishlist, use later */}
-          {this.props.currentUser ? (
+          {this.props.currentUser && (
             <div>
               <IconButton
                 style={{ display: this.state.isFav ? "none" : "" }}
@@ -126,8 +126,6 @@ class CardComponent extends Component {
                 <CheckedIcon />
               </IconButton>
             </div>
-          ) : (
-            ""
           )}
         </Card>
       </div>

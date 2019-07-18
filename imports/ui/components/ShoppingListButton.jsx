@@ -9,8 +9,8 @@ class ShoppingListButton extends Component {
 
   render() {
     return (
-      <div>{this.props.currentUser ? 
-      <Button>ShoppingList</Button> : ""}</div>
+      <div>{this.props.currentUser && 
+      <Button>ShoppingList</Button>}</div>
     );
   }
 }

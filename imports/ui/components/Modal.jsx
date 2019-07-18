@@ -39,7 +39,7 @@ class Modal extends Component {
 
     return (
       <div>
-        {this.props.currentUser ? (
+        {this.props.currentUser && (
           <Fab
             color="secondary"
             aria-label="Edit"
@@ -49,8 +49,6 @@ class Modal extends Component {
           >
             <AddIcon /> Fresh Deal
           </Fab>
-        ) : (
-          ""
         )}
 
         <MaterialModal
