@@ -1,0 +1,26 @@
+/* makes geo suggest bar third priority */
+.geo-suggest {
+  position: relative !important;
+  z-index: 80;
+}
+/* makes search bar highest priority */
+.search-bar {
+  position: relative !important;
+  z-index: 100;
+}
+/* makes search bar second priority */
+.price-bar {
+    position: relative !important;
+    z-index: 90;
+  }
+
+/* makes unit bar set width */
+.unit-select {
+    width: 110px;
+  }
+
+/* submit button on the form */
+.submit-button {
+  z-index: 40;
+}
+ 

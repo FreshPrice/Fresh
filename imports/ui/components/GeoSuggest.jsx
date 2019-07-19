@@ -30,6 +30,8 @@ export class GeoSuggest extends React.Component {
     this.setState({
       address: ""
     });
+    this.props.setAddress("");
+    this.props.setLatLng({ lat: 0, lng: 0});
   };
 
   render() {
