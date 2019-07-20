@@ -15,7 +15,9 @@ class InfoWindowCard extends React.Component {
         <div className={classes.infoWindowDetails}>
           <img className={classes.infoWindowImage} src={imageSrc} />
           <div className={classes.infoWindowText}>
-            <b>{item.name}</b> <br /> ${item.price} {item.unit} <br />
+            <b>{item.name}</b>
+            <br /> ${item.price} {item.unit}
+            <br />
             {locationName}
           </div>
         </div>
