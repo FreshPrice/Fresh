@@ -51,9 +51,8 @@ Users will be able to leave thumbs up or down on prices to validate them.
 - User can watch an item and get notified when prices are lower than their set price.
 
 ## Mock up
-- [PDF](fresh.pdf)
-![mockup2](/images/mockup1.png)
-![mockup1](/images/mockup2.png)
+![mockup2](/mockup1.png)
+![mockup1](/mockup2.png)
 
 # Development
 
