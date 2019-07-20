@@ -17,8 +17,7 @@ class InfoWindowCard extends React.Component {
           <div className={classes.infoWindowText}>
             <b>{item.name}</b>
             <br /> ${item.price} {item.unit}
-            <br />
-            {locationName}
+            <br /> {locationName}
           </div>
         </div>
       </div>
