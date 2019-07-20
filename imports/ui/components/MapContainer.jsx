@@ -12,7 +12,10 @@ export class MapContainer extends React.Component {
       activeMarker: null,
       isUserSelected: false,
       selectedPlace: {
-        name: ""
+        name: "",
+        location: {
+          address: ""
+        }
       }
     };
   }

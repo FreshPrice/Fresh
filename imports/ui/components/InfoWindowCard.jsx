@@ -5,15 +5,19 @@ class InfoWindowCard extends React.Component {
   render() {
     const { classes } = this.props;
     const item = this.props.item;
-
+    const imageSrc = "/images/" + item.name + ".png";
+    const locationName = item.location.address.substr(
+      0,
+      item.location.address.indexOf(",")
+    );
     return (
-      //TODO: Actually style the card.
       <div className={classes.infoWindow}>
-        <div className={classes.mapDetails}>
-          <img className={classes.mapImage} src="/images/Bananas.png" />
-          <br />
-          <b>{item.name}</b>
-          <br />${item.price} {item.unit}
+        <div className={classes.infoWindowDetails}>
+          <img className={classes.infoWindowImage} src={imageSrc} />
+          <div className={classes.infoWindowText}>
+            <b>{item.name}</b> <br /> ${item.price} {item.unit} <br />
+            {locationName}
+          </div>
         </div>
       </div>
     );
@@ -23,17 +27,28 @@ class InfoWindowCard extends React.Component {
 const useStyles = theme => ({
   infoWindow: {
     display: "flex",
-    minWidth: "150px"
+    minWidth: "120px"
   },
-  mapImage: {
+  infoWindowImage: {
     height: "50px",
     flex: 1
   },
-  mapDetails: {
+  infoWindowDetails: {
+    display: "flex",
     flex: 1,
-    alignItem: "center",
     paddingRight: "10px",
-    whiteSpace: "nowrap"
+    paddingBottom: "10px",
+    whiteSpace: "nowrap",
+    alignItems: "center",
+    margin: "auto"
+  },
+  infoWindowText: {
+    textOverflow: "ellipsis",
+    textAlign: "right",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    maxWidth: "120px"
   }
 });
 
