@@ -1,12 +1,12 @@
 # Fresh
 
-The hottest crowd-sourced grocery store price app around.
+**Fresh** is the hottest crowd-sourced grocery store price reporting app around.
 
-Fresh is a web-app that allows consumers to make cost-friendly choices for groceries. As a user, I can post grocery prices, locations and images and items to the app, at the same time see all the posts that have been submitted to the app. Location and items will be stored as strings and prices of items will be stored as numbers. Users will be able to compare the prices of groceries they want to purchase. Create a shopping list which displays the lowest price found for each item and their location, leave thumbs up or down on prices to validate them.
+Fresh is a web appliation that help consumers make cost-friendly choices for groceries. Users can post grocery prices, locations and images to the app, and see reported deals submitted by other people. Leave thumbs up or down to help validate posts. Compare the prices of groceries through the search and sort features. When you find a deal that you like, bookmark them for later and see them in the shopping list.
 
 ### Who is it for?
 
-Fresh is a web-app that allows consumers to make cost-friendly choices for groceries.
+Fresh is for everyone!
 
 ### What will it do?
 
@@ -51,9 +51,9 @@ Users will be able to leave thumbs up or down on prices to validate them.
 - User can watch an item and get notified when prices are lower than their set price.
 
 ## Mock up
-
 - [PDF](fresh.pdf)
-
+![mockup2](/images/mockup1.png)
+![mockup1](/images/mockup2.png)
 
 # Development
 
