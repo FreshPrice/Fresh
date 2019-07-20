@@ -13,6 +13,7 @@ Meteor.startup(() => {
         rating: 0,
         createdAt: new Date(),
         location: {
+          address: "Stanley Park, Vancouver, BC, Canada",
           coords: {
             lat: 49.286682,
             lng: -123.139346
@@ -26,6 +27,7 @@ Meteor.startup(() => {
         rating: 0,
         createdAt: new Date(),
         location: {
+          address: "Deep Cove, North Vancouver, BC, Canada",
           coords: {
             lat: 49.290331,
             lng: -123.134111
@@ -39,6 +41,8 @@ Meteor.startup(() => {
         rating: 0,
         createdAt: new Date(),
         location: {
+          address:
+            "Safeway West Broadway, West Broadway, Vancouver, BC, Canada",
           coords: {
             lat: 49.290198,
             lng: -123.13234
@@ -52,6 +56,7 @@ Meteor.startup(() => {
         unit: "per lb",
         createdAt: new Date(),
         location: {
+          address: "Safeway Robson, Robson Street, Vancouver, BC, Canada",
           coords: {
             lat: 49.290254,
             lng: -123.132653
