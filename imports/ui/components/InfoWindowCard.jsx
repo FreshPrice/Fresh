@@ -9,8 +9,16 @@ class InfoWindowCard extends React.Component {
     };
   }
 
-  imageNotFoundError = () => {
-    this.setState({ imageSrc: "/images/missing.png" });
+  determineSource = () => {
+    let imageSrc = this.state.imageSrc;
+    let image = new Image();
+    image.src = this.state.imageSrc;
+    if (!image.complete) {
+      imageSrc = "/images/missing.png";
+    } else if (image.height === 0) {
+      imageSrc = "/images/missing.png";
+    }
+    return imageSrc;
   };
 
   render() {
@@ -25,8 +33,7 @@ class InfoWindowCard extends React.Component {
         <div className={classes.infoWindowDetails}>
           <img
             className={classes.infoWindowImage}
-            src={this.state.imageSrc}
-            onError={this.imageNotFoundError}
+            src={this.determineSource()}
           />
           <div className={classes.infoWindowText}>
             <b>{item.name}</b>
@@ -42,10 +49,11 @@ class InfoWindowCard extends React.Component {
 const useStyles = theme => ({
   infoWindow: {
     display: "flex",
-    minWidth: "120px"
+    maxWidth: "160px"
   },
   infoWindowImage: {
     height: "50px",
+    width: "50px",
     flex: 1
   },
   infoWindowDetails: {
@@ -63,7 +71,8 @@ const useStyles = theme => ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    maxWidth: "120px"
+    minWidth: "80px",
+    maxWidth: "100px"
   }
 });
 
