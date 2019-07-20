@@ -17,6 +17,7 @@
 
   .left-section {
     padding: 3%;
+    text-align: left !important;
   }
 
   .right-section {
@@ -67,6 +68,9 @@
     bottom: 20px !important;
   }
 
+  #login-buttons a, .accounts-dialog a {
+    text-decoration: none;
+  }
 
   /* TODO: Refactor. This code does nothing right now. */
   .search-bar {

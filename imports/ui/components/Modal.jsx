@@ -7,8 +7,8 @@ import FreshForm from "./FreshForm.jsx";
 import "./Modal.css";
 
 function getModalStyle() {
-  const top = 50
-  const left = 50
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -39,15 +39,17 @@ class Modal extends Component {
 
     return (
       <div>
-        <Fab
-          color="secondary"
-          aria-label="Edit"
-          className="NewPostFab"
-          onClick={this.handleOpen}
-          variant="extended"
-        >
-          <AddIcon /> Fresh Deal
-        </Fab>
+        {this.props.currentUser && (
+          <Fab
+            color="secondary"
+            aria-label="Edit"
+            className="NewPostFab"
+            onClick={this.handleOpen}
+            variant="extended"
+          >
+            <AddIcon /> Fresh Deal
+          </Fab>
+        )}
 
         <MaterialModal
           aria-labelledby="modal-title"
