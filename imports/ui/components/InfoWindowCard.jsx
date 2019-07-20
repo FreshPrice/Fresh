@@ -71,7 +71,7 @@ const useStyles = theme => ({
     whiteSpace: "nowrap",
     overflow: "hidden",
     textOverflow: "ellipsis",
-    minWidth: "80px",
+    minWidth: "60px",
     maxWidth: "100px"
   }
 });
