@@ -17,6 +17,11 @@
 
   .left-section {
     padding: 3%;
+  }
+
+  .user-section {
+    padding: 0;
+    height: 0px;
     text-align: left !important;
   }
 
