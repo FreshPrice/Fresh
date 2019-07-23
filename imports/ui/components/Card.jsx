@@ -17,8 +17,7 @@ class CardComponent extends Component {
     this.state = {
       data: this.props.post,
       imageSrc: `/images/` + this.props.post.name + `.png`,
-      showDetails: false,
-      isLogginIn: false
+      showDetails: false
     };
   }
 
