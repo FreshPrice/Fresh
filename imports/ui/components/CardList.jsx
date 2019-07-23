@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Card from "./Card";
-import SearchBar from "./SearchBar";
 import SortButtons from "./SortButtons.jsx";
 import { getItems, sortItems } from "../actions/AppActions.js";
 import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";

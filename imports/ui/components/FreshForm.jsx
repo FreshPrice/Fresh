@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import { Form, Select, Label, Message } from "semantic-ui-react";
 import SearchBar from "./SearchBar";
 import GeoSuggest from "./GeoSuggest";
