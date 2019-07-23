@@ -7,26 +7,20 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
-import AddIcon from "@material-ui/icons/PlaylistAdd";
-import CheckedIcon from "@material-ui/icons/PlaylistAddCheck";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
+import AddShoppingList from "./AddShoppingList.jsx";
 
 class CardComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: this.props.post,
-      isFav: false,
       imageSrc: `/images/` + this.props.post.name + `.png`,
       showDetails: false,
       isLogginIn: false
     };
   }
-
-  onFavPressed = () => {
-    this.setState({ isFav: !this.state.isFav });
-  };
 
   onThumbsUpPressed = () => {
     let item = this.state.data;
@@ -111,22 +105,7 @@ class CardComponent extends Component {
             )}
           </div>
           {/* Favorite icon is a part of the stretch goal to add wishlist, use later */}
-          {this.props.currentUser && (
-            <div>
-              <IconButton
-                style={{ display: this.state.isFav ? "none" : "" }}
-                onClick={this.onFavPressed}
-              >
-                <AddIcon />
-              </IconButton>
-              <IconButton
-                style={{ display: this.state.isFav ? "" : "none" }}
-                onClick={this.onFavPressed}
-              >
-                <CheckedIcon />
-              </IconButton>
-            </div>
-          )}
+          {this.props.currentUser && <AddShoppingList />}
         </Card>
       </div>
     );
