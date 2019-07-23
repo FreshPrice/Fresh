@@ -29,18 +29,6 @@ class ShoppingListButton extends Component {
     this.setState({ ...this.state, [side]: open });
   };
 
-  determineSource = () => {
-    let imageSrc = this.state.imageSrc;
-    let image = new Image();
-    image.src = this.state.imageSrc;
-    if (!image.complete) {
-      imageSrc = "/images/missing.png";
-    } else if (image.height === 0) {
-      imageSrc = "/images/missing.png";
-    }
-    return imageSrc;
-  };
-
   sideList = (side, classes) => (
     <div
       role="presentation"

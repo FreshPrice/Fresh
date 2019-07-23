@@ -9,7 +9,7 @@ import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
-import AddShoppingList from "./AddShoppingList.jsx";
+import AddShoppingList from "./SnackBar";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -106,6 +106,7 @@ class CardComponent extends Component {
           </div>
           {/* Favorite icon is a part of the stretch goal to add wishlist, use later */}
           {this.props.currentUser && <AddShoppingList />}
+          
         </Card>
       </div>
     );
