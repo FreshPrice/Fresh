@@ -81,7 +81,7 @@ export default function CustomizedSnackbars() {
 
   function onFavPressed() {
     setFav(!isFav);
-    setOpen(true);
+    setOpen(!isFav);
   }
 
   function handleClose(event, reason) {
@@ -112,7 +112,7 @@ export default function CustomizedSnackbars() {
           horizontal: "left"
         }}
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         onClose={handleClose}
       >
         <MySnackbarContentWrapper
