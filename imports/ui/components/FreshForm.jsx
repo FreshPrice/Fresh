@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import { Form, Select, Label, Message } from "semantic-ui-react";
 import SearchBar from "./SearchBar";
 import GeoSuggest from "./GeoSuggest";
@@ -113,31 +112,31 @@ class FreshForm extends Component {
           {/* Price Input */}
           Price
           <div className="price-bar">
-          <Form.Input
-            fluid
-            labelPosition="right"
-            placeholder="Price"
-            action
-            onChange={this.handleChangePrice}
-            value={this.state.price}
-            type="number"
-            min= "0"
-            step= "0.01" 
-          >
-            <Label basic>$</Label>
-            <input />
-            {/* Select Unit Choices */}
-            <Select
-              compact
-              options={options}
-              defaultValue={PER_HUNDRED_GRAMS}
-              onChange={(event, data) => this.handleChangeUnit(data.value)}
-              className="unit-select"
-            />
-          </Form.Input>
+            <Form.Input
+              fluid
+              labelPosition="right"
+              placeholder="Price"
+              action
+              onChange={this.handleChangePrice}
+              value={this.state.price}
+              type="number"
+              min="0"
+              step="0.01"
+            >
+              <Label basic>$</Label>
+              <input />
+              {/* Select Unit Choices */}
+              <Select
+                compact
+                options={options}
+                defaultValue={PER_HUNDRED_GRAMS}
+                onChange={(event, data) => this.handleChangeUnit(data.value)}
+                className="unit-select"
+              />
+            </Form.Input>
           </div>
           {/* Location Input */}
-          <br/>
+          <br />
           Location
           <div className="geo-suggest">
             <GeoSuggest
@@ -154,7 +153,10 @@ class FreshForm extends Component {
                   color="pink"
                   type="submit"
                   disabled={
-                    !this.state.add || !this.state.price || !this.state.name || (this.state.lat === 0)
+                    !this.state.add ||
+                    !this.state.price ||
+                    !this.state.name ||
+                    this.state.lat === 0
                   }
                 >
                   Submit
