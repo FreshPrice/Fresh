@@ -3,19 +3,30 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import IconButton from "@material-ui/core/IconButton";
 import ListIcon from "@material-ui/icons/LocalGroceryStore";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Typography from "@material-ui/core/Typography";
+import Checkbox from "@material-ui/core/Checkbox";
+import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import Avatar from "@material-ui/core/Avatar";
+import { connect } from "react-redux";
+import {
+  getShoppingListItems,
+  addNewShoppngList
+} from "../actions/AppActions.js";
+import { Meteor } from "meteor/meteor";
 import "./ShoppingListButton.css";
 
 class ShoppingListButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { left: false };
+    this.state = { left: false, checked: [] };
+  }
+
+  componentDidMount() {
+    this.props.getShoppingListItems();
   }
 
   toggleDrawer = (side, open) => event => {
@@ -29,7 +40,30 @@ class ShoppingListButton extends Component {
     this.setState({ ...this.state, [side]: open });
   };
 
-  sideList = (side, classes) => (
+  handleClick = () => {
+    let newShoppingList = {
+      createdBy: Meteor.userId(),
+      shoppingList: [],
+      createdAt: new Date()
+    };
+    this.props.addNewShoppngList(newShoppingList);
+    this.setState({ alreadyCreated: true });
+  };
+
+  handleToggle = value => () => {
+    const currentIndex = this.state.checked.indexOf(value);
+    const newChecked = [...this.state.checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    this.setState({ checked: newChecked });
+  };
+
+  sideList = (side, items) => (
     <div
       role="presentation"
       onClick={this.toggleDrawer(side, false)}
@@ -37,23 +71,63 @@ class ShoppingListButton extends Component {
       className="list-sector"
     >
       <Typography variant="h6" id="shopping-title">
-        Your shopping list.
+        Your personalized shopping list
       </Typography>
       <Divider />
       <List>
-        {["Apples", "Bananas", "Oranges", "Pears"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
+        {this.props.items.shoppingList.length === 0 ? (
+          <IconButton
+            style={{ display: this.state.alreadyCreated ? "none" : "" }}
+            onClick={this.handleClick}
+          >
+            Your shopping list is empty. Create a new shopping list by clicking
+            this area.
+          </IconButton>
+        ) : (
+          ""
+        )}
+        {items.map((text, index) => {
+          const labelId = `checkbox-list-secondary-label-${index}`;
+          return (
+            <ListItem key={index}>
+              <ListItemAvatar>
+                <Avatar
+                  alt="Remy Sharp"
+                  src={`/images/` + text.name + `.png`}
+                />
+              </ListItemAvatar>
+              <ListItemText
+                primary={text.name}
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      color="textPrimary"
+                    >
+                      {"$ " + text.price + " " + text.unit}
+                    </Typography>
+                    {" " + text.location.address}
+                  </React.Fragment>
+                }
+              />
+              <ListItemSecondaryAction>
+                <Checkbox
+                  edge="end"
+                  onChange={this.handleToggle(index)}
+                  checked={this.state.checked.indexOf(index) !== -1}
+                  inputProps={{ "aria-labelledby": labelId }}
+                />
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })}
       </List>
     </div>
   );
 
   render() {
+    const items = this.props.items.shoppingList;
     return (
       <span>
         {this.props.currentUser && (
@@ -68,11 +142,18 @@ class ShoppingListButton extends Component {
           open={this.state.left}
           onClose={this.toggleDrawer("left", false)}
         >
-          {this.sideList("left")}
+          {this.sideList("left", items)}
         </Drawer>
       </span>
     );
   }
 }
 
-export default ShoppingListButton;
+const mapStateToProps = state => {
+  return { items: state.shoppingList };
+};
+
+export default connect(
+  mapStateToProps,
+  { getShoppingListItems, addNewShoppngList }
+)(ShoppingListButton);

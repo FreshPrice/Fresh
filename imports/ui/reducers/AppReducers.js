@@ -6,7 +6,10 @@ import {
   UPDATE_THUMBS_RATING,
   ADD_ITEM_SUCCESS,
   GET_DROPDOWN_ITEMS,
-  ADD_NEW_DROPDOWN_ITEM
+  ADD_NEW_DROPDOWN_ITEM,
+  GET_SHOPPING_LIST_ITEMS,
+  ADD_NEW_SHOPPING_LIST,
+  UPDATE_SHOPPING_LIST
 } from "../actions/AppActions.js";
 
 const initialState = {
@@ -17,6 +20,10 @@ const initialState = {
 
 const initialItemState = {
   itemOptions: []
+};
+
+const initialShoppingListState = {
+  shoppingList: []
 };
 
 const itemReducer = (state = initialState, action) => {
@@ -83,7 +90,39 @@ const itemSetReducer = (state = initialItemState, action) => {
   }
 };
 
+const shoppingListReducer = (state = initialShoppingListState, action) => {
+  switch (action.type) {
+    case GET_SHOPPING_LIST_ITEMS:
+      if (action.payload.items.length === 0) {
+        return {
+          ...state,
+          shoppingList: []
+        };
+      } else
+        return {
+          ...state,
+          shoppingList: action.payload.items[0].shoppingList
+        };
+    case ADD_NEW_SHOPPING_LIST:
+      return {
+        ...state,
+        shoppingList: state.shoppingList.concat(
+          action.payload.item.shoppingList
+        )
+      };
+    case UPDATE_SHOPPING_LIST:
+      return {
+        ...state,
+        shoppingList: state.shoppingList.concat(action.payload.item)
+        // no duplicates, doesnt work
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   items: itemReducer,
-  itemSet: itemSetReducer
+  itemSet: itemSetReducer,
+  shoppingList: shoppingListReducer
 });
