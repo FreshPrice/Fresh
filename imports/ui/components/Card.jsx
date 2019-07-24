@@ -104,8 +104,7 @@ class CardComponent extends Component {
             )}
           </div>
           {/* Favorite icon is a part of the stretch goal to add wishlist, use later */}
-          {this.props.currentUser && <AddShoppingList />}
-          
+          {this.props.currentUser && <AddShoppingList item={this.state.data} />}
         </Card>
       </div>
     );
