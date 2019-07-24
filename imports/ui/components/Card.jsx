@@ -20,7 +20,7 @@ class CardComponent extends Component {
     this.state = {
       data: this.props.post,
       isFav: false,
-      imageSrc: `/images/` + this.props.post.name + `.png`,
+      imageSrc: this.props.post.imageSrc,
       showDetails: false,
       isLogginIn: false,
       isLightboxOpen: false

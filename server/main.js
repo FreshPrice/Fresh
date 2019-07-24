@@ -12,6 +12,7 @@ Meteor.startup(() => {
         unit: "per lb",
         rating: 0,
         createdAt: new Date(),
+        imageSrc: "/images/Bananas.png",
         location: {
           address: "Stanley Park, Vancouver, BC, Canada",
           coords: {
@@ -26,6 +27,7 @@ Meteor.startup(() => {
         unit: "per kg",
         rating: 0,
         createdAt: new Date(),
+        imageSrc: "/images/Apples.png",
         location: {
           address: "Deep Cove, North Vancouver, BC, Canada",
           coords: {
@@ -40,6 +42,7 @@ Meteor.startup(() => {
         unit: "per lb",
         rating: 0,
         createdAt: new Date(),
+        imageSrc: "/images/Pears.png",
         location: {
           address:
             "Safeway West Broadway, West Broadway, Vancouver, BC, Canada",
@@ -55,6 +58,7 @@ Meteor.startup(() => {
         rating: 0,
         unit: "per lb",
         createdAt: new Date(),
+        imageSrc: "/images/Oranges.png",
         location: {
           address: "Safeway Robson, Robson Street, Vancouver, BC, Canada",
           coords: {
