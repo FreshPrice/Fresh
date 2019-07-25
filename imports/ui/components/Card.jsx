@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined';
-import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
-import AddIcon from '@material-ui/icons/PlaylistAdd';
-import CheckedIcon from '@material-ui/icons/PlaylistAddCheck';
-import { connect } from 'react-redux';
-import { changeRating } from '../actions/AppActions.js';
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
+import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
+import AddIcon from "@material-ui/icons/PlaylistAdd";
+import CheckedIcon from "@material-ui/icons/PlaylistAddCheck";
+import { connect } from "react-redux";
+import { changeRating } from "../actions/AppActions.js";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 class CardComponent extends Component {
   constructor(props) {
@@ -43,7 +43,7 @@ class CardComponent extends Component {
   };
 
   imageNotFoundError = () => {
-    this.setState({ imageSrc: '/images/missing.png' });
+    this.setState({ imageSrc: "/images/missing.png" });
   };
 
   toggleDetails = () => {
@@ -96,7 +96,7 @@ class CardComponent extends Component {
                 className={classes.addressOnly}
               >
                 <CardContent>
-                  <Typography variant='subtitle1' color='textSecondary'>
+                  <Typography variant="subtitle1" color="textSecondary">
                     {this.state.data.location.address}
                   </Typography>
                 </CardContent>
@@ -108,16 +108,16 @@ class CardComponent extends Component {
                 onClick={this.toggleDetails}
               >
                 <CardContent className={classes.content}>
-                  <Typography component='h5' variant='h5'>
+                  <Typography component="h5" variant="h5">
                     {this.state.data.name}
                   </Typography>
-                  <Typography variant='subtitle1' color='textSecondary'>
+                  <Typography variant="subtitle1" color="textSecondary">
                     ${this.state.data.price} {this.state.data.unit}
                   </Typography>
                   <Typography
-                    variant='subtitle2'
+                    variant="subtitle2"
                     className={classes.longAddress}
-                    color='textSecondary'
+                    color="textSecondary"
                   >
                     {this.state.data.location.address}
                   </Typography>
@@ -128,13 +128,13 @@ class CardComponent extends Component {
           {this.props.currentUser && (
             <div>
               <IconButton
-                style={{ display: this.state.isFav ? 'none' : '' }}
+                style={{ display: this.state.isFav ? "none" : "" }}
                 onClick={this.onFavPressed}
               >
                 <AddIcon />
               </IconButton>
               <IconButton
-                style={{ display: this.state.isFav ? '' : 'none' }}
+                style={{ display: this.state.isFav ? "" : "none" }}
                 onClick={this.onFavPressed}
               >
                 <CheckedIcon />
@@ -148,54 +148,54 @@ class CardComponent extends Component {
 }
 const useStyles = theme => ({
   card: {
-    display: 'flex',
-    marginBottom: '4%',
-    maxHeight: '113px',
-    '&:hover': {
-      border: '2.5px solid #F50057',
-      cursor: 'pointer'
+    display: "flex",
+    marginBottom: "4%",
+    maxHeight: "113px",
+    "&:hover": {
+      border: "2.5px solid #F50057",
+      cursor: "pointer"
     }
   },
   details: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
     flexGrow: 1
   },
   longAddress: {
-    margin: 'auto',
-    maxWidth: '200px',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    margin: "auto",
+    maxWidth: "200px",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
   },
   addressOnly: {
-    margin: 'auto',
+    margin: "auto",
     flexGrow: 1
   },
   insideDetails: {
-    maxHeight: '113px'
+    maxHeight: "113px"
   },
   content: {
-    flex: '1 0 auto'
+    flex: "1 0 auto"
   },
   image: {
-    maxWidth: '113px',
-    minWidth: '113px',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
+    maxWidth: "113px",
+    minWidth: "113px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
   ratingArea: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   },
   rating: {
     flex: 1,
-    alignSelf: 'left',
-    fontSize: '20px',
-    justifyItems: 'center'
+    alignSelf: "left",
+    fontSize: "20px",
+    justifyItems: "center"
   },
   thumbs: {}
 });

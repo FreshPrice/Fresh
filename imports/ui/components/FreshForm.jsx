@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import Typography from '@material-ui/core/Typography';
-import { Form, Select, Label, Message } from 'semantic-ui-react';
-import SearchBar from './SearchBar';
-import GeoSuggest from './GeoSuggest';
-import { connect } from 'react-redux';
-import { addItem } from '../actions/AppActions.js';
-import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from '../FreshStrings.js';
-import Divider from '@material-ui/core/Divider';
-import DialogAction from '@material-ui/core/DialogActions';
-import './FreshForm.css';
+import React, { Component } from "react";
+import Typography from "@material-ui/core/Typography";
+import { Form, Select, Label, Message } from "semantic-ui-react";
+import SearchBar from "./SearchBar";
+import GeoSuggest from "./GeoSuggest";
+import { connect } from "react-redux";
+import { addItem } from "../actions/AppActions.js";
+import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
+import Divider from "@material-ui/core/Divider";
+import DialogAction from "@material-ui/core/DialogActions";
+import "./FreshForm.css";
 
 class FreshForm extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      price: '',
+      name: "",
+      price: "",
       unit: PER_HUNDRED_GRAMS,
-      add: '',
+      add: "",
       lat: 0,
       lng: 0,
       stateError: false,
-      imageSrc: ''
+      imageSrc: ""
     };
   }
 
@@ -61,13 +61,13 @@ class FreshForm extends Component {
       reader.onerror = error => {
         console.log(error);
         this.setState({
-          imageSrc: '/images/' + this.state.name + '.png'
+          imageSrc: "/images/" + this.state.name + ".png"
         });
       };
     } else {
       // Image was selected then unselected, need to revert to base image.
       this.setState({
-        imageSrc: '/images/' + this.state.name + '.png'
+        imageSrc: "/images/" + this.state.name + ".png"
       });
     }
   };
@@ -89,8 +89,8 @@ class FreshForm extends Component {
       createdAt: new Date(),
       rating: 0,
       imageSrc:
-        this.state.imageSrc === ''
-          ? '/images/' + this.state.name + '.png'
+        this.state.imageSrc === ""
+          ? "/images/" + this.state.name + ".png"
           : this.state.imageSrc,
       location: {
         address: this.state.add,
@@ -116,7 +116,7 @@ class FreshForm extends Component {
     ];
     return (
       <div>
-        <Typography variant='h6' id='modal-title'>
+        <Typography variant="h6" id="modal-title">
           Submit a Fresh Deal
         </Typography>
         <Divider />
@@ -124,15 +124,15 @@ class FreshForm extends Component {
           {/* Item Selection */}
           <Message
             error
-            header='Action Forbidden'
-            content='Everything on this form must be filled out'
+            header="Action Forbidden"
+            content="Everything on this form must be filled out"
           />
           <br />
           Item
-          <div className='search-bar'>
+          <div className="search-bar">
             <SearchBar
               allowAddOptions={true}
-              placeholder='Choose Item'
+              placeholder="Choose Item"
               onValueUpdate={this.handleItemChange}
               onChange={false}
             />
@@ -140,17 +140,17 @@ class FreshForm extends Component {
           <br />
           {/* Price Input */}
           Price
-          <div className='price-bar'>
+          <div className="price-bar">
             <Form.Input
               fluid
-              labelPosition='right'
-              placeholder='Price'
+              labelPosition="right"
+              placeholder="Price"
               action
               onChange={this.handleChangePrice}
               value={this.state.price}
-              type='number'
-              min='0'
-              step='0.01'
+              type="number"
+              min="0"
+              step="0.01"
             >
               <Label basic>$</Label>
               <input />
@@ -160,24 +160,24 @@ class FreshForm extends Component {
                 options={options}
                 defaultValue={PER_HUNDRED_GRAMS}
                 onChange={(event, data) => this.handleChangeUnit(data.value)}
-                className='unit-select'
+                className="unit-select"
               />
             </Form.Input>
           </div>
           <br />
           {/* Optional Image Input */}
           Image - Optional
-          <div className='geo-suggest'>
+          <div className="geo-suggest">
             <input
-              type='file'
-              accept='image/*'
+              type="file"
+              accept="image/*"
               onChange={this.handleFileSelect}
             />
           </div>
           {/* Location Input */}
           <br />
           Location
-          <div className='geo-suggest'>
+          <div className="geo-suggest">
             <GeoSuggest
               setAddress={this.setAddress.bind(this)}
               setLatLng={this.setLatLng.bind(this)}
@@ -185,11 +185,11 @@ class FreshForm extends Component {
             />
           </div>
           <div>
-            <div className='submit-button'>
+            <div className="submit-button">
               <DialogAction>
                 <Form.Button
-                  color='pink'
-                  type='submit'
+                  color="pink"
+                  type="submit"
                   disabled={
                     !this.state.add ||
                     !this.state.price ||
