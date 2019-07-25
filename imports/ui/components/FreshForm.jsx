@@ -172,8 +172,8 @@ class FreshForm extends Component {
               onChange={this.handleFileSelect}
             />
           </div>
-          <br />
           {/* Location Input */}
+          <br />
           Location
           <div className="geo-suggest">
             <GeoSuggest
