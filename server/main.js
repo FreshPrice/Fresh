@@ -169,10 +169,27 @@ Meteor.methods({
 });
 
 Meteor.methods({
+  getCheckListItems: () => {
+    return ShoppingList.find({ createdBy: Meteor.userId() }).fetch();
+  }
+});
+
+Meteor.methods({
   updateShoppingList: item => {
     return ShoppingList.update(
       { createdBy: Meteor.userId() },
       { $addToSet: { shoppingList: item } }
+    );
+  }
+});
+
+Meteor.methods({
+  updateCheckList: item => {
+    return ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $set: { checkList: item } },
+      false,
+      true
     );
   }
 });

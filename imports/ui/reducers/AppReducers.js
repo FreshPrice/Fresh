@@ -9,7 +9,9 @@ import {
   ADD_NEW_DROPDOWN_ITEM,
   GET_SHOPPING_LIST_ITEMS,
   ADD_NEW_SHOPPING_LIST,
-  UPDATE_SHOPPING_LIST
+  UPDATE_SHOPPING_LIST,
+  UPDATE_CHECK_LIST,
+  GET_CHECK_LIST
 } from "../actions/AppActions.js";
 
 const initialState = {
@@ -24,6 +26,10 @@ const initialItemState = {
 
 const initialShoppingListState = {
   shoppingList: []
+};
+
+const initialCheckListState = {
+  checkList: []
 };
 
 const itemReducer = (state = initialState, action) => {
@@ -114,7 +120,39 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
       return {
         ...state,
         shoppingList: state.shoppingList.concat(action.payload.item)
-        // no duplicates, doesnt work
+      };
+    // case UPDATE_CHECK_LIST:
+    //   console.log(action.payload.item)
+    //   return {
+    //     ...state,
+    //     checkList: action.payload.item
+    //   };
+    default:
+      return state;
+  }
+};
+
+const checkListReducer = (state = initialCheckListState, action) => {
+  switch (action.type) {
+    case GET_CHECK_LIST:
+      if (action.payload.items.length === 0) {
+        return {
+          ...state,
+          checkList: []
+        };
+      } else {
+        console.log("Reached here")
+        return {
+          ...state,
+          checkList: action.payload.items[0].checkList
+        };
+      }
+
+    case UPDATE_CHECK_LIST:
+      console.log(action.payload.item);
+      return {
+        ...state,
+        checkList: action.payload.item
       };
     default:
       return state;
@@ -124,5 +162,6 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
 export default combineReducers({
   items: itemReducer,
   itemSet: itemSetReducer,
-  shoppingList: shoppingListReducer
+  shoppingList: shoppingListReducer,
+  checkList: checkListReducer
 });

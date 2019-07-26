@@ -5,7 +5,12 @@ import AddIcon from "@material-ui/icons/PlaylistAdd";
 import CheckedIcon from "@material-ui/icons/PlaylistAddCheck";
 import MySnackbarContentWrapper from "./SnackBarContentWrapper.jsx";
 import { connect } from "react-redux";
-import { addToShoppingList } from "../actions/AppActions.js";
+import {
+  addToShoppingList,
+  addNewShoppngList,
+  getShoppingListItems
+} from "../actions/AppActions.js";
+import { Meteor } from "meteor/meteor";
 
 class CustomizedSnackbars extends Component {
   constructor(props) {
@@ -13,9 +18,22 @@ class CustomizedSnackbars extends Component {
     this.state = { open: false, isFav: false, item: this.props.item };
   }
 
+  componentDidMount() {
+    this.props.getShoppingListItems();
+  }
+
   onFavPressed = () => {
     this.setState({ isFav: !this.state.isFav });
     this.setState({ open: !this.state.isFav });
+    if (this.props.items.shoppingList.length === 0) {
+      let newShoppingList = {
+        createdBy: Meteor.userId(),
+        shoppingList: [],
+        createdAt: new Date(),
+        checkList: []
+      };
+      this.props.addNewShoppngList(newShoppingList);
+    }
     let addOn = this.state.item;
     this.props.addToShoppingList(addOn);
   };
@@ -65,6 +83,6 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-    mapStateToProps,
-    { addToShoppingList }
-  )(CustomizedSnackbars);
+  mapStateToProps,
+  { getShoppingListItems, addToShoppingList, addNewShoppngList }
+)(CustomizedSnackbars);

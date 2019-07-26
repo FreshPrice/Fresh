@@ -8,6 +8,8 @@ export const ADD_NEW_DROPDOWN_ITEM = "ADD_NEW_DROPDOWN_ITEM";
 export const ADD_NEW_SHOPPING_LIST = "ADD_NEW_SHOPPING_LIST";
 export const GET_SHOPPING_LIST_ITEMS = "GET_SHOPPING_LIST_ITEMS";
 export const UPDATE_SHOPPING_LIST = "UPDATE_SHOPPING_LIST";
+export const UPDATE_CHECK_LIST = "UPDATE_CHECK_LIST";
+export const GET_CHECK_LIST = "GET_CHECK_LIST";
 
 export const addItem = item => {
   return async dispatch => {
@@ -112,6 +114,20 @@ export const addToShoppingList = item => {
   };
 };
 
+export const addToCheckedList = item => {
+  return async dispatch => {
+    return Meteor.call("updateCheckList", item, (err, res) => {
+      if (err) {
+        dispatch(fetchItemsFailure(err));
+      } else {
+        //Callback "res" is the ID of the successfully added item
+        console.log(item);
+        dispatch(updateCheckList(item));
+      }
+    });
+  };
+};
+
 export const getShoppingListItems = () => {
   return async dispatch => {
     dispatch(fetchItemsBegin());
@@ -120,6 +136,20 @@ export const getShoppingListItems = () => {
         dispatch(fetchItemsFailure(err));
       } else {
         dispatch(fetchShoppingListItemsSuccess(res));
+      }
+    });
+  };
+};
+
+export const getCheckListItems = () => {
+  return async dispatch => {
+    dispatch(fetchItemsBegin());
+    return Meteor.call("getCheckListItems", (err, res) => {
+      if (err) {
+        dispatch(fetchItemsFailure(err));
+      } else {
+        console.log(res);
+        dispatch(fetchCheckListItemsSuccess(res));
       }
     });
   };
@@ -185,6 +215,15 @@ export const fetchShoppingListItemsSuccess = items => {
   };
 };
 
+export const fetchCheckListItemsSuccess = items => {
+  return {
+    type: GET_CHECK_LIST,
+    payload: {
+      items
+    }
+  };
+};
+
 export const addNewDropdownItem = item => {
   return {
     type: ADD_NEW_DROPDOWN_ITEM,
@@ -206,6 +245,15 @@ export const addNewShoppingList = item => {
 export const updateShoppingList = item => {
   return {
     type: UPDATE_SHOPPING_LIST,
+    payload: {
+      item
+    }
+  };
+};
+
+export const updateCheckList = item => {
+  return {
+    type: UPDATE_CHECK_LIST,
     payload: {
       item
     }
