@@ -4,6 +4,7 @@ import Card from "./Card";
 import SortButtons from "./SortButtons.jsx";
 import { getItems, sortItems } from "../actions/AppActions.js";
 import { PER_HUNDRED_GRAMS, PER_POUND, PER_KILOGRAM } from "../FreshStrings.js";
+import RefreshButton from "./RefreshButton";
 
 class CardList extends Component {
   constructor() {
@@ -16,6 +17,10 @@ class CardList extends Component {
   componentDidMount() {
     this.props.getItems({});
   }
+
+  refreshItems = () => {
+    this.props.getItems({});
+  };
 
   sortByPricePressed = () => {
     let items = this.props.items.items;
@@ -76,6 +81,10 @@ class CardList extends Component {
 
     return (
       <div>
+        <div id="RefreshButton">
+        <RefreshButton refreshItems={this.refreshItems}/>
+        </div>
+        {/* Styling for SortButton inside App.css */}
         <div id="SortButtons">
           <SortButtons
             sortByLatestPressed={this.sortByLatestPressed}

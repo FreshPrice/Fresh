@@ -1,85 +1,107 @@
-  .left-section   { grid-area: left-section; }
-  .right-section  { grid-area: right-section;}
+.left-section {
+  grid-area: left-section;
+}
+.right-section {
+  grid-area: right-section;
+}
 
-  .AppContainer {
-    display: grid;
-    grid-template-areas:
-    'left-section left-section right-section';
-    grid-template-columns: 1fr 1fr 1.5fr;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-  }
-  
-  .AppContainer>div {
-    text-align: center;
-  }
+.AppContainer {
+  display: grid;
+  grid-template-areas: "left-section left-section right-section";
+  grid-template-columns: 1fr 1fr 1.5fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
 
-  .left-section {
-    padding: 3%;
-  }
+.AppContainer > div {
+  text-align: center;
+}
 
-  .user-section {
-    padding: 0;
-    height: 0px;
-    text-align: left !important;
-  }
+.left-section {
+  padding: 3%;
+}
 
-  .right-section {
-    display: grid;
-    padding: 8%;
-    background-image: url("/background.jpg");
-    background-size: 100% 100%;
-    background-position: center;
-    background-size: cover;
-  }
+.user-section {
+  padding: 0;
+  height: 0px;
+  text-align: left !important;
+}
 
-  
-  .fresh-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 30vh !important;
-  }
-  
-  .logo {
-    height: 100px;
-    align-self: center;
-  }
+.right-section {
+  display: grid;
+  padding: 8%;
+  background-image: url("/background.jpg");
+  background-size: 100% 100%;
+  background-position: center;
+  background-size: cover;
+}
 
-  .map-container {
-    position: sticky !important;
-    height: 60vh !important;
-  }
-  
-  #CardList {
-    height: 80vh !important;
-    overflow: scroll;
-  }
+.right-section {
+  display: grid;
+  padding: 8%;
+  background-image: url("/background.jpg");
+  background-position: center;
+}
 
-  #SortButtons {
-    height: 5vh !important;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    text-align: right !important;
-  }
+.fresh-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 30vh !important;
+}
 
-  ::-webkit-scrollbar {
-    display: none;
-  }
+.logo {
+  height: 100px;
+  align-self: center;
+}
+.map-container {
+  position: sticky !important;
+  height: 60vh !important;
+}
 
-  .new-post-fab {
-    position: sticky !important;
-    bottom: 20px !important;
-  }
+#CardList {
+  height: 80vh !important;
+  overflow: scroll;
+}
 
-  #login-buttons a, .accounts-dialog a {
-    text-decoration: none;
-  }
+#SortButtons {
+  height: 5vh !important;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  text-align: right !important;
+}
 
-  /* TODO: Refactor. This code does nothing right now. */
-  .search-bar {
-    /* z-index: 100;
-    position: sticky !important;
-    top: 50px !important; */
-  }
+.map-container {
+  position: sticky !important;
+  height: 60vh !important;
+}
+
+#CardList {
+  height: 100vh !important;
+  overflow: scroll;
+}
+
+#RefreshButton {
+  float: left;
+}
+
+#SortButtons {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  text-align: right !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.new-post-fab {
+  position: sticky !important;
+  bottom: 20px !important;
+}
+
+#login-buttons a,
+.accounts-dialog a {
+  text-decoration: none;
+}
