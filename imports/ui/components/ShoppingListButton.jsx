@@ -93,7 +93,7 @@ class ShoppingListButton extends Component {
               <ListItemAvatar>
                 <Avatar
                   alt="Remy Sharp"
-                  src={`/images/` + text.name + `.png`}
+                  src={text.imageSrc}
                 />
               </ListItemAvatar>
               <ListItemText

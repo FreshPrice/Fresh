@@ -10,14 +10,17 @@ import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
 import AddShoppingList from "./SnackBar";
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 class CardComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: this.props.post,
-      imageSrc: `/images/` + this.props.post.name + `.png`,
-      showDetails: false
+      imageSrc: this.props.post.imageSrc,
+      showDetails: false,
+      isLightboxOpen: false
     };
   }
 
@@ -41,8 +44,14 @@ class CardComponent extends Component {
     this.setState({ showDetails: !this.state.showDetails });
   };
 
+  openImageLightbox = () => {
+    this.setState({ isLightboxOpen: true });
+  };
+
   render() {
     const { classes } = this.props;
+    const isLightboxOpen = this.state.isLightboxOpen;
+
     return (
       <div>
         <Card className={classes.card}>
@@ -60,10 +69,17 @@ class CardComponent extends Component {
           </div>
           {/* Food Image */}
           <img
+            onClick={this.openImageLightbox}
             className={classes.image}
             src={this.state.imageSrc}
             onError={this.imageNotFoundError}
           />
+          {isLightboxOpen && (
+            <Lightbox
+              mainSrc={this.state.imageSrc}
+              onCloseRequest={() => this.setState({ isLightboxOpen: false })}
+            />
+          )}
 
           {/* Food Details */}
           <div className={classes.details}>
