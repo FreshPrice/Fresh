@@ -94,7 +94,13 @@ class CardList extends Component {
         </div>
         <div id="CardList">
           {items.map(post => {
-            return <Card key={post._id} post={post} />;
+            return (
+              <Card
+                key={post._id}
+                post={post}
+                currentUser={this.props.currentUser}
+              />
+            );
           })}
         </div>
       </div>

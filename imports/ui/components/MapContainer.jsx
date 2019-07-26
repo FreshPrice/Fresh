@@ -1,7 +1,8 @@
 import React from "react";
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
+import { Map, GoogleApiWrapper, InfoWindow } from "google-maps-react";
 import { connect } from "react-redux";
 import InfoWindowCard from "./InfoWindowCard.jsx";
+import MapMarker from "./MapMarker.jsx";
 
 export class MapContainer extends React.Component {
   constructor(props) {
@@ -9,23 +10,57 @@ export class MapContainer extends React.Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: null,
+      isUserSelected: false,
       selectedPlace: {
-        name: ""
+        name: "",
+        location: {
+          address: ""
+        }
       }
     };
   }
 
   onMarkerClick = (props, marker) => {
     this.setState({
+      isUserSelected: true,
       showingInfoWindow: true,
       selectedPlace: props.item,
       activeMarker: marker
     });
   };
 
+  onMouseover = (props, marker) => {
+    if (!this.state.isUserSelected) {
+      this.setState({
+        showingInfoWindow: true,
+        selectedPlace: props.item,
+        activeMarker: marker
+      });
+    }
+  };
+
+  onMouseout = () => {
+    if (!this.state.isUserSelected) {
+      this.setState({
+        showingInfoWindow: false
+      });
+    }
+  };
+
   onMapClicked = () => {
     if (this.state.showingInfoWindow) {
       this.setState({
+        isUserSelected: false,
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  };
+
+  onInfoWindowClose = () => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        isUserSelected: false,
         showingInfoWindow: false,
         activeMarker: null
       });
@@ -35,12 +70,14 @@ export class MapContainer extends React.Component {
   displayMarkers = () => {
     return this.props.itemMarkers.map(item => {
       return (
-        <Marker
+        <MapMarker
           key={item._id}
           position={{
             lat: item.location.coords.lat,
             lng: item.location.coords.lng
           }}
+          onMouseover={this.onMouseover}
+          onMouseout={this.onMouseout}
           onClick={this.onMarkerClick}
           item={item}
         />
@@ -71,6 +108,7 @@ export class MapContainer extends React.Component {
           <InfoWindow
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
+            onClose={this.onInfoWindowClose}
           >
             <div>
               <InfoWindowCard item={this.state.selectedPlace} />

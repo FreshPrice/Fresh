@@ -6,13 +6,9 @@ import React, { Component } from "react";
 import FreshForm from "./FreshForm.jsx";
 import "./Modal.css";
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -43,15 +39,17 @@ class Modal extends Component {
 
     return (
       <div>
-        <Fab
-          color="secondary"
-          aria-label="Edit"
-          className="NewPostFab"
-          onClick={this.handleOpen}
-          variant="extended"
-        >
-          <AddIcon /> Fresh Deal
-        </Fab>
+        {this.props.currentUser && (
+          <Fab
+            color="secondary"
+            aria-label="Edit"
+            className="NewPostFab"
+            onClick={this.handleOpen}
+            variant="extended"
+          >
+            <AddIcon /> Fresh Deal
+          </Fab>
+        )}
 
         <MaterialModal
           aria-labelledby="modal-title"
