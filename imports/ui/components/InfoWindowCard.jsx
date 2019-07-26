@@ -5,7 +5,7 @@ class InfoWindowCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageSrc: `/images/` + this.props.item.name + `.png`
+      imageSrc: this.props.item.imageSrc
     };
   }
 

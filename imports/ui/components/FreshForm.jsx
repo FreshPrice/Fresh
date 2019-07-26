@@ -20,14 +20,14 @@ class FreshForm extends Component {
       add: "",
       lat: 0,
       lng: 0,
-      stateError: false
+      stateError: false,
+      imageSrc: ""
     };
   }
 
-  clearInput = () => {
+  handleItemChange = value => {
     this.setState({
-      name: "",
-      price: ""
+      name: value
     });
   };
 
@@ -44,7 +44,32 @@ class FreshForm extends Component {
   };
   setLatLng = latLng => {
     this.setState({ lat: latLng.lat, lng: latLng.lng });
-    console.log(this.state.lat);
+  };
+
+  handleFileSelect = e => {
+    const reader = new FileReader();
+    if (e.target.files.length > 0) {
+      const image = e.target.files[0];
+      reader.readAsDataURL(image);
+      reader.onload = () => {
+        let result = reader.result;
+        this.setState({
+          imageSrc: result
+        });
+      };
+
+      reader.onerror = error => {
+        console.log(error);
+        this.setState({
+          imageSrc: "/images/" + this.state.name + ".png"
+        });
+      };
+    } else {
+      // Image was selected then unselected, need to revert to base image.
+      this.setState({
+        imageSrc: "/images/" + this.state.name + ".png"
+      });
+    }
   };
 
   handleSubmit = event => {
@@ -56,12 +81,17 @@ class FreshForm extends Component {
 
   addNewItem = () => {
     this.setState({ stateError: false });
+
     let newItem = {
       name: this.state.name,
       price: parseFloat(this.state.price),
       unit: this.state.unit,
       createdAt: new Date(),
       rating: 0,
+      imageSrc:
+        this.state.imageSrc === ""
+          ? "/images/" + this.state.name + ".png"
+          : this.state.imageSrc,
       location: {
         address: this.state.add,
         coords: {
@@ -71,7 +101,6 @@ class FreshForm extends Component {
       }
     };
     this.props.addItem(newItem);
-    this.clearInput();
     this.props.closeModalOnSubmit();
   };
 
@@ -104,7 +133,7 @@ class FreshForm extends Component {
             <SearchBar
               allowAddOptions={true}
               placeholder="Choose Item"
-              onValueUpdate={value => this.setState({ name: value })}
+              onValueUpdate={this.handleItemChange}
               onChange={false}
             />
           </div>
@@ -135,6 +164,16 @@ class FreshForm extends Component {
               />
             </Form.Input>
           </div>
+          <br />
+          {/* Optional Image Input */}
+          Image - Optional
+          <div className="geo-suggest">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={this.handleFileSelect}
+            />
+          </div>
           {/* Location Input */}
           <br />
           Location
@@ -145,7 +184,6 @@ class FreshForm extends Component {
               required
             />
           </div>
-          <br />
           <div>
             <div className="submit-button">
               <DialogAction>
