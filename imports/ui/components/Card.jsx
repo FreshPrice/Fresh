@@ -119,7 +119,10 @@ class CardComponent extends Component {
               </div>
             )}
           </div>
-          {this.props.currentUser && <AddShoppingList item={this.state.data} />}
+          <AddShoppingList
+            currentUser={this.props.currentUser}
+            item={this.state.data}
+          />
         </Card>
       </div>
     );

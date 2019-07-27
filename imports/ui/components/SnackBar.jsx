@@ -46,8 +46,13 @@ class CustomizedSnackbars extends Component {
   };
   render() {
     return (
-      <div>
+      <div
+        className={
+          this.props.currentUser === null ? "z-index-hidden" : "add-cart-button"
+        }
+      >
         <IconButton
+          disable={true}
           style={{ display: this.state.isAdded ? "none" : "" }}
           onClick={this.onAdd}
         >
