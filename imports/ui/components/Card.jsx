@@ -90,8 +90,11 @@ class CardComponent extends Component {
                 className={classes.addressOnly}
               >
                 <CardContent>
-                  <Typography variant="subtitle1" color="textSecondary">
+                  <Typography variant="subtitle2" color="textSecondary">
                     {this.state.data.location.address}
+                  </Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    Posted on {this.state.data.createdAt.toLocaleString()}
                   </Typography>
                 </CardContent>
               </CardActions>
