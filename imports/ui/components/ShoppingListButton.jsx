@@ -12,6 +12,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import EmailButton from "./EmailButton.jsx";
 import { connect } from "react-redux";
 import {
   getShoppingListItems,
@@ -39,7 +40,7 @@ class ShoppingListButton extends Component {
       return;
     }
     this.props.getCheckListItems();
-    this.setState({checked: this.props.checkList.checkList});
+    this.setState({ checked: this.props.checkList.checkList });
     this.setState({ ...this.state, [side]: open });
   };
   handleToggle = value => () => {
@@ -60,7 +61,7 @@ class ShoppingListButton extends Component {
       className="list-sector"
     >
       <Typography variant="h6" id="shopping-title">
-        Your personalized shopping list
+        Here are {Meteor.user().emails[0].address}'s shopping list
       </Typography>
       <Divider />
       <List>
@@ -103,6 +104,7 @@ class ShoppingListButton extends Component {
           );
         })}
       </List>
+      <EmailButton items={this.props.items.shoppingList} />
     </div>
   );
 
@@ -112,15 +114,15 @@ class ShoppingListButton extends Component {
       <span>
         {this.props.currentUser && (
           <span>
-          <Button
-          variant="outlined"
-          size="small"
-          className={"shoppinglist-button"}
-          onClick={this.toggleDrawer("left", true)}
-          >
-          <ListIcon  className="shoppinglist-icon"/>
-          Shopping List 
-          </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              className={"shoppinglist-button"}
+              onClick={this.toggleDrawer("left", true)}
+            >
+              <ListIcon className="shoppinglist-icon" />
+              Shopping List
+            </Button>
             <Drawer
               open={this.state.left}
               onClose={this.toggleDrawer("left", false)}

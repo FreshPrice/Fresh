@@ -155,6 +155,19 @@ export const getCheckListItems = () => {
   };
 };
 
+export const sendEmail = items => {
+  return async dispatch => {
+    return Meteor.call("sendContactMail", items, (err, res) => {
+      if (err) {
+        console.log("Could not send an email");
+        console.log(err);
+      } else {
+        console.log("Successfully sent email");
+      }
+    });
+  }
+};
+
 export const fetchItemsBegin = () => {
   return {
     type: FETCH_ITEMS_BEGIN
