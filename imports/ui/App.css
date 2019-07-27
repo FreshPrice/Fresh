@@ -84,3 +84,13 @@
 .accounts-dialog a {
   text-decoration: none;
 }
+
+#footer {
+  font-size: 10px;
+  padding: 5px 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 5em;
+}
