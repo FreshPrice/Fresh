@@ -15,16 +15,16 @@ import { Meteor } from "meteor/meteor";
 class CustomizedSnackbars extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, isFav: false, item: this.props.item };
+    this.state = { open: false, isAdded: false, item: this.props.item };
   }
 
   componentDidMount() {
     this.props.getShoppingListItems();
   }
 
-  onFavPressed = () => {
-    this.setState({ isFav: !this.state.isFav });
-    this.setState({ open: !this.state.isFav });
+  onAdd = () => {
+    this.setState({ isAdded: !this.state.isAdded });
+    this.setState({ open: !this.state.isAdded });
     if (this.props.items.shoppingList.length === 0) {
       let newShoppingList = {
         createdBy: Meteor.userId(),
@@ -48,14 +48,14 @@ class CustomizedSnackbars extends Component {
     return (
       <div>
         <IconButton
-          style={{ display: this.state.isFav ? "none" : "" }}
-          onClick={this.onFavPressed}
+          style={{ display: this.state.isAdded ? "none" : "" }}
+          onClick={this.onAdd}
         >
           <AddIcon />
         </IconButton>
         <IconButton
-          style={{ display: this.state.isFav ? "" : "none" }}
-          onClick={this.onFavPressed}
+          style={{ display: this.state.isAdded ? "" : "none" }}
+          onClick={this.onAdd}
         >
           <CheckedIcon />
         </IconButton>

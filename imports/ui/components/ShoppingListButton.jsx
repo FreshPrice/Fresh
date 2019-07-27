@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import Checkbox from "@material-ui/core/Checkbox";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import {
   getShoppingListItems,
@@ -28,8 +29,6 @@ class ShoppingListButton extends Component {
 
   componentDidMount() {
     this.props.getShoppingListItems();
-    this.props.getCheckListItems();
-    console.log(this.props.checkList.checkList);
   }
 
   toggleDrawer = (side, open) => event => {
@@ -39,6 +38,8 @@ class ShoppingListButton extends Component {
     ) {
       return;
     }
+    this.props.getCheckListItems();
+    this.setState({checked: this.props.checkList.checkList});
     this.setState({ ...this.state, [side]: open });
   };
   handleToggle = value => () => {
@@ -70,10 +71,6 @@ class ShoppingListButton extends Component {
         )}
         {items.map((text, index) => {
           const labelId = `checkbox-list-secondary-label-${index}`;
-          console.log(this.state.checked);
-          console.log(this.state.checked.indexOf(index));
-          console.log(index);
-          console.log(this.props.checkList.checkList);
           return (
             <ListItem key={index}>
               <ListItemAvatar>
@@ -114,19 +111,24 @@ class ShoppingListButton extends Component {
     return (
       <span>
         {this.props.currentUser && (
-          <IconButton
-            className={"shopping-button"}
-            onClick={this.toggleDrawer("left", true)}
-          >
-            <ListIcon />
-          </IconButton>
-        )}
-        <Drawer
-          open={this.state.left}
-          onClose={this.toggleDrawer("left", false)}
+          <span>
+                    <Button
+          variant="contained"
+          size="small"
+          className={"shoppinglist-button"}
+          onClick={this.toggleDrawer("left", true)}
         >
-          {this.sideList("left", items)}
-        </Drawer>
+          <ListIcon  className="shoppinglist-icon"/>
+          Shopping List 
+        </Button>
+            <Drawer
+              open={this.state.left}
+              onClose={this.toggleDrawer("left", false)}
+            >
+              {this.sideList("left", items)}
+            </Drawer>
+          </span>
+        )}
       </span>
     );
   }

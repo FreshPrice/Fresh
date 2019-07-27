@@ -6,3 +6,11 @@
 #shopping-title {
   padding: 3%;
 }
+
+.shoppinglist-icon {
+    margin-right: 8px;
+}
+
+.shoppinglist-button {
+    margin-left: 8px !important
+}
