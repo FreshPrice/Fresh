@@ -121,12 +121,6 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
         ...state,
         shoppingList: state.shoppingList.concat(action.payload.item)
       };
-    // case UPDATE_CHECK_LIST:
-    //   console.log(action.payload.item)
-    //   return {
-    //     ...state,
-    //     checkList: action.payload.item
-    //   };
     default:
       return state;
   }
@@ -141,7 +135,6 @@ const checkListReducer = (state = initialCheckListState, action) => {
           checkList: []
         };
       } else {
-        console.log("Reached here")
         return {
           ...state,
           checkList: action.payload.items[0].checkList

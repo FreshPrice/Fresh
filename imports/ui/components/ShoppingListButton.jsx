@@ -112,15 +112,15 @@ class ShoppingListButton extends Component {
       <span>
         {this.props.currentUser && (
           <span>
-                    <Button
+          <Button
           variant="outlined"
           size="small"
           className={"shoppinglist-button"}
           onClick={this.toggleDrawer("left", true)}
-        >
+          >
           <ListIcon  className="shoppinglist-icon"/>
           Shopping List 
-        </Button>
+          </Button>
             <Drawer
               open={this.state.left}
               onClose={this.toggleDrawer("left", false)}
