@@ -37,13 +37,6 @@
   background-size: cover;
 }
 
-.right-section {
-  display: grid;
-  padding: 8%;
-  background-image: url("/background.jpg");
-  background-position: center;
-}
-
 .fresh-header {
   display: flex;
   flex-direction: row;
@@ -55,15 +48,6 @@
   height: 100px;
   align-self: center;
 }
-.map-container {
-  position: sticky !important;
-  height: 60vh !important;
-}
-
-#CardList {
-  height: 80vh !important;
-  overflow: scroll;
-}
 
 #SortButtons {
   height: 5vh !important;
@@ -74,7 +58,7 @@
 
 .map-container {
   position: sticky !important;
-  height: 60vh !important;
+  height: 63vh !important;
 }
 
 #CardList {
@@ -86,11 +70,6 @@
   float: left;
 }
 
-#SortButtons {
-  margin-top: 3%;
-  margin-bottom: 3%;
-  text-align: right !important;
-}
 
 ::-webkit-scrollbar {
   display: none;
