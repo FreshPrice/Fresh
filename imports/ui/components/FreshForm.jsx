@@ -17,7 +17,7 @@ class FreshForm extends Component {
       name: "",
       price: "",
       unit: PER_HUNDRED_GRAMS,
-      add: "",
+      address: "",
       lat: 0,
       lng: 0,
       stateError: false,
@@ -40,7 +40,7 @@ class FreshForm extends Component {
   };
 
   setAddress = address => {
-    this.setState({ add: address });
+    this.setState({ address: address });
   };
   setLatLng = latLng => {
     this.setState({ lat: latLng.lat, lng: latLng.lng });
@@ -74,7 +74,10 @@ class FreshForm extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    !this.state.add || !this.state.price || !this.state.name || !this.state.lat
+    !this.state.address ||
+    !this.state.price ||
+    !this.state.name ||
+    !this.state.lat
       ? this.setState({ stateError: true })
       : this.addNewItem();
   };
@@ -93,7 +96,7 @@ class FreshForm extends Component {
           ? "/images/" + this.state.name + ".png"
           : this.state.imageSrc,
       location: {
-        address: this.state.add,
+        address: this.state.address,
         coords: {
           lat: this.state.lat,
           lng: this.state.lng
@@ -167,7 +170,7 @@ class FreshForm extends Component {
           <br />
           {/* Optional Image Input */}
           Image - Optional
-          <div className="geo-suggest">
+          <div className="image-upload">
             <input
               type="file"
               accept="image/*"
@@ -191,7 +194,7 @@ class FreshForm extends Component {
                   color="pink"
                   type="submit"
                   disabled={
-                    !this.state.add ||
+                    !this.state.address ||
                     !this.state.price ||
                     !this.state.name ||
                     this.state.lat === 0
