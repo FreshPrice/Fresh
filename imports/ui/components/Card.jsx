@@ -5,6 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import Tooltip from "@material-ui/core/Tooltip";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
 import { connect } from "react-redux";
@@ -84,7 +85,7 @@ class CardComponent extends Component {
           {/* Food Details */}
           <div className={classes.details}>
             {this.state.showDetails && this.state.data.location.address ? (
-              // Address Only Side
+              // Address and Posted Date Side
               <CardActions
                 onClick={this.toggleDetails}
                 className={classes.addressOnly}
@@ -111,13 +112,18 @@ class CardComponent extends Component {
                   <Typography variant="subtitle1" color="textSecondary">
                     ${this.state.data.price} {this.state.data.unit}
                   </Typography>
-                  <Typography
-                    variant="subtitle2"
-                    className={classes.longAddress}
-                    color="textSecondary"
+                  <Tooltip
+                    enterDelay={500}
+                    title="Click for additional details"
                   >
-                    {this.state.data.location.address}
-                  </Typography>
+                    <Typography
+                      variant="subtitle2"
+                      className={classes.longAddress}
+                      color="textSecondary"
+                    >
+                      {this.state.data.location.address}
+                    </Typography>
+                  </Tooltip>
                 </CardContent>
               </div>
             )}
