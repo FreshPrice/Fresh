@@ -52,7 +52,6 @@ class CustomizedSnackbars extends Component {
         }
       >
         <IconButton
-          disable={true}
           style={{ display: this.state.isAdded ? "none" : "" }}
           onClick={this.onAdd}
         >
