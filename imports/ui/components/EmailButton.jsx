@@ -17,7 +17,7 @@ class EmailButton extends Component {
     console.log(items)
     return (
       <div>
-        <Button onClick={() => this.handleSend(items)}> CLick me</Button>
+        <Button onClick={() => this.handleSend(items)}> Click for a uwu in your inbox! </Button>
       </div>
     );
   }
