@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import Items from "../imports/api/items.js";
 import DropdownItems from "../imports/api/dropdownItems.js";
+import ShoppingList from "../imports/api/shoppinglist";
 
 Meteor.startup(() => {
   if (Items.find().count() === 0) {
@@ -103,6 +104,24 @@ Meteor.startup(() => {
       DropdownItems.insert(item);
     });
   }
+
+  if (ShoppingList.find({}).count() === 0) {
+    console.log(
+      "Uh oh... there's nothing here...Let's add some dropwdown items."
+    );
+    let shoppingList = [
+      {
+        createdBy: "",
+        shoppingList: [],
+        createdAt: new Date()
+      }
+    ];
+
+    shoppingList.forEach(item => {
+      console.log("Adding dropwdown: " + item.value);
+      ShoppingList.insert(item);
+    });
+  }
 });
 
 Meteor.methods({
@@ -134,5 +153,43 @@ Meteor.methods({
 Meteor.methods({
   addItemToDropdown: item => {
     return DropdownItems.insert(item);
+  }
+});
+
+Meteor.methods({
+  addNewShoppingList: item => {
+    return ShoppingList.insert(item);
+  }
+});
+
+Meteor.methods({
+  getShoppingListItems: () => {
+    return ShoppingList.find({ createdBy: Meteor.userId() }).fetch();
+  }
+});
+
+Meteor.methods({
+  getCheckListItems: () => {
+    return ShoppingList.find({ createdBy: Meteor.userId() }).fetch();
+  }
+});
+
+Meteor.methods({
+  updateShoppingList: item => {
+    return ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $addToSet: { shoppingList: item } }
+    );
+  }
+});
+
+Meteor.methods({
+  updateCheckList: item => {
+    return ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $set: { checkList: item } },
+      false,
+      true
+    );
   }
 });

@@ -5,7 +5,7 @@ import FreshModal from "./components/Modal.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import LoginBar from "./components/AccountsUIWrapper";
 import "./App.css";
-import ShoppingButton from "./components/ShoppingListButton";
+import ShoppingButton from "./components/ShoppingListButton.jsx";
 import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 
@@ -17,8 +17,10 @@ class App extends Component {
     return (
       <div className="AppContainer">
         <div className="left-section">
-          <LoginBar />
-          <ShoppingButton currentUser={this.props.currentUser} />
+          <div className="user-section">
+            <LoginBar />
+            <ShoppingButton currentUser={this.props.currentUser} />
+          </div>
           <div className="fresh-header">
             <img className="logo" src="/logo.png" />
           </div>

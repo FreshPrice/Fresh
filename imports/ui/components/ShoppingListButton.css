@@ -1,0 +1,16 @@
+.MuiDrawer-paperAnchorLeft {
+  width: 20% !important;
+  text-align: center
+}
+
+#shopping-title {
+  padding: 3%;
+}
+
+.shoppinglist-icon {
+    margin-right: 8px;
+}
+
+.shoppinglist-button {
+    margin-left: 8px !important
+}

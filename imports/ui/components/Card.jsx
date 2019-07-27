@@ -7,10 +7,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
-import AddIcon from "@material-ui/icons/PlaylistAdd";
-import CheckedIcon from "@material-ui/icons/PlaylistAddCheck";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
+import AddShoppingList from "./SnackBar";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
@@ -19,16 +18,11 @@ class CardComponent extends Component {
     super(props);
     this.state = {
       data: this.props.post,
-      isFav: false,
       imageSrc: this.props.post.imageSrc,
       showDetails: false,
       isLightboxOpen: false
     };
   }
-
-  onFavPressed = () => {
-    this.setState({ isFav: !this.state.isFav });
-  };
 
   onThumbsUpPressed = () => {
     let item = this.state.data;
@@ -125,22 +119,7 @@ class CardComponent extends Component {
               </div>
             )}
           </div>
-          {this.props.currentUser && (
-            <div>
-              <IconButton
-                style={{ display: this.state.isFav ? "none" : "" }}
-                onClick={this.onFavPressed}
-              >
-                <AddIcon />
-              </IconButton>
-              <IconButton
-                style={{ display: this.state.isFav ? "" : "none" }}
-                onClick={this.onFavPressed}
-              >
-                <CheckedIcon />
-              </IconButton>
-            </div>
-          )}
+          {this.props.currentUser && <AddShoppingList item={this.state.data} />}
         </Card>
       </div>
     );

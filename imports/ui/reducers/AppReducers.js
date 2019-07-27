@@ -6,7 +6,12 @@ import {
   UPDATE_THUMBS_RATING,
   ADD_ITEM_SUCCESS,
   GET_DROPDOWN_ITEMS,
-  ADD_NEW_DROPDOWN_ITEM
+  ADD_NEW_DROPDOWN_ITEM,
+  GET_SHOPPING_LIST_ITEMS,
+  ADD_NEW_SHOPPING_LIST,
+  UPDATE_SHOPPING_LIST,
+  UPDATE_CHECK_LIST,
+  GET_CHECK_LIST
 } from "../actions/AppActions.js";
 
 const initialState = {
@@ -17,6 +22,14 @@ const initialState = {
 
 const initialItemState = {
   itemOptions: []
+};
+
+const initialShoppingListState = {
+  shoppingList: []
+};
+
+const initialCheckListState = {
+  checkList: []
 };
 
 const itemReducer = (state = initialState, action) => {
@@ -83,7 +96,65 @@ const itemSetReducer = (state = initialItemState, action) => {
   }
 };
 
+const shoppingListReducer = (state = initialShoppingListState, action) => {
+  switch (action.type) {
+    case GET_SHOPPING_LIST_ITEMS:
+      if (action.payload.items.length === 0) {
+        return {
+          ...state,
+          shoppingList: []
+        };
+      } else
+        return {
+          ...state,
+          shoppingList: action.payload.items[0].shoppingList
+        };
+    case ADD_NEW_SHOPPING_LIST:
+      return {
+        ...state,
+        shoppingList: state.shoppingList.concat(
+          action.payload.item.shoppingList
+        )
+      };
+    case UPDATE_SHOPPING_LIST:
+      return {
+        ...state,
+        shoppingList: state.shoppingList.concat(action.payload.item)
+      };
+    default:
+      return state;
+  }
+};
+
+const checkListReducer = (state = initialCheckListState, action) => {
+  switch (action.type) {
+    case GET_CHECK_LIST:
+      if (action.payload.items.length === 0) {
+        return {
+          ...state,
+          checkList: []
+        };
+      } else {
+        return {
+          ...state,
+          checkList: action.payload.items[0].checkList
+        };
+      }
+
+    case UPDATE_CHECK_LIST:
+      console.log(action.payload.item);
+      return {
+        ...state,
+        checkList: action.payload.item
+      };
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   items: itemReducer,
-  itemSet: itemSetReducer
+  itemSet: itemSetReducer,
+  shoppingList: shoppingListReducer,
+  checkList: checkListReducer
 });
