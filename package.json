@@ -1,6 +1,9 @@
 {
   "name": "Fresh",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "start": "meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
