@@ -116,11 +116,12 @@ class CardComponent extends Component {
                     {this.state.data.location.address}
                   </Typography>
                 </CardContent>
-
-                <AddShoppingList
-                  currentUser={this.props.currentUser}
-                  item={this.state.data}
-                />
+                {this.props.currentUser && (
+                  <AddShoppingList
+                    currentUser={this.props.currentUser}
+                    item={this.state.data}
+                  />
+                )}
               </div>
             )}
           </div>
