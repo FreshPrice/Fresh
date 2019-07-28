@@ -77,10 +77,11 @@
 .new-post-fab {
   position: sticky !important;
   bottom: 20px !important;
+  z-index: 10;
 }
 
 .z-index-hidden {
-  z-index: -1;
+  z-index: 0;
 }
 
 #login-buttons a,
