@@ -6,7 +6,8 @@ import ShoppingList from "../imports/api/shoppinglist";
 import { GetContactEmail } from "../imports/api/email-template.js";
 
 Meteor.startup(() => {
-  process.env.MAIL_URL="smtps://freshpricefresh%40gmail.com:FreshPrice2019@smtp.gmail.com:465/";
+  process.env.MAIL_URL = 
+  "smtp://postmaster@sandbox4a82e792f5604b6d8620adfa2e5d9c9b.mailgun.org:6fe2d06af41501d6a2acf4575bb93f18-f877bd7a-f4d8735c@smtp.mailgun.org:587";
   if (Items.find().count() === 0) {
     console.log("Uh oh... there's nothing here...Let's add some items.");
     let items = [
