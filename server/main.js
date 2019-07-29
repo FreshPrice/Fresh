@@ -7,6 +7,7 @@ import { GetContactEmail } from "../imports/api/email-template.js";
 
 Meteor.startup(() => {
   if (Items.find().count() === 0) {
+    process.env.MAIL_URL="smtps://freshpricefresh%40gmail.com:FreshPrice2019@smtp.gmail.com:465/";
     console.log("Uh oh... there's nothing here...Let's add some items.");
     let items = [
       {
