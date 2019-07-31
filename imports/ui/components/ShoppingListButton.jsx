@@ -20,7 +20,7 @@ import {
   getCheckListItems
 } from "../actions/AppActions.js";
 import "./ShoppingListButton.css";
-import ConfirmPassword from "./ConfirmPassword.jsx";
+import ConfirmEmail from "./ConfirmEmail.jsx"
 
 class ShoppingListButton extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class ShoppingListButton extends Component {
       return;
     }
     this.props.getCheckListItems();
-    this.setState({checked: this.props.checkList.checkList});
+    this.setState({ checked: this.props.checkList.checkList });
     this.setState({ ...this.state, [side]: open });
   };
   handleToggle = value => () => {
@@ -57,7 +57,6 @@ class ShoppingListButton extends Component {
   sideList = (side, items) => (
     <div
       role="presentation"
-      // onKeyDown={this.toggleDrawer(side, false)}
       className="list-sector"
     >
       <Typography variant="h6" id="shopping-title">
@@ -96,7 +95,9 @@ class ShoppingListButton extends Component {
                 <Checkbox
                   edge="end"
                   onChange={this.handleToggle(text._id)}
-                  checked={this.props.checkList.checkList.indexOf(text._id) !== -1}
+                  checked={
+                    this.props.checkList.checkList.indexOf(text._id) !== -1
+                  }
                   inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemSecondaryAction>
@@ -104,7 +105,7 @@ class ShoppingListButton extends Component {
           );
         })}
       </List>
-      <ConfirmPassword/>
+      {this.props.items.shoppingList.length !== 0 && (<ConfirmEmail />)}
     </div>
   );
 
@@ -114,15 +115,15 @@ class ShoppingListButton extends Component {
       <span>
         {this.props.currentUser && (
           <span>
-          <Button
-          variant="outlined"
-          size="small"
-          className={"shoppinglist-button"}
-          onClick={this.toggleDrawer("left", true)}
-          >
-          <ListIcon  className="shoppinglist-icon"/>
-          Shopping List 
-          </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              className={"shoppinglist-button"}
+              onClick={this.toggleDrawer("left", true)}
+            >
+              <ListIcon className="shoppinglist-icon" />
+              Shopping List
+            </Button>
             <Drawer
               open={this.state.left}
               onClose={this.toggleDrawer("left", false)}
