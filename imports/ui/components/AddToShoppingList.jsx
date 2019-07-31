@@ -21,7 +21,9 @@ class CustomizedSnackbars extends Component {
   componentDidMount() {
     this.props.getShoppingListItems();
   }
-
+  /* -------------------------------------------------------------------
+    If shoppinglist is empty, add a new entry in db. Otherwise, update db. 
+	  --------------------------------------------------------------------*/
   onAdd = () => {
     this.setState({ isAdded: !this.state.isAdded });
     this.setState({ open: !this.state.isAdded });
@@ -45,6 +47,7 @@ class CustomizedSnackbars extends Component {
     this.setState({ open: false });
   };
   render() {
+    // Add icon toggles on add
     return (
       <div>
         <IconButton
@@ -78,6 +81,7 @@ class CustomizedSnackbars extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return { items: state.shoppingList };
 };

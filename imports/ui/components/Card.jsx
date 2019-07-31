@@ -11,7 +11,7 @@ import ThumbDownSolidIcon from "@material-ui/icons/ThumbDown";
 import ThumbUpSolidIcon from "@material-ui/icons/ThumbUp";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
-import AddShoppingList from "./SnackBar";
+import AddShoppingList from "./AddToShoppingList";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 

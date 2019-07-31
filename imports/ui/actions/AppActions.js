@@ -107,7 +107,6 @@ export const addToShoppingList = item => {
         dispatch(fetchItemsFailure(err));
       } else {
         //Callback "res" is the ID of the successfully added item
-        console.log(item);
         dispatch(updateShoppingList(item));
       }
     });
