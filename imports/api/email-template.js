@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 
 const ContactMeTemplate = function(items) {
   return (
-    <Email title="Hello World!">
+    <Email>
       <Box>
         <Item>
           <Span> Hey, hello! Heres your grocery list. </Span>
