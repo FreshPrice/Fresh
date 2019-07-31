@@ -20,6 +20,7 @@ import {
   getCheckListItems
 } from "../actions/AppActions.js";
 import "./ShoppingListButton.css";
+import ConfirmPassword from "./ConfirmPassword.jsx";
 
 class ShoppingListButton extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class ShoppingListButton extends Component {
   sideList = (side, items) => (
     <div
       role="presentation"
-      onKeyDown={this.toggleDrawer(side, false)}
+      // onKeyDown={this.toggleDrawer(side, false)}
       className="list-sector"
     >
       <Typography variant="h6" id="shopping-title">
@@ -94,8 +95,8 @@ class ShoppingListButton extends Component {
               <ListItemSecondaryAction>
                 <Checkbox
                   edge="end"
-                  onChange={this.handleToggle(index)}
-                  checked={this.props.checkList.checkList.indexOf(index) !== -1}
+                  onChange={this.handleToggle(text._id)}
+                  checked={this.props.checkList.checkList.indexOf(text._id) !== -1}
                   inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemSecondaryAction>
@@ -103,6 +104,7 @@ class ShoppingListButton extends Component {
           );
         })}
       </List>
+      <ConfirmPassword/>
     </div>
   );
 
