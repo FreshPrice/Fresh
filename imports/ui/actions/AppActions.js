@@ -12,6 +12,8 @@ export const UPDATE_CHECK_LIST = "UPDATE_CHECK_LIST";
 export const GET_CHECK_LIST = "GET_CHECK_LIST";
 export const DELETE_ALL_SHOPPING_LIST = "DELETE_ALL_SHOPPING_LIST";
 export const DELETE_ALL_CHECK_LIST = "DELETE_ALL_CHECK_LIST";
+export const DELETE_ONE_SHOPPING_ITEM = "DELETE_ONE_SHOPPING_ITEM";
+export const DELETE_ONE_CHECK_LIST = "DELETE_ONE_CHECK_LIST";
 
 export const addItem = item => {
   return async dispatch => {
@@ -170,6 +172,19 @@ export const deleteAllCheckList = () => {
   };
 };
 
+export const deleteOneCheckList = id => {
+  return async dispatch => {
+    return Meteor.call("deleteOneCheckList", id, (err, res) => {
+      if (err) {
+        dispatch(fetchItemsFailure(err));
+      } else {
+        dispatch(deleteOneCheckListSuccess(id));
+        dispatch(deleteOneShoppingItemSuccess(id));
+      }
+    });
+  };
+};
+
 export const fetchItemsBegin = () => {
   return {
     type: FETCH_ITEMS_BEGIN
@@ -284,5 +299,23 @@ export const deleteItemsSuccess = () => {
 export const deleteCheckListSuccess = () => {
   return {
     type: DELETE_ALL_CHECK_LIST
+  };
+};
+
+export const deleteOneShoppingItemSuccess = id => {
+  return {
+    type: DELETE_ONE_SHOPPING_ITEM,
+    payload: {
+      id
+    }
+  };
+};
+
+export const deleteOneCheckListSuccess = id => {
+  return {
+    type: DELETE_ONE_CHECK_LIST,
+    payload: {
+      id
+    }
   };
 };

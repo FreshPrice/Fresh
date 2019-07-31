@@ -13,7 +13,9 @@ import {
   UPDATE_CHECK_LIST,
   GET_CHECK_LIST,
   DELETE_ALL_CHECK_LIST,
-  DELETE_ALL_SHOPPING_LIST
+  DELETE_ALL_SHOPPING_LIST,
+  DELETE_ONE_SHOPPING_ITEM,
+  DELETE_ONE_CHECK_LIST
 } from "../actions/AppActions.js";
 
 const initialState = {
@@ -128,6 +130,14 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
         ...state,
         shoppingList: []
       };
+    case DELETE_ONE_SHOPPING_ITEM:
+      let newShoppingState = { ...state };
+      newShoppingState.shoppingList.map((data, index) => {
+        if (data._id === action.payload.id) {
+          newShoppingState.shoppingList.splice(index, 1);
+        }
+      });
+      return newShoppingState;
     default:
       return state;
   }
@@ -147,9 +157,7 @@ const checkListReducer = (state = initialCheckListState, action) => {
           checkList: action.payload.items[0].checkList
         };
       }
-
     case UPDATE_CHECK_LIST:
-      console.log(action.payload.item);
       return {
         ...state,
         checkList: action.payload.item
@@ -159,6 +167,16 @@ const checkListReducer = (state = initialCheckListState, action) => {
         ...state,
         checkList: []
       };
+    case DELETE_ALL_CHECK_LIST:
+      return {
+        ...state,
+        checkList: []
+      };
+    case DELETE_ONE_CHECK_LIST:
+      let newCheckListState = { ...state };
+      let index = newCheckListState.checkList.indexOf(action.payload.id);
+      newCheckListState.checkList.splice(index, 1);
+      return newCheckListState;
     default:
       return state;
   }

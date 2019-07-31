@@ -51,7 +51,7 @@ class FormDialog extends Component {
 
   render() {
     return (
-      <div>
+      <span>
         <Button
           variant="outlined"
           color="primary"
@@ -94,7 +94,7 @@ class FormDialog extends Component {
             </DialogActions>
           </form>
         </Dialog>
-      </div>
+      </span>
     );
   }
 }

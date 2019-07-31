@@ -201,3 +201,20 @@ Meteor.methods({
     });
   }
 });
+
+Meteor.methods({
+  deleteOneCheckList: id => {
+    ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $pull: { checkList: id } },
+      false,
+      true
+    );
+    return ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $pull: { shoppingList: { _id: id } } },
+      false,
+      true
+    );
+  }
+});

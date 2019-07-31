@@ -20,12 +20,17 @@ import {
   getCheckListItems
 } from "../actions/AppActions.js";
 import "./ShoppingListButton.css";
-import ConfirmEmail from "./ConfirmEmail.jsx"
+import ConfirmEmail from "./ConfirmEmail.jsx";
+import DeleteOne from "./EditList.jsx";
 
 class ShoppingListButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { left: false, checked: this.props.checkList.checkList };
+    this.state = {
+      left: false,
+      checked: this.props.checkList.checkList,
+      isEditClicked: false
+    };
   }
 
   componentDidMount() {
@@ -54,11 +59,14 @@ class ShoppingListButton extends Component {
     this.props.addToCheckedList(newChecked);
   };
 
+  onEditClick = () => {
+    this.setState({
+      isEditClicked: !this.state.isEditClicked
+    })
+  }
+
   sideList = (side, items) => (
-    <div
-      role="presentation"
-      className="list-sector"
-    >
+    <div role="presentation" className="list-sector">
       <Typography variant="h6" id="shopping-title">
         Your personalized shopping list
       </Typography>
@@ -73,6 +81,10 @@ class ShoppingListButton extends Component {
           const labelId = `checkbox-list-secondary-label-${index}`;
           return (
             <ListItem key={index}>
+              <DeleteOne
+                clicked={this.state.isEditClicked}
+                itemId={text._id} 
+              />
               <ListItemAvatar>
                 <Avatar alt="Remy Sharp" src={text.imageSrc} />
               </ListItemAvatar>
@@ -105,7 +117,14 @@ class ShoppingListButton extends Component {
           );
         })}
       </List>
-      {this.props.items.shoppingList.length !== 0 && (<ConfirmEmail />)}
+      {this.props.items.shoppingList.length !== 0 && (
+        <span>
+          <Button variant="outlined" color="primary" onClick = {this.onEditClick}>
+            Edit
+          </Button>
+          <ConfirmEmail />
+        </span>
+      )}
     </div>
   );
 
