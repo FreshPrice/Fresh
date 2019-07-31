@@ -167,11 +167,6 @@ const checkListReducer = (state = initialCheckListState, action) => {
         ...state,
         checkList: []
       };
-    case DELETE_ALL_CHECK_LIST:
-      return {
-        ...state,
-        checkList: []
-      };
     case DELETE_ONE_CHECK_LIST:
       let newCheckListState = { ...state };
       let index = newCheckListState.checkList.indexOf(action.payload.id);
