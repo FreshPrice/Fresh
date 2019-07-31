@@ -7,7 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { connect } from "react-redux";
-import {  } from "../actions/AppActions.js";
+import { deleteAllCheckList } from "../actions/AppActions.js";
 
 class FormDialog extends Component {
   constructor(props) {
@@ -27,17 +27,18 @@ class FormDialog extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.state.password === this.state.email?
-    "this.removeAll()" :
-    this.setState({open: true, error: true, helperText: "Incorrect, please enter the correct email."});
+    this.state.password === this.state.email
+      ? this.removeAll()
+      : this.setState({
+          open: true,
+          error: true,
+          helperText: "Incorrect, please enter the correct email."
+        });
   };
 
-  confirmUser = () => {
-    let user = {
-      email: Meteor.user().emails[0].address,
-      password: this.state.password
-    };
-    this.props.checkUserPassword(user);
+  removeAll = () => {
+    this.setState({ open: false });
+    this.props.deleteAllCheckList();
   };
 
   handleClickOpen = () => {
@@ -46,14 +47,6 @@ class FormDialog extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
-  };
-
-  removeAll = async () => {
-    this.setState({ open: false });
-    await fetch("/questions", {
-      method: "DELETE"
-    });
-    this.props.deleteAllContent();
   };
 
   render() {
@@ -106,11 +99,7 @@ class FormDialog extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { confirmPassword: state.confirmUser };
-};
-
 export default connect(
-    null,
-  { }
+  null,
+  { deleteAllCheckList }
 )(FormDialog);

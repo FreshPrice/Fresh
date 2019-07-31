@@ -193,3 +193,11 @@ Meteor.methods({
     );
   }
 });
+
+Meteor.methods({
+  deleteAllCheckList: () => {
+    return ShoppingList.remove({
+      createdBy: Meteor.userId()
+    });
+  }
+});

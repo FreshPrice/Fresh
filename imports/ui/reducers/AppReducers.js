@@ -11,7 +11,9 @@ import {
   ADD_NEW_SHOPPING_LIST,
   UPDATE_SHOPPING_LIST,
   UPDATE_CHECK_LIST,
-  GET_CHECK_LIST
+  GET_CHECK_LIST,
+  DELETE_ALL_CHECK_LIST,
+  DELETE_ALL_SHOPPING_LIST
 } from "../actions/AppActions.js";
 
 const initialState = {
@@ -121,6 +123,11 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
         ...state,
         shoppingList: state.shoppingList.concat(action.payload.item)
       };
+    case DELETE_ALL_SHOPPING_LIST:
+      return {
+        ...state,
+        shoppingList: []
+      };
     default:
       return state;
   }
@@ -146,6 +153,11 @@ const checkListReducer = (state = initialCheckListState, action) => {
       return {
         ...state,
         checkList: action.payload.item
+      };
+    case DELETE_ALL_CHECK_LIST:
+      return {
+        ...state,
+        checkList: []
       };
     default:
       return state;
