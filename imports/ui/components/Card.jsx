@@ -141,6 +141,7 @@ const useStyles = theme => ({
     }
   },
   details: {
+    display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     flexGrow: 1
