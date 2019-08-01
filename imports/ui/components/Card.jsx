@@ -106,23 +106,25 @@ class CardComponent extends Component {
                 onClick={this.toggleDetails}
               >
                 <CardContent className={classes.content}>
-                  <Typography component="h5" variant="h5">
-                    {this.state.data.name}
-                  </Typography>
-                  <Typography variant="subtitle1" color="textSecondary">
-                    ${this.state.data.price} {this.state.data.unit}
-                  </Typography>
                   <Tooltip
                     enterDelay={500}
                     title="Click for additional details"
                   >
-                    <Typography
-                      variant="subtitle2"
-                      className={classes.longAddress}
-                      color="textSecondary"
-                    >
-                      {this.state.data.location.address}
-                    </Typography>
+                    <div>
+                      <Typography component="h5" variant="h5">
+                        {this.state.data.name}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        ${this.state.data.price} {this.state.data.unit}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        className={classes.longAddress}
+                        color="textSecondary"
+                      >
+                        {this.state.data.location.address}
+                      </Typography>
+                    </div>
                   </Tooltip>
                 </CardContent>
               </div>
