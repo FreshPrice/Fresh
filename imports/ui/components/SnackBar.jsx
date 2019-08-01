@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import IconButton from "@material-ui/core/IconButton";
 import Snackbar from "@material-ui/core/Snackbar";
+import Tooltip from "@material-ui/core/Tooltip";
 import AddIcon from "@material-ui/icons/PlaylistAdd";
 import CheckedIcon from "@material-ui/icons/PlaylistAddCheck";
 import MySnackbarContentWrapper from "./SnackBarContentWrapper.jsx";
@@ -58,12 +59,14 @@ class CustomizedSnackbars extends Component {
           padding: "0"
         }}
       >
-        <IconButton
-          style={{ display: this.state.isAdded ? "none" : "" }}
-          onClick={this.onAdd}
-        >
-          <AddIcon />
-        </IconButton>
+        <Tooltip enterDelay={500} placement="left" title="Add to Shopping Cart">
+          <IconButton
+            style={{ display: this.state.isAdded ? "none" : "" }}
+            onClick={this.onAdd}
+          >
+            <AddIcon />
+          </IconButton>
+        </Tooltip>
         <IconButton
           style={{ display: this.state.isAdded ? "" : "none" }}
           onClick={this.onAdd}
