@@ -39,17 +39,15 @@ class Modal extends Component {
 
     return (
       <div>
-        {this.props.currentUser && (
-          <Fab
-            color="secondary"
-            aria-label="Edit"
-            className="NewPostFab"
-            onClick={this.handleOpen}
-            variant="extended"
-          >
-            <AddIcon /> Fresh Deal
-          </Fab>
-        )}
+        <Fab
+          color="secondary"
+          aria-label="Edit"
+          className="NewPostFab"
+          onClick={this.handleOpen}
+          variant="extended"
+        >
+          <AddIcon /> Fresh Deal
+        </Fab>
 
         <MaterialModal
           aria-labelledby="modal-title"

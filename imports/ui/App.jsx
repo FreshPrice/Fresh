@@ -65,7 +65,13 @@ class App extends Component {
           <div className="card-list">
             <CardList currentUser={this.props.currentUser} />
           </div>
-          <div className="new-post-fab">
+          <div
+            className={
+              this.props.currentUser === null
+                ? "z-index-hidden"
+                : "new-post-fab"
+            }
+          >
             <FreshModal currentUser={this.props.currentUser} />
           </div>
         </div>

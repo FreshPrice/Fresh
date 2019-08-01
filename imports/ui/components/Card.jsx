@@ -143,11 +143,11 @@ class CardComponent extends Component {
               </CardActions>
             ) : (
               // All Card Details Info
-              <div
-                className={classes.insideDetails}
-                onClick={this.toggleDetails}
-              >
-                <CardContent className={classes.content}>
+              <div className={classes.insideDetails}>
+                <CardContent
+                  className={classes.content}
+                  onClick={this.toggleDetails}
+                >
                   <Typography component="h5" variant="h5">
                     {this.state.data.name}
                   </Typography>
@@ -162,10 +162,15 @@ class CardComponent extends Component {
                     {this.state.data.location.address}
                   </Typography>
                 </CardContent>
+                {this.props.currentUser && (
+                  <AddShoppingList
+                    currentUser={this.props.currentUser}
+                    item={this.state.data}
+                  />
+                )}
               </div>
             )}
           </div>
-          {this.props.currentUser && <AddShoppingList item={this.state.data} />}
         </Card>
       </div>
     );
@@ -199,7 +204,8 @@ const useStyles = theme => ({
     flexGrow: 1
   },
   insideDetails: {
-    maxHeight: "113px"
+    maxHeight: "113px",
+    position: "relative"
   },
   content: {
     flex: "1 0 auto"
