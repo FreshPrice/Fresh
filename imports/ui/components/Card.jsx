@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import Tooltip from "@material-ui/core/Tooltip";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
+import ThumbDownSolidIcon from "@material-ui/icons/ThumbDown";
+import ThumbUpSolidIcon from "@material-ui/icons/ThumbUp";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
 import AddShoppingList from "./SnackBar";
@@ -21,20 +23,46 @@ class CardComponent extends Component {
       data: this.props.post,
       imageSrc: this.props.post.imageSrc,
       showDetails: false,
-      isLightboxOpen: false
+      isLightboxOpen: false,
+      thumbsUpIcon: "outline",
+      thumbsDownIcon: "outline"
     };
   }
 
-  onThumbsUpPressed = () => {
+  onThumbsUpOutlinedPressed = () => {
     let item = this.state.data;
     item.rating = item.rating + 1;
     this.props.changeRating(item);
+    if (this.state.thumbsDownIcon == "solid") {
+      this.setState({ thumbsDownIcon: "outline" });
+    } else {
+      this.setState({ thumbsUpIcon: "solid" });
+    }
   };
 
-  onThumbsDownPressed = () => {
+  onThumbsDownOutlinedPressed = () => {
     let item = this.state.data;
     item.rating = item.rating - 1;
     this.props.changeRating(item);
+    if (this.state.thumbsUpIcon == "solid") {
+      this.setState({ thumbsUpIcon: "outline" });
+    } else {
+      this.setState({ thumbsDownIcon: "solid" });
+    }
+  };
+
+  onThumbsUpSolidPressed = () => {
+    let item = this.state.data;
+    item.rating = item.rating - 1;
+    this.props.changeRating(item);
+    this.setState({ thumbsUpIcon: "outline" });
+  };
+
+  onThumbsDownSolidPressed = () => {
+    let item = this.state.data;
+    item.rating = item.rating + 1;
+    this.props.changeRating(item);
+    this.setState({ thumbsDownIcon: "outline" });
   };
 
   imageNotFoundError = () => {
@@ -58,15 +86,33 @@ class CardComponent extends Component {
         <Card className={classes.card}>
           {/* Thumbs Up and Down Counter */}
           <div className={classes.ratingArea}>
-            <div className={classes.thumbs}>
-              <IconButton onClick={this.onThumbsUpPressed}>
-                <ThumbUpOutlinedIcon />
-              </IconButton>
-              <div className={classes.rating}>{this.state.data.rating}</div>
-              <IconButton onClick={this.onThumbsDownPressed}>
-                <ThumbDownOutlinedIcon />
-              </IconButton>
-            </div>
+            {this.state.thumbsUpIcon == "outline" ? (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsUpOutlinedPressed}>
+                  <ThumbUpOutlinedIcon />
+                </IconButton>
+              </div>
+            ) : (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsUpSolidPressed}>
+                  <ThumbUpSolidIcon />
+                </IconButton>
+              </div>
+            )}
+            <div className={classes.rating}>{this.state.data.rating}</div>
+            {this.state.thumbsDownIcon == "outline" ? (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsDownOutlinedPressed}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </div>
+            ) : (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsDownSolidPressed}>
+                  <ThumbDownSolidIcon />
+                </IconButton>
+              </div>
+            )}
           </div>
           {/* Food Image */}
           <img
@@ -127,10 +173,15 @@ class CardComponent extends Component {
                     </div>
                   </Tooltip>
                 </CardContent>
+                {this.props.currentUser && (
+                  <AddShoppingList
+                    currentUser={this.props.currentUser}
+                    item={this.state.data}
+                  />
+                )}
               </div>
             )}
           </div>
-          {this.props.currentUser && <AddShoppingList item={this.state.data} />}
         </Card>
       </div>
     );
@@ -164,7 +215,8 @@ const useStyles = theme => ({
     flexGrow: 1
   },
   insideDetails: {
-    maxHeight: "113px"
+    maxHeight: "113px",
+    position: "relative"
   },
   content: {
     flex: "1 0 auto"

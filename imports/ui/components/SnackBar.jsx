@@ -47,7 +47,18 @@ class CustomizedSnackbars extends Component {
   };
   render() {
     return (
-      <div>
+      <div
+        className={
+          this.props.currentUser === null ? "z-index-hidden" : "add-cart-button"
+        }
+        style={{
+          position: "absolute",
+          top: "0",
+          right: "0",
+          zIndex: "5",
+          padding: "0"
+        }}
+      >
         <Tooltip enterDelay={500} placement="left" title="Add to Shopping Cart">
           <IconButton
             style={{ display: this.state.isAdded ? "none" : "" }}
