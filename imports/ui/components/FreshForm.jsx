@@ -131,7 +131,7 @@ class FreshForm extends Component {
             content="Everything on this form must be filled out"
           />
           <br />
-          Item*
+          Item
           <div className="search-bar">
             <SearchBar
               allowAddOptions={true}
@@ -142,7 +142,7 @@ class FreshForm extends Component {
           </div>
           <br />
           {/* Price Input */}
-          Price*
+          Price
           <div className="price-bar">
             <Form.Input
               fluid
@@ -169,7 +169,7 @@ class FreshForm extends Component {
           </div>
           <br />
           {/* Optional Image Input */}
-          Image (optional)
+          Image - <i>Optional</i>
           <div className="image-upload">
             <input
               type="file"
@@ -179,7 +179,7 @@ class FreshForm extends Component {
           </div>
           {/* Location Input */}
           <br />
-          Location*
+          Location
           <div className="geo-suggest">
             <GeoSuggest
               setAddress={this.setAddress.bind(this)}
