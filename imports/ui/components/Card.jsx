@@ -147,11 +147,11 @@ class CardComponent extends Component {
               </CardActions>
             ) : (
               // All Card Details Info
-              <div
-                className={classes.insideDetails}
-                onClick={this.toggleDetails}
-              >
-                <CardContent className={classes.content}>
+              <div className={classes.insideDetails}>
+                <CardContent
+                  className={classes.content}
+                  onClick={this.toggleDetails}
+                >
                   <Tooltip
                     enterDelay={500}
                     title="Click for additional details"

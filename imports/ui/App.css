@@ -8,7 +8,7 @@
 .AppContainer {
   display: grid;
   grid-template-areas: "left-section left-section right-section";
-  grid-template-columns: 1fr 1fr 1.5fr;
+  grid-template-columns: auto auto 625px;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
