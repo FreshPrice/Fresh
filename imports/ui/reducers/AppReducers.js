@@ -109,6 +109,7 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
           shoppingList: []
         };
       } else
+      console.log(action.payload);
         return {
           ...state,
           shoppingList: action.payload.items[0].shoppingList

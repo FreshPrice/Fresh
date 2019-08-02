@@ -170,11 +170,11 @@ Meteor.methods({
   }
 });
 
-Meteor.methods({
-  addNewShoppingList: item => {
-    return ShoppingList.insert(item);
-  }
-});
+// Meteor.methods({
+//   addNewShoppingList: item => {
+//     return ShoppingList.insert(item);
+//   }
+// });
 
 Meteor.methods({
   getShoppingListItems: () => {
@@ -210,9 +210,14 @@ Meteor.methods({
 
 Meteor.methods({
   deleteAllCheckList: () => {
-    return ShoppingList.remove({
-      createdBy: Meteor.userId()
-    });
+    ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $set: { checkList: [] } }
+    );
+    return ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $set: { shoppingList: [] } }
+    );
   }
 });
 

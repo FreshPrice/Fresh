@@ -10,12 +10,12 @@ import {
   addNewShoppngList,
   getShoppingListItems
 } from "../actions/AppActions.js";
-import { Meteor } from "meteor/meteor";
+// import { Meteor } from "meteor/meteor";
 
 class CustomizedSnackbars extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, isAdded: false, item: this.props.item };
+    this.state = { open: false, item: this.props.item };
   }
 
   componentDidMount() {
@@ -47,17 +47,8 @@ class CustomizedSnackbars extends Component {
   render() {
     return (
       <div>
-        <IconButton
-          style={{ display: this.state.isAdded ? "none" : "" }}
-          onClick={this.onAdd}
-        >
+        <IconButton onClick={this.onAdd}>
           <AddIcon />
-        </IconButton>
-        <IconButton
-          style={{ display: this.state.isAdded ? "" : "none" }}
-          onClick={this.onAdd}
-        >
-          <CheckedIcon />
         </IconButton>
         <Snackbar
           anchorOrigin={{
