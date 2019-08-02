@@ -4,13 +4,14 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
+import { Meteor } from "meteor/meteor";
 
 const ContactMeTemplate = function(items) {
   return (
-    <Email>
+    <Email title="Contact Email">
       <Box>
         <Item>
-          <Span> Hey, hello! Heres your grocery list. </Span>
+          <Span> Hi! Here's your FRESH grocery list. </Span>
           <List>
             {items.items.map((text, index) => {
               return (
