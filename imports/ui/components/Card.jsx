@@ -5,8 +5,11 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
+import Tooltip from "@material-ui/core/Tooltip";
 import ThumbDownOutlinedIcon from "@material-ui/icons/ThumbDownOutlined";
 import ThumbUpOutlinedIcon from "@material-ui/icons/ThumbUpOutlined";
+import ThumbDownSolidIcon from "@material-ui/icons/ThumbDown";
+import ThumbUpSolidIcon from "@material-ui/icons/ThumbUp";
 import { connect } from "react-redux";
 import { changeRating } from "../actions/AppActions.js";
 import AddShoppingList from "./SnackBar";
@@ -20,20 +23,46 @@ class CardComponent extends Component {
       data: this.props.post,
       imageSrc: this.props.post.imageSrc,
       showDetails: false,
-      isLightboxOpen: false
+      isLightboxOpen: false,
+      thumbsUpIcon: "outline",
+      thumbsDownIcon: "outline"
     };
   }
 
-  onThumbsUpPressed = () => {
+  onThumbsUpOutlinedPressed = () => {
     let item = this.state.data;
     item.rating = item.rating + 1;
     this.props.changeRating(item);
+    if (this.state.thumbsDownIcon == "solid") {
+      this.setState({ thumbsDownIcon: "outline" });
+    } else {
+      this.setState({ thumbsUpIcon: "solid" });
+    }
   };
 
-  onThumbsDownPressed = () => {
+  onThumbsDownOutlinedPressed = () => {
     let item = this.state.data;
     item.rating = item.rating - 1;
     this.props.changeRating(item);
+    if (this.state.thumbsUpIcon == "solid") {
+      this.setState({ thumbsUpIcon: "outline" });
+    } else {
+      this.setState({ thumbsDownIcon: "solid" });
+    }
+  };
+
+  onThumbsUpSolidPressed = () => {
+    let item = this.state.data;
+    item.rating = item.rating - 1;
+    this.props.changeRating(item);
+    this.setState({ thumbsUpIcon: "outline" });
+  };
+
+  onThumbsDownSolidPressed = () => {
+    let item = this.state.data;
+    item.rating = item.rating + 1;
+    this.props.changeRating(item);
+    this.setState({ thumbsDownIcon: "outline" });
   };
 
   imageNotFoundError = () => {
@@ -57,15 +86,33 @@ class CardComponent extends Component {
         <Card className={classes.card}>
           {/* Thumbs Up and Down Counter */}
           <div className={classes.ratingArea}>
-            <div className={classes.thumbs}>
-              <IconButton onClick={this.onThumbsUpPressed}>
-                <ThumbUpOutlinedIcon />
-              </IconButton>
-              <div className={classes.rating}>{this.state.data.rating}</div>
-              <IconButton onClick={this.onThumbsDownPressed}>
-                <ThumbDownOutlinedIcon />
-              </IconButton>
-            </div>
+            {this.state.thumbsUpIcon == "outline" ? (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsUpOutlinedPressed}>
+                  <ThumbUpOutlinedIcon />
+                </IconButton>
+              </div>
+            ) : (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsUpSolidPressed}>
+                  <ThumbUpSolidIcon />
+                </IconButton>
+              </div>
+            )}
+            <div className={classes.rating}>{this.state.data.rating}</div>
+            {this.state.thumbsDownIcon == "outline" ? (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsDownOutlinedPressed}>
+                  <ThumbDownOutlinedIcon />
+                </IconButton>
+              </div>
+            ) : (
+              <div className={classes.thumbs}>
+                <IconButton onClick={this.onThumbsDownSolidPressed}>
+                  <ThumbDownSolidIcon />
+                </IconButton>
+              </div>
+            )}
           </div>
           {/* Food Image */}
           <img
@@ -84,14 +131,17 @@ class CardComponent extends Component {
           {/* Food Details */}
           <div className={classes.details}>
             {this.state.showDetails && this.state.data.location.address ? (
-              // Address Only Side
+              // Address and Posted Date Side
               <CardActions
                 onClick={this.toggleDetails}
                 className={classes.addressOnly}
               >
                 <CardContent>
-                  <Typography variant="subtitle1" color="textSecondary">
+                  <Typography variant="subtitle2" color="textSecondary">
                     {this.state.data.location.address}
+                  </Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    Posted on {this.state.data.createdAt.toLocaleString()}
                   </Typography>
                 </CardContent>
               </CardActions>
@@ -102,24 +152,36 @@ class CardComponent extends Component {
                 onClick={this.toggleDetails}
               >
                 <CardContent className={classes.content}>
-                  <Typography component="h5" variant="h5">
-                    {this.state.data.name}
-                  </Typography>
-                  <Typography variant="subtitle1" color="textSecondary">
-                    ${this.state.data.price} {this.state.data.unit}
-                  </Typography>
-                  <Typography
-                    variant="subtitle2"
-                    className={classes.longAddress}
-                    color="textSecondary"
+                  <Tooltip
+                    enterDelay={500}
+                    title="Click for additional details"
                   >
-                    {this.state.data.location.address}
-                  </Typography>
+                    <div>
+                      <Typography component="h5" variant="h5">
+                        {this.state.data.name}
+                      </Typography>
+                      <Typography variant="subtitle1" color="textSecondary">
+                        ${this.state.data.price} {this.state.data.unit}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        className={classes.longAddress}
+                        color="textSecondary"
+                      >
+                        {this.state.data.location.address}
+                      </Typography>
+                    </div>
+                  </Tooltip>
                 </CardContent>
+                {this.props.currentUser && (
+                  <AddShoppingList
+                    currentUser={this.props.currentUser}
+                    item={this.state.data}
+                  />
+                )}
               </div>
             )}
           </div>
-          {this.props.currentUser && <AddShoppingList item={this.state.data} />}
         </Card>
       </div>
     );
@@ -153,7 +215,8 @@ const useStyles = theme => ({
     flexGrow: 1
   },
   insideDetails: {
-    maxHeight: "113px"
+    maxHeight: "113px",
+    position: "relative"
   },
   content: {
     flex: "1 0 auto"

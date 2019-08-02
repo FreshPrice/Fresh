@@ -31,7 +31,7 @@ export class GeoSuggest extends React.Component {
       address: ""
     });
     this.props.setAddress("");
-    this.props.setLatLng({ lat: 0, lng: 0});
+    this.props.setLatLng({ lat: 0, lng: 0 });
   };
 
   render() {
@@ -49,6 +49,7 @@ export class GeoSuggest extends React.Component {
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        highlightFirstSuggestion={true}
         searchOptions={searchOptions}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps }) => {
