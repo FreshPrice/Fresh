@@ -96,8 +96,6 @@ export const addNewShoppngList = item => {
       if (err) {
         dispatch(fetchItemsFailure(err));
       } else {
-        //Callback "res" is the ID of the successfully added item
-        console.log(res);
         item._id = res;
         dispatch(addNewShoppingList(item));
       }

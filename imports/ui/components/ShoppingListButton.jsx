@@ -131,7 +131,6 @@ class ShoppingListButton extends Component {
 
   render() {
     const items = this.props.items.shoppingList;
-    console.log(items);
     return (
       <span>
         {this.props.currentUser && (

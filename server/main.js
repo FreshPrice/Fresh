@@ -135,7 +135,6 @@ Accounts.onLogin(info => {
       createdAt: new Date(),
       checkList: []
     };
-    console.log("This user logged in by signing up");
     ShoppingList.insert(newShoppingList);
   }
 });
@@ -171,12 +170,6 @@ Meteor.methods({
     return DropdownItems.insert(item);
   }
 });
-
-// Meteor.methods({
-//   addNewShoppingList: item => {
-//     return ShoppingList.insert(item);
-//   }
-// });
 
 Meteor.methods({
   getShoppingListItems: () => {
@@ -239,12 +232,9 @@ Meteor.methods({
     );
   }
 });
-//setup our Method block
 
-// add our first method, which takes a function
 Meteor.methods({
   sendContactMail: function(items) {
-    // call the Email.send method inside of our sendContactMail Meteor.method
     Email.send({
       to: Meteor.user().emails[0].address,
       from: "freshpricefresh@gmail.com",

@@ -11,7 +11,6 @@ import {
   addNewShoppngList,
   getShoppingListItems
 } from "../actions/AppActions.js";
-// import { Meteor } from "meteor/meteor";
 
 class CustomizedSnackbars extends Component {
   constructor(props) {
@@ -26,15 +25,6 @@ class CustomizedSnackbars extends Component {
   onAdd = () => {
     this.setState({ isAdded: !this.state.isAdded });
     this.setState({ open: !this.state.isAdded });
-    // if (this.props.items.shoppingList.length === 0) {
-    //   let newShoppingList = {
-    //     createdBy: Meteor.userId(),
-    //     shoppingList: [],
-    //     createdAt: new Date(),
-    //     checkList: []
-    //   };
-    //   this.props.addNewShoppngList(newShoppingList);
-    // }
     let addOn = this.state.item;
     this.props.addToShoppingList(addOn);
   };
