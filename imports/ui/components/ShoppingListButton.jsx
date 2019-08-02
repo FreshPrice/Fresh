@@ -61,7 +61,7 @@ class ShoppingListButton extends Component {
       className="list-sector"
     >
       <Typography variant="h6" id="shopping-title">
-        Here are {Meteor.user().emails[0].address}'s shopping list
+        Here is {Meteor.user().emails[0].address}'s shopping list
       </Typography>
       <Divider />
       <List>

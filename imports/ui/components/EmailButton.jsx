@@ -10,21 +10,22 @@ class EmailButton extends Component {
 
   handleSend = items => {
     event.preventDefault();
-    this.props.sendEmail(items)
-  }
+    this.props.sendEmail(items);
+  };
   render() {
     const items = this.props.items;
-    console.log(items)
     return (
       <div>
-        <Button onClick={() => this.handleSend(items)}> Click for a uwu in your inbox! </Button>
+        <Button onClick={() => this.handleSend(items)}>
+          Email me my shopping list!
+        </Button>
       </div>
     );
   }
 }
 
 export default connect(
- null,
+  null,
   {
     sendEmail
   }
