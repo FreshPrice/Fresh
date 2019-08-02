@@ -15,11 +15,11 @@ class EmailButton extends Component {
   render() {
     const items = this.props.items;
     return (
-      <div>
-        <Button onClick={() => this.handleSend(items)}>
-          Email me my shopping list!
+      <span>
+        <Button variant="outlined" onClick={() => this.handleSend(items)}>
+        📫 Email me my shopping list
         </Button>
-      </div>
+      </span>
     );
   }
 }

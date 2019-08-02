@@ -120,7 +120,7 @@ class FreshForm extends Component {
     return (
       <div>
         <Typography variant="h6" id="modal-title">
-          Submit a Fresh Deal
+          Submit a Fresh Deal 🍎🍌🍇🍊
         </Typography>
         <Divider />
         <Form onSubmit={this.handleSubmit} error={this.state.stateError}>
@@ -169,7 +169,7 @@ class FreshForm extends Component {
           </div>
           <br />
           {/* Optional Image Input */}
-          Image - Optional
+          Image - <i>Optional</i>
           <div className="image-upload">
             <input
               type="file"

@@ -4,7 +4,6 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import IconButton from "@material-ui/core/IconButton";
 import ListIcon from "@material-ui/icons/LocalGroceryStore";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Typography from "@material-ui/core/Typography";
@@ -21,11 +20,17 @@ import {
   getCheckListItems
 } from "../actions/AppActions.js";
 import "./ShoppingListButton.css";
+import ConfirmEmail from "./ConfirmEmail.jsx";
+import DeleteOne from "./EditList.jsx";
 
 class ShoppingListButton extends Component {
   constructor(props) {
     super(props);
-    this.state = { left: false, checked: this.props.checkList.checkList };
+    this.state = {
+      left: false,
+      checked: this.props.checkList.checkList,
+      isEditClicked: false
+    };
   }
 
   componentDidMount() {
@@ -54,28 +59,35 @@ class ShoppingListButton extends Component {
     this.props.addToCheckedList(newChecked);
   };
 
+  onEditClick = () => {
+    this.setState({
+      isEditClicked: !this.state.isEditClicked
+    });
+  };
+
   sideList = (side, items) => (
-    <div
-      role="presentation"
-      onKeyDown={this.toggleDrawer(side, false)}
-      className="list-sector"
-    >
-      <Typography variant="h6" id="shopping-title">
-        Here is {Meteor.user().emails[0].address}'s shopping list
+    <div role="presentation" className="list-sector">
+      <Typography variant="h5" id="shopping-title">
+       {Meteor.user().emails[0].address}'s Shopping List
       </Typography>
       <Divider />
       <List>
-        {this.props.items.shoppingList.length === 0 ? (
-          <IconButton>Start adding items to your shopping list!</IconButton>
-        ) : (
-          ""
+        {this.props.items.shoppingList.length === 0 && (
+          <Typography variant="subtitle1">
+            <br />
+            🍎🥑🍌🍇🥒
+            <br />
+            Your shopping list is currently empty... <br />
+            Start adding items to your personalized shopping list! <br />
+          </Typography>
         )}
         {items.map((text, index) => {
           const labelId = `checkbox-list-secondary-label-${index}`;
           return (
             <ListItem key={index}>
+              <DeleteOne clicked={this.state.isEditClicked} itemId={text._id} />
               <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src={text.imageSrc} />
+                <Avatar src={text.imageSrc} />
               </ListItemAvatar>
               <ListItemText
                 primary={text.name}
@@ -95,8 +107,10 @@ class ShoppingListButton extends Component {
               <ListItemSecondaryAction>
                 <Checkbox
                   edge="end"
-                  onChange={this.handleToggle(index)}
-                  checked={this.props.checkList.checkList.indexOf(index) !== -1}
+                  onChange={this.handleToggle(text._id)}
+                  checked={
+                    this.props.checkList.checkList.indexOf(text._id) !== -1
+                  }
                   inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemSecondaryAction>
@@ -104,7 +118,18 @@ class ShoppingListButton extends Component {
           );
         })}
       </List>
-      <EmailButton items={this.props.items.shoppingList} />
+      {this.props.items.shoppingList.length !== 0 && (
+        <span>
+          <Divider /> <br />
+          <Button variant="outlined" size="small" onClick={this.onEditClick}>
+           ✏️ Edit Shopping List
+          </Button>{" "}
+          <ConfirmEmail />
+          <br />
+          <br />
+          <EmailButton items={this.props.items.shoppingList} />
+        </span>
+      )}
     </div>
   );
 

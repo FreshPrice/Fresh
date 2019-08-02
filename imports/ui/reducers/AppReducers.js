@@ -8,10 +8,13 @@ import {
   GET_DROPDOWN_ITEMS,
   ADD_NEW_DROPDOWN_ITEM,
   GET_SHOPPING_LIST_ITEMS,
-  ADD_NEW_SHOPPING_LIST,
   UPDATE_SHOPPING_LIST,
   UPDATE_CHECK_LIST,
-  GET_CHECK_LIST
+  GET_CHECK_LIST,
+  DELETE_ALL_CHECK_LIST,
+  DELETE_ALL_SHOPPING_LIST,
+  DELETE_ONE_SHOPPING_ITEM,
+  DELETE_ONE_CHECK_LIST
 } from "../actions/AppActions.js";
 
 const initialState = {
@@ -109,18 +112,24 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
           ...state,
           shoppingList: action.payload.items[0].shoppingList
         };
-    case ADD_NEW_SHOPPING_LIST:
-      return {
-        ...state,
-        shoppingList: state.shoppingList.concat(
-          action.payload.item.shoppingList
-        )
-      };
     case UPDATE_SHOPPING_LIST:
       return {
         ...state,
         shoppingList: state.shoppingList.concat(action.payload.item)
       };
+    case DELETE_ALL_SHOPPING_LIST:
+      return {
+        ...state,
+        shoppingList: []
+      };
+    case DELETE_ONE_SHOPPING_ITEM:
+      let newShoppingState = { ...state };
+      newShoppingState.shoppingList.map((data, index) => {
+        if (data._id === action.payload.id) {
+          newShoppingState.shoppingList.splice(index, 1);
+        }
+      });
+      return newShoppingState;
     default:
       return state;
   }
@@ -140,12 +149,21 @@ const checkListReducer = (state = initialCheckListState, action) => {
           checkList: action.payload.items[0].checkList
         };
       }
-
     case UPDATE_CHECK_LIST:
       return {
         ...state,
         checkList: action.payload.item
       };
+    case DELETE_ALL_CHECK_LIST:
+      return {
+        ...state,
+        checkList: []
+      };
+    case DELETE_ONE_CHECK_LIST:
+      let newCheckListState = { ...state };
+      let index = newCheckListState.checkList.indexOf(action.payload.id);
+      newCheckListState.checkList.splice(index, 1);
+      return newCheckListState;
     default:
       return state;
   }

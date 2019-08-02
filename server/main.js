@@ -3,6 +3,7 @@ import { Email } from "meteor/email";
 import Items from "../imports/api/items.js";
 import DropdownItems from "../imports/api/dropdownItems.js";
 import ShoppingList from "../imports/api/shoppinglist";
+import { addNewShoppingList } from "../imports/ui/actions/AppActions.js";
 import { GetContactEmail } from "../imports/api/email-template.js";
 
 Meteor.startup(() => {
@@ -126,6 +127,18 @@ Meteor.startup(() => {
   }
 });
 
+Accounts.onLogin(info => {
+  if (info.methodName == "createUser") {
+    let newShoppingList = {
+      createdBy: Meteor.userId(),
+      shoppingList: [],
+      createdAt: new Date(),
+      checkList: []
+    };
+    ShoppingList.insert(newShoppingList);
+  }
+});
+
 Meteor.methods({
   addItem: newItem => {
     let _id = Items.insert(newItem);
@@ -155,12 +168,6 @@ Meteor.methods({
 Meteor.methods({
   addItemToDropdown: item => {
     return DropdownItems.insert(item);
-  }
-});
-
-Meteor.methods({
-  addNewShoppingList: item => {
-    return ShoppingList.insert(item);
   }
 });
 
@@ -197,11 +204,37 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  //setup our Method block
+  deleteAllCheckList: () => {
+    ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $set: { checkList: [] } }
+    );
+    return ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $set: { shoppingList: [] } }
+    );
+  }
+});
 
-  // add our first method, which takes a function
+Meteor.methods({
+  deleteOneCheckList: id => {
+    ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $pull: { checkList: id } },
+      false,
+      true
+    );
+    return ShoppingList.update(
+      { createdBy: Meteor.userId() },
+      { $pull: { shoppingList: { _id: id } } },
+      false,
+      true
+    );
+  }
+});
+
+Meteor.methods({
   sendContactMail: function(items) {
-    // call the Email.send method inside of our sendContactMail Meteor.method
     Email.send({
       to: Meteor.user().emails[0].address,
       from: "freshpricefresh@gmail.com",

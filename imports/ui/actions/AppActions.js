@@ -10,6 +10,10 @@ export const GET_SHOPPING_LIST_ITEMS = "GET_SHOPPING_LIST_ITEMS";
 export const UPDATE_SHOPPING_LIST = "UPDATE_SHOPPING_LIST";
 export const UPDATE_CHECK_LIST = "UPDATE_CHECK_LIST";
 export const GET_CHECK_LIST = "GET_CHECK_LIST";
+export const DELETE_ALL_SHOPPING_LIST = "DELETE_ALL_SHOPPING_LIST";
+export const DELETE_ALL_CHECK_LIST = "DELETE_ALL_CHECK_LIST";
+export const DELETE_ONE_SHOPPING_ITEM = "DELETE_ONE_SHOPPING_ITEM";
+export const DELETE_ONE_CHECK_LIST = "DELETE_ONE_CHECK_LIST";
 
 export const addItem = item => {
   return async dispatch => {
@@ -92,7 +96,6 @@ export const addNewShoppngList = item => {
       if (err) {
         dispatch(fetchItemsFailure(err));
       } else {
-        //Callback "res" is the ID of the successfully added item
         item._id = res;
         dispatch(addNewShoppingList(item));
       }
@@ -145,6 +148,32 @@ export const getCheckListItems = () => {
         dispatch(fetchItemsFailure(err));
       } else {
         dispatch(fetchCheckListItemsSuccess(res));
+      }
+    });
+  };
+};
+
+export const deleteAllCheckList = () => {
+  return async dispatch => {
+    return Meteor.call("deleteAllCheckList", (err, res) => {
+      if (err) {
+        dispatch(fetchItemsFailure(err));
+      } else {
+        dispatch(deleteCheckListSuccess());
+        dispatch(deleteItemsSuccess());
+      }
+    });
+  };
+};
+
+export const deleteOneCheckList = id => {
+  return async dispatch => {
+    return Meteor.call("deleteOneCheckList", id, (err, res) => {
+      if (err) {
+        dispatch(fetchItemsFailure(err));
+      } else {
+        dispatch(deleteOneCheckListSuccess(id));
+        dispatch(deleteOneShoppingItemSuccess(id));
       }
     });
   };
@@ -262,6 +291,36 @@ export const updateCheckList = item => {
     type: UPDATE_CHECK_LIST,
     payload: {
       item
+    }
+  };
+};
+
+export const deleteItemsSuccess = () => {
+  return {
+    type: DELETE_ALL_SHOPPING_LIST
+  };
+};
+
+export const deleteCheckListSuccess = () => {
+  return {
+    type: DELETE_ALL_CHECK_LIST
+  };
+};
+
+export const deleteOneShoppingItemSuccess = id => {
+  return {
+    type: DELETE_ONE_SHOPPING_ITEM,
+    payload: {
+      id
+    }
+  };
+};
+
+export const deleteOneCheckListSuccess = id => {
+  return {
+    type: DELETE_ONE_CHECK_LIST,
+    payload: {
+      id
     }
   };
 };
