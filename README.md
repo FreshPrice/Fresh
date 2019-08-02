@@ -62,5 +62,5 @@ Run `meteor run` in root directory to begin serving on `localhost:3000`
 Run `meteor reset` to start with a fresh local MongoDB instance
 
 ## Local, with Atlas hosted MongoDB
-Run `sh start.sh` in root directory to begin serving on `localhost:3000` while targetting the Atlas hosted MongoDB
+Run `sh start.sh` in root directory to begin serving on `localhost:3000` while targetting the Atlas hosted MongoDB and enabling Emailing of password reset and shopping lists. 
 
