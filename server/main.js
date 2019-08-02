@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import Items from "../imports/api/items.js";
 import DropdownItems from "../imports/api/dropdownItems.js";
 import ShoppingList from "../imports/api/shoppinglist";
+import { addNewShoppingList } from "../imports/ui/actions/AppActions.js";
 
 Meteor.startup(() => {
   if (Items.find().count() === 0) {
@@ -121,6 +122,19 @@ Meteor.startup(() => {
       console.log("Adding dropwdown: " + item.value);
       ShoppingList.insert(item);
     });
+  }
+});
+
+Accounts.onLogin(info => {
+  if (info.methodName == "createUser") {
+    let newShoppingList = {
+      createdBy: Meteor.userId(),
+      shoppingList: [],
+      createdAt: new Date(),
+      checkList: []
+    };
+    console.log("This user logged in by signing up");
+    ShoppingList.insert(newShoppingList);
   }
 });
 

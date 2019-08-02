@@ -25,15 +25,15 @@ class CustomizedSnackbars extends Component {
   onAdd = () => {
     this.setState({ isAdded: !this.state.isAdded });
     this.setState({ open: !this.state.isAdded });
-    if (this.props.items.shoppingList.length === 0) {
-      let newShoppingList = {
-        createdBy: Meteor.userId(),
-        shoppingList: [],
-        createdAt: new Date(),
-        checkList: []
-      };
-      this.props.addNewShoppngList(newShoppingList);
-    }
+    // if (this.props.items.shoppingList.length === 0) {
+    //   let newShoppingList = {
+    //     createdBy: Meteor.userId(),
+    //     shoppingList: [],
+    //     createdAt: new Date(),
+    //     checkList: []
+    //   };
+    //   this.props.addNewShoppngList(newShoppingList);
+    // }
     let addOn = this.state.item;
     this.props.addToShoppingList(addOn);
   };

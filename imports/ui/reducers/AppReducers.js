@@ -8,7 +8,7 @@ import {
   GET_DROPDOWN_ITEMS,
   ADD_NEW_DROPDOWN_ITEM,
   GET_SHOPPING_LIST_ITEMS,
-  ADD_NEW_SHOPPING_LIST,
+  // ADD_NEW_SHOPPING_LIST,
   UPDATE_SHOPPING_LIST,
   UPDATE_CHECK_LIST,
   GET_CHECK_LIST,
@@ -113,13 +113,13 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
           ...state,
           shoppingList: action.payload.items[0].shoppingList
         };
-    case ADD_NEW_SHOPPING_LIST:
-      return {
-        ...state,
-        shoppingList: state.shoppingList.concat(
-          action.payload.item.shoppingList
-        )
-      };
+    // case ADD_NEW_SHOPPING_LIST:
+    //   return {
+    //     ...state,
+    //     shoppingList: state.shoppingList.concat(
+    //       action.payload.item.shoppingList
+    //     )
+    //   };
     case UPDATE_SHOPPING_LIST:
       return {
         ...state,
