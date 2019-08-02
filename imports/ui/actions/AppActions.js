@@ -106,8 +106,6 @@ export const addToShoppingList = item => {
       if (err) {
         dispatch(fetchItemsFailure(err));
       } else {
-        //Callback "res" is the ID of the successfully added item
-        console.log(item);
         dispatch(updateShoppingList(item));
       }
     });
@@ -120,8 +118,6 @@ export const addToCheckedList = item => {
       if (err) {
         dispatch(fetchItemsFailure(err));
       } else {
-        //Callback "res" is the ID of the successfully added item
-        console.log(item);
         dispatch(updateCheckList(item));
       }
     });
@@ -148,8 +144,18 @@ export const getCheckListItems = () => {
       if (err) {
         dispatch(fetchItemsFailure(err));
       } else {
-        console.log(res);
         dispatch(fetchCheckListItemsSuccess(res));
+      }
+    });
+  };
+};
+
+export const sendEmail = items => {
+  return async dispatch => {
+    return Meteor.call("sendContactMail", items, (err, res) => {
+      if (err) {
+        console.log("Could not send an email");
+        console.log(err);
       }
     });
   };

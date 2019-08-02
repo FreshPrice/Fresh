@@ -142,7 +142,6 @@ const checkListReducer = (state = initialCheckListState, action) => {
       }
 
     case UPDATE_CHECK_LIST:
-      console.log(action.payload.item);
       return {
         ...state,
         checkList: action.payload.item

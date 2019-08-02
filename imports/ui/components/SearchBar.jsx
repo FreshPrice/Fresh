@@ -21,7 +21,6 @@ class SearchBar extends Component {
   }
 
   filterPostsForKey = searchValue => {
-    console.log("Search query string now: " + searchValue);
     let filter = { name: searchValue };
     if (searchValue === "") {
       this.props.getItems({});

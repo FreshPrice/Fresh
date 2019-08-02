@@ -1,7 +1,9 @@
 import { Meteor } from "meteor/meteor";
+import { Email } from "meteor/email";
 import Items from "../imports/api/items.js";
 import DropdownItems from "../imports/api/dropdownItems.js";
 import ShoppingList from "../imports/api/shoppinglist";
+import { GetContactEmail } from "../imports/api/email-template.js";
 
 Meteor.startup(() => {
   if (Items.find().count() === 0) {
@@ -191,5 +193,20 @@ Meteor.methods({
       false,
       true
     );
+  }
+});
+
+Meteor.methods({
+  //setup our Method block
+
+  // add our first method, which takes a function
+  sendContactMail: function(items) {
+    // call the Email.send method inside of our sendContactMail Meteor.method
+    Email.send({
+      to: Meteor.user().emails[0].address,
+      from: "freshpricefresh@gmail.com",
+      subject: "Here is your requested grocery list",
+      html: GetContactEmail(items)
+    });
   }
 });
