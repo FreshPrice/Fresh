@@ -12,6 +12,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
+import EmailButton from "./EmailButton.jsx";
 import { connect } from "react-redux";
 import {
   getShoppingListItems,
@@ -62,13 +63,13 @@ class ShoppingListButton extends Component {
   onEditClick = () => {
     this.setState({
       isEditClicked: !this.state.isEditClicked
-    })
-  }
+    });
+  };
 
   sideList = (side, items) => (
     <div role="presentation" className="list-sector">
       <Typography variant="h6" id="shopping-title">
-        Your personalized shopping list
+        Here is {Meteor.user().emails[0].address}'s shopping list
       </Typography>
       <Divider />
       <List>
@@ -81,10 +82,7 @@ class ShoppingListButton extends Component {
           const labelId = `checkbox-list-secondary-label-${index}`;
           return (
             <ListItem key={index}>
-              <DeleteOne
-                clicked={this.state.isEditClicked}
-                itemId={text._id} 
-              />
+              <DeleteOne clicked={this.state.isEditClicked} itemId={text._id} />
               <ListItemAvatar>
                 <Avatar alt="Remy Sharp" src={text.imageSrc} />
               </ListItemAvatar>
@@ -117,14 +115,7 @@ class ShoppingListButton extends Component {
           );
         })}
       </List>
-      {this.props.items.shoppingList.length !== 0 && (
-        <span>
-          <Button variant="outlined" color="primary" onClick = {this.onEditClick}>
-            Edit
-          </Button>
-          <ConfirmEmail />
-        </span>
-      )}
+      <EmailButton items={this.props.items.shoppingList} />
     </div>
   );
 
