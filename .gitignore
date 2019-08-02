@@ -13,7 +13,7 @@
 /build
 
 # misc
-/start.sh
+./start.sh
 .DS_Store
 .env.local
 .env.development.local
