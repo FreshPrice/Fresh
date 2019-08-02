@@ -17,7 +17,7 @@ class EmailButton extends Component {
     return (
       <span>
         <Button variant="outlined" onClick={() => this.handleSend(items)}>
-          Email me my shopping list
+        📫 Email me my shopping list
         </Button>
       </span>
     );

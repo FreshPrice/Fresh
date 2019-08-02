@@ -53,7 +53,7 @@ class FormDialog extends Component {
     return (
       <span>
         <Button variant="outlined" size="small" onClick={this.handleClickOpen}>
-          Remove All Items
+         ❌ Remove All Items
         </Button>
         <Dialog
           open={this.state.open}

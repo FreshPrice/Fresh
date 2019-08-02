@@ -4,7 +4,6 @@ import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import IconButton from "@material-ui/core/IconButton";
 import ListIcon from "@material-ui/icons/LocalGroceryStore";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import Typography from "@material-ui/core/Typography";
@@ -68,15 +67,19 @@ class ShoppingListButton extends Component {
 
   sideList = (side, items) => (
     <div role="presentation" className="list-sector">
-      <Typography variant="h6" id="shopping-title">
-        Here is {Meteor.user().emails[0].address}'s shopping list
+      <Typography variant="h5" id="shopping-title">
+       {Meteor.user().emails[0].address}'s Shopping List
       </Typography>
       <Divider />
       <List>
-        {this.props.items.shoppingList.length === 0 ? (
-          <IconButton>Start adding items to your shopping list</IconButton>
-        ) : (
-          ""
+        {this.props.items.shoppingList.length === 0 && (
+          <Typography variant="subtitle1">
+            <br />
+            🍎🥑🍌🍇🥒
+            <br />
+            Your shopping list is currently empty... <br />
+            Start adding items to your personalized shopping list! <br />
+          </Typography>
         )}
         {items.map((text, index) => {
           const labelId = `checkbox-list-secondary-label-${index}`;
@@ -117,8 +120,9 @@ class ShoppingListButton extends Component {
       </List>
       {this.props.items.shoppingList.length !== 0 && (
         <span>
+          <Divider /> <br />
           <Button variant="outlined" size="small" onClick={this.onEditClick}>
-            Edit Shopping List
+           ✏️ Edit Shopping List
           </Button>{" "}
           <ConfirmEmail />
           <br />
