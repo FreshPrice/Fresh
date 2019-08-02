@@ -52,12 +52,8 @@ class FormDialog extends Component {
   render() {
     return (
       <span>
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={this.handleClickOpen}
-        >
-          Delete All
+        <Button variant="outlined" size="small" onClick={this.handleClickOpen}>
+          Remove All Items
         </Button>
         <Dialog
           open={this.state.open}
@@ -66,11 +62,11 @@ class FormDialog extends Component {
         >
           <form onSubmit={this.handleSubmit}>
             <DialogTitle id="form-dialog-title">
-              Are you sure you want to delete everything on the list?
+              Are you sure you want to remove everything on the list?
             </DialogTitle>
             <DialogContent>
               <DialogContentText>
-                To delete all, please confirm by entering your email.
+                To remove all items, please confirm by entering your email.
               </DialogContentText>
               <TextField
                 autoFocus

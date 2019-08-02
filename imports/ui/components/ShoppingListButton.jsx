@@ -74,7 +74,7 @@ class ShoppingListButton extends Component {
       <Divider />
       <List>
         {this.props.items.shoppingList.length === 0 ? (
-          <IconButton>Start adding items to your shopping list!</IconButton>
+          <IconButton>Start adding items to your shopping list</IconButton>
         ) : (
           ""
         )}
@@ -84,7 +84,7 @@ class ShoppingListButton extends Component {
             <ListItem key={index}>
               <DeleteOne clicked={this.state.isEditClicked} itemId={text._id} />
               <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src={text.imageSrc} />
+                <Avatar src={text.imageSrc} />
               </ListItemAvatar>
               <ListItemText
                 primary={text.name}
@@ -115,7 +115,17 @@ class ShoppingListButton extends Component {
           );
         })}
       </List>
-      <EmailButton items={this.props.items.shoppingList} />
+      {this.props.items.shoppingList.length !== 0 && (
+        <span>
+          <Button variant="outlined" size="small" onClick={this.onEditClick}>
+            Edit Shopping List
+          </Button>{" "}
+          <ConfirmEmail />
+          <br />
+          <br />
+          <EmailButton items={this.props.items.shoppingList} />
+        </span>
+      )}
     </div>
   );
 

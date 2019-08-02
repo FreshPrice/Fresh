@@ -35,12 +35,17 @@ class DeleteOne extends Component {
   render() {
     return (
       <div>
-        <button
-          style={{ display: this.props.clicked ? "" : "none" }}
+        <Button
+          size="small"
+          variant="outlined"
+          style={{
+            display: this.props.clicked ? "" : "none",
+            marginRight: "10px"
+          }}
           onClick={this.handleClickOpen}
         >
-          x
-        </button>
+          Remove
+        </Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -48,7 +53,7 @@ class DeleteOne extends Component {
         >
           <form onSubmit={this.handleSubmit}>
             <DialogTitle id="form-dialog-title">
-              Are you sure you want to delete this item?
+              Are you sure you want to remove this item?
             </DialogTitle>
             <DialogActions>
               <Button onClick={this.handleClose} color="primary">
