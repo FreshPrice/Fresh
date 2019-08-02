@@ -7,6 +7,7 @@ import LoginBar from "./components/AccountsUIWrapper";
 import "./App.css";
 import ShoppingButton from "./components/ShoppingListButton.jsx";
 import { withTracker } from "meteor/react-meteor-data";
+import Footer from "./components/Footer.jsx"
 import { Meteor } from "meteor/meteor";
 
 class App extends Component {
@@ -27,32 +28,7 @@ class App extends Component {
           <div className="map-container">
             <MapContainer />
           </div>
-          <footer id="footer">
-            2019 🛒 <a href="https://github.com/FreshPrice/Fresh">Fresh</a> by{" "}
-            <a
-              id="creators"
-              href="https://www.linkedin.com/in/echoiubc/"
-              target="_blank"
-            >
-              Erica
-            </a>
-            ,{" "}
-            <a
-              id="creators"
-              href="https://www.linkedin.com/in/nicolehli"
-              target="_blank"
-            >
-              Nicole
-            </a>{" "}
-            and{" "}
-            <a
-              id="creators"
-              href="https://www.linkedin.com/in/yaoliu93/"
-              target="_blank"
-            >
-              Yao
-            </a>
-          </footer>
+          <Footer/>
         </div>
         <div className="right-section">
           <div className="search-bar">
