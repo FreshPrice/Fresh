@@ -62,7 +62,7 @@
 }
 
 #CardList {
-  height: 100vh !important;
+  height: 85vh;
   overflow: scroll;
 }
 

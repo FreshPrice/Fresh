@@ -62,7 +62,7 @@ class App extends Component {
               onChange={true}
             />
           </div>
-          <div className="card-list">
+          <div>
             <CardList currentUser={this.props.currentUser} />
           </div>
           <div
