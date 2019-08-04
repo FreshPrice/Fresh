@@ -57,10 +57,7 @@ class CustomizedSnackbars extends Component {
             <AddIcon />
           </IconButton>
         </Tooltip>
-        <IconButton
-          style={{ display: this.state.isAdded ? "" : "none" }}
-          onClick={this.onAdd}
-        >
+        <IconButton style={{ display: this.state.isAdded ? "" : "none" }}>
           <CheckedIcon />
         </IconButton>
         <Snackbar
