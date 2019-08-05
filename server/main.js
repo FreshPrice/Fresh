@@ -3,7 +3,6 @@ import { Email } from "meteor/email";
 import Items from "../imports/api/items.js";
 import DropdownItems from "../imports/api/dropdownItems.js";
 import ShoppingList from "../imports/api/shoppinglist";
-import { addNewShoppingList } from "../imports/ui/actions/AppActions.js";
 import { GetContactEmail } from "../imports/api/email-template.js";
 
 Meteor.startup(() => {

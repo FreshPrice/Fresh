@@ -8,7 +8,7 @@ import MySnackbarContentWrapper from "./SnackBarContentWrapper.jsx";
 import { connect } from "react-redux";
 import {
   addToShoppingList,
-  addNewShoppngList,
+  addNewShoppingList,
   getShoppingListItems
 } from "../actions/AppActions.js";
 
@@ -50,19 +50,10 @@ class CustomizedSnackbars extends Component {
         }}
       >
         <Tooltip enterDelay={500} placement="left" title="Add to Shopping Cart">
-          <IconButton
-            style={{ display: this.state.isAdded ? "none" : "" }}
-            onClick={this.onAdd}
-          >
+          <IconButton onClick={this.onAdd}>
             <AddIcon />
           </IconButton>
         </Tooltip>
-        <IconButton
-          style={{ display: this.state.isAdded ? "" : "none" }}
-          onClick={this.onAdd}
-        >
-          <CheckedIcon />
-        </IconButton>
         <Snackbar
           anchorOrigin={{
             vertical: "bottom",
@@ -88,5 +79,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getShoppingListItems, addToShoppingList, addNewShoppngList }
+  { getShoppingListItems, addToShoppingList, addNewShoppingList }
 )(CustomizedSnackbars);
