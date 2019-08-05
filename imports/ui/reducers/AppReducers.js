@@ -113,10 +113,20 @@ const shoppingListReducer = (state = initialShoppingListState, action) => {
           shoppingList: action.payload.items[0].shoppingList
         };
     case UPDATE_SHOPPING_LIST:
-      return {
-        ...state,
-        shoppingList: state.shoppingList.concat(action.payload.item)
-      };
+      let itemAlreadyAdded = state.shoppingList.find(
+        listItem => listItem._id === action.payload.item._id
+      );
+      if (itemAlreadyAdded) {
+        return {
+          ...state,
+          shoppingList: state.shoppingList
+        };
+      } else {
+        return {
+          ...state,
+          shoppingList: state.shoppingList.concat(action.payload.item)
+        };
+      }
     case DELETE_ALL_SHOPPING_LIST:
       return {
         ...state,
