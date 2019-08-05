@@ -8,7 +8,7 @@ import MySnackbarContentWrapper from "./SnackBarContentWrapper.jsx";
 import { connect } from "react-redux";
 import {
   addToShoppingList,
-  addNewShoppngList,
+  addNewShoppingList,
   getShoppingListItems
 } from "../actions/AppActions.js";
 
@@ -85,5 +85,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getShoppingListItems, addToShoppingList, addNewShoppngList }
+  { getShoppingListItems, addToShoppingList, addNewShoppingList }
 )(CustomizedSnackbars);
