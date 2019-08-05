@@ -50,19 +50,10 @@ class CustomizedSnackbars extends Component {
         }}
       >
         <Tooltip enterDelay={500} placement="left" title="Add to Shopping Cart">
-          <IconButton
-            style={{ display: this.state.isAdded ? "none" : "" }}
-            onClick={this.onAdd}
-          >
+          <IconButton onClick={this.onAdd}>
             <AddIcon />
           </IconButton>
         </Tooltip>
-        <IconButton
-          style={{ display: this.state.isAdded ? "" : "none" }}
-          onClick={this.onAdd}
-        >
-          <CheckedIcon />
-        </IconButton>
         <Snackbar
           anchorOrigin={{
             vertical: "bottom",
