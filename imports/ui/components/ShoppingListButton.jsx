@@ -65,10 +65,17 @@ class ShoppingListButton extends Component {
     });
   };
 
+  determineSource = item => {
+    let image = new Image();
+    image.src = `/images/` + item.name + `.png`;
+    if (!image.complete || image.height === 0) return "/images/missing.png";
+    else return image.src;
+  };
+
   sideList = (side, items) => (
     <div role="presentation" className="list-sector">
       <Typography variant="h5" id="shopping-title">
-       {Meteor.user().emails[0].address}'s Shopping List
+        {Meteor.user().emails[0].address}'s Shopping List
       </Typography>
       <Divider />
       <List>
@@ -87,7 +94,7 @@ class ShoppingListButton extends Component {
             <ListItem key={index}>
               <DeleteOne clicked={this.state.isEditClicked} itemId={text._id} />
               <ListItemAvatar>
-                <Avatar src={text.imageSrc} />
+                <Avatar src={this.determineSource(text)} />
               </ListItemAvatar>
               <ListItemText
                 primary={text.name}
@@ -122,7 +129,7 @@ class ShoppingListButton extends Component {
         <span>
           <Divider /> <br />
           <Button variant="outlined" size="small" onClick={this.onEditClick}>
-           ✏️ Edit Shopping List
+            ✏️ Edit Shopping List
           </Button>{" "}
           <ConfirmEmail />
           <br />
