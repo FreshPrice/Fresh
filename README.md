@@ -29,26 +29,68 @@ Users will be able to view location on a map, filter items by type and sort item
 Create a shopping list which displays the lowest price found for each item and their location.
 Users will be able to leave thumbs up or down on prices to validate them.
 
-## Requirement
+## Basic Functionality Requirements
 
-3 - 5 Minimum Requirements
+Minimum Requirements
 
-- User can make a new post to report the price and location for a grocery item.
-- Users can search for a grocery item.
-- Users can view all the posts.
+- [x] User can make a new post to report the price and location for a grocery item.
+- [x] Users can search for a grocery item.
+- [x] Users can view all the posts.
 
-5 - 7 Standard Requirements
+Standard Requirements
 
-- User can make a new post with images.
-- User can sort on grocery item prices in list view.
-- User can see posts on a map.
-- User can see posts in list view.
-- User can leave thumbs up/down for approval.
+- [x] User can make a new post with images.
+- [x] User can sort on grocery item prices in list view.
+- [x] User can see posts on a map.
+- [x] User can see posts in list view.
+- [x] User can leave thumbs up/down for approval.
 
-2 - 3 Stretch Requirements
+Stretch Requirements
 
-- User can create shopping lists using the posts items.
-- User can watch an item and get notified when prices are lower than their set price.
+- [x] User can create shopping lists using the posts items.
+- ~~User can watch an item and get notified when prices are lower than their set price.~~
+  (Would be more useful after mobile integration)
+  
+## Technologies 
+
+**HTML/CSS/Javascript**
+- Used HTML for img sources
+- Making items <span>
+- CSS for general styling like grid, placements, margins and paddings.
+  
+**React/Redux/Meteor and the Front End**
+- React to make UI components such as ShoppingList, Card, MapContainer. 
+- Redux to maintain the store, managing states on the frontend.  
+
+**Meteor and the Back End**
+- Meteor methods for interacting with the database.
+- Managing user accounts, verification. Information hiding for unverified users.
+- Managing dropdown items, shopping list, list items in the database. 
+
+**NoSQL and MongoDB**
+- MongoDB Atlas for cloud database. 
+- Data-structure for each field. 
+
+**Release Engineering**
+- Heroku for deployment.
+
+## Basic Contribution Requirements
+
+Erica Nicole Yao
+
+## Challenges, Learning, and Future Directions
+
+**Challenge and Learning**
+- For the rating thumbs up/down, the rating was being updated in the database, but it wasn’t displayed on the frontend. 
+- Passing down data from component to store, and store back to component, trigger re-renders and displaying right contents. 
+- Used a debugger, step through, checked params to diagnose the problem.
+- Solution was to use mapStatetoProps, which is used for selecting the part of the data from the store that the connected component needs. Re-renders upon store change. 
+
+**Future Direction**
+- Add the ability to watch for deals. We want the app to notify users when a new deal or cheaper deal is added. 
+- Mobile Integration.
+- Use mobile or device location to post.
+- Use image recognition to do some of the post reporting.
 
 ## Mock up
 ![mockup2](/mockup1.png)
