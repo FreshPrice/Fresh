@@ -55,7 +55,7 @@ Stretch Requirements
 
 **HTML/CSS/Javascript**
 - Used HTML for img sources
-- Making items <span>
+- Making items align using the <span>
 - CSS for general styling like grid, placements, margins and paddings.
   
 **React/Redux/Meteor and the Front End**
@@ -70,9 +70,10 @@ Stretch Requirements
 **NoSQL and MongoDB**
 - MongoDB Atlas for cloud database. 
 - Data-structure for each field. 
+- Setting up and deploying on heroku was straightforward using commonly used Meteor buildpack. Additional environment variables configured and automated Master branch deployments enabled. 
 
 **Release Engineering**
-- Heroku for deployment.
+- Used heroku for deployment.
 
 ## Basic Contribution Requirements
 
@@ -91,6 +92,7 @@ Erica Nicole Yao
 - Mobile Integration.
 - Use mobile or device location to post.
 - Use image recognition to do some of the post reporting.
+
 
 ## Mock up
 ![mockup2](/mockup1.png)
