@@ -24,6 +24,9 @@ Fresh is a web application that helps consumers make cost-friendly choices for g
    * [Local](#local)
    * [Local, with Atlas hosted MongoDB](#local-with-atlas-hosted-mongodb)
    
+4. Demo
+   * [Powerpoint](https://docs.google.com/presentation/d/1CpITPKZkjOh5hbJ23dvpwpprxqKUkWSCMsCH39dXqNs/edit?usp=sharing)
+   
   
 ## Introduction
 ### Who is it for?
