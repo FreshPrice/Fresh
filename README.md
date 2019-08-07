@@ -79,7 +79,7 @@ Stretch Requirements
 
 Erica 
 
-Nicole: For project implementation, I made contribution to the frontend React/Redux logic like implementing the sorting posts feature. I also worked on design and layout, which led the final app to look very similar to the original mock-ups. As a team player, I reviewed many PRs and pair-programmed.
+Nicole: For project implementation, I contributed to the frontend React/Redux logic, such as implementing the sorting posts feature. I also worked on design and layout, which led the final app to look very similar to the original mock-ups. As a team player, I reviewed many PRs and pair-programmed.
 
 Yao
 
