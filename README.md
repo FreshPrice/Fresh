@@ -17,6 +17,7 @@ Fresh is a web application that helps consumers make cost-friendly choices for g
    * [Basic Technology Requirements](#basic-technology-requirements)
    * [Basic Contribution Requirements](#basic-contribution-requirements)
    * [Challenges, Learning, and Future Directions](#challenges-learning-and-future-directions)
+   * [Initiative and additional Contributions](#initiative-and-additional-contributions)
    
 3. Development
    * [Mock up prototypes](#mock-up-prototypes)
@@ -121,6 +122,13 @@ Yao
 - Use mobile location to help report deals
 - Use image recognition to help report the item and prices
 
+### Initiative and additional Contributions
+- Added ability to add your own images
+- Used user accounts to log-in, save and edit shopping lists. 
+- Added ability for users to send emails to themselves. 
+- Used PRs and helping each other improve on our coding skills with good feedback and best practices
+- Used Methods, Meteor's remote procedure call system to use meteor properly. 
+
 ## Development
 
 ### Mock up prototypes
@@ -134,4 +142,5 @@ Run `meteor reset` to start with a fresh local MongoDB instance
 
 ### Local, with Atlas hosted MongoDB
 Run `sh start.sh` in root directory to begin serving on `localhost:3000` while targetting the Atlas hosted MongoDB and enabling Emailing of password reset and shopping lists. 
+
 
