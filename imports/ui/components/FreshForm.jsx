@@ -57,7 +57,7 @@ class FreshForm extends Component {
         img.src = result;
         (img.onload = () => {
           const elem = document.createElement("canvas");
-          const width = 300;
+          const width = img.width > 300 ? 300 : img.width;
           const scaleFactor = width / img.width;
 
           elem.width = width;
