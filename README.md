@@ -22,7 +22,9 @@ Fresh is a web application that helps consumers make cost-friendly choices for g
    * [Mock up prototypes](#mock-up-prototypes)
    * [Local](#local)
    * [Local, with Atlas hosted MongoDB](#local-with-atlas-hosted-mongodb)
-
+   
+  
+## Introduction
 ### Who is it for?
 
 Fresh is for everyone!
@@ -48,15 +50,18 @@ Users will be able to view location on a map, filter items by type and sort item
 Create a shopping list which displays the lowest price found for each item and their location.
 Users will be able to leave thumbs up or down on prices to validate them.
 
-## Basic Functionality Requirements
 
-Minimum Requirements
+
+## Requirements
+### Basic Functionality Requirements
+
+**Minimum Requirements**
 
 - [x] User can make a new post to report the price and location for a grocery item.
 - [x] Users can search for a grocery item.
 - [x] Users can view all the posts.
 
-Standard Requirements
+**Standard Requirements**
 
 - [x] User can make a new post with images.
 - [x] User can sort on grocery item prices in list view.
@@ -64,13 +69,13 @@ Standard Requirements
 - [x] User can see posts in list view.
 - [x] User can leave thumbs up/down for approval.
 
-Stretch Requirements
+**Stretch Requirements**
 
 - [x] User can create shopping lists using the posts items.
 - ~~User can watch an item and get notified when prices are lower than their set price.~~
   (Would be more useful after mobile integration)
   
-## Basic Technology Requirements 
+### Basic Technology Requirements 
 
 **HTML/CSS/Javascript**
 - Used HTML for img sources
@@ -94,7 +99,7 @@ Stretch Requirements
 **Release Engineering**
 - Used heroku for deployment.
 
-## Basic Contribution Requirements
+### Basic Contribution Requirements
 
 Erica 
 
@@ -102,7 +107,7 @@ Nicole: For project implementation, I contributed to the frontend React/Redux lo
 
 Yao
 
-## Challenges, Learning, and Future Directions
+### Challenges, Learning, and Future Directions
 
 **Challenge Encountered**
 - Problem → Item cards took forever to load. 
@@ -117,17 +122,17 @@ Yao
 - Use mobile location to help report deals
 - Use image recognition to help report the item and prices
 
-# Development
+## Development
 
-## Mock up prototypes
+### Mock up prototypes
 ![mockup2](/mockup1.png)
 ![mockup1](/mockup2.png)
 
-## Local
+### Local
 Run `meteor run` in root directory to begin serving on `localhost:3000`
 
 Run `meteor reset` to start with a fresh local MongoDB instance
 
-## Local, with Atlas hosted MongoDB
+### Local, with Atlas hosted MongoDB
 Run `sh start.sh` in root directory to begin serving on `localhost:3000` while targetting the Atlas hosted MongoDB and enabling Emailing of password reset and shopping lists. 
 
