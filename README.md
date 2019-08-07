@@ -77,21 +77,27 @@ Stretch Requirements
 
 ## Basic Contribution Requirements
 
-Erica Nicole Yao
+Erica 
+
+Nicole: For project implementation, I made contribution to the frontend React/Redux logic like implementing the sorting posts feature. I also worked on design and layout, which led the final app to look very similar to the original mock-ups. As a team player, I reviewed many PRs and pair-programmed.
+
+Yao
 
 ## Challenges, Learning, and Future Directions
 
-**Challenge and Learning**
-- For the rating thumbs up/down, the rating was being updated in the database, but it wasn’t displayed on the frontend. 
-- Passing down data from component to store, and store back to component, trigger re-renders and displaying right contents. 
-- Used a debugger, step through, checked params to diagnose the problem.
-- Solution was to use mapStatetoProps, which is used for selecting the part of the data from the store that the connected component needs. Re-renders upon store change. 
+**A Challenge Encountered**
+- Problem → Item cards took forever to load. 
+- Diagnosis → Attempting to display the uploaded images saved as an encoded string was timing out the database. 
+- Actions we took → We knew this started happening after the image upload feature was added. We isolated the problem and investigated through the developer console and realized it was our database timing out. 
+- Result → Instead of uploading image directly, first create a canvas and shrink the uploaded image to the smaller canvas which is then saved in the database. 6MB images were shrunk to ~200kb.  
+
 
 **Future Direction**
-- Add the ability to watch for deals. We want the app to notify users when a new deal or cheaper deal is added. 
-- Mobile Integration.
-- Use mobile or device location to post.
-- Use image recognition to do some of the post reporting.
+- Add the ability to watch for deals and get notify on deals.
+- Mobile Integration
+- Use mobile location to help report deals
+- Use image recognition to help report the item and prices
+
 
 
 ## Mock up
