@@ -4,6 +4,12 @@
 
 Fresh is a web application that helps consumers make cost-friendly choices for groceries. Users can post grocery prices, locations and images to the app, and see reported deals submitted by other people. Leave thumbs up or down to help validate posts. Compare the prices of groceries through the search and sort features. When you find a deal that you like, bookmark them for later and see them in the shopping list.
 
+## Table of contents
+* [Basic Functionality Requirements](#basic-functionality-requirements)
+* [Basic Technology Requirements](#basic-technology-requirements)
+* [Basic Contribution Requirements](#basic-contribution-requirements)
+* [Challenges, Learning, and Future Directions](#challenges,-learning,-and-future-directions)
+
 ### Who is it for?
 
 Fresh is for everyone!
@@ -51,7 +57,7 @@ Stretch Requirements
 - ~~User can watch an item and get notified when prices are lower than their set price.~~
   (Would be more useful after mobile integration)
   
-## Technologies 
+## Basic Technology Requirements 
 
 **HTML/CSS/Javascript**
 - Used HTML for img sources
@@ -85,7 +91,7 @@ Yao
 
 ## Challenges, Learning, and Future Directions
 
-**A Challenge Encountered**
+**Challenge Encountered**
 - Problem → Item cards took forever to load. 
 - Diagnosis → Attempting to display the uploaded images saved as an encoded string was timing out the database. 
 - Actions we took → We knew this started happening after the image upload feature was added. We isolated the problem and investigated through the developer console and realized it was our database timing out. 
@@ -99,8 +105,7 @@ Yao
 - Use image recognition to help report the item and prices
 
 
-
-## Mock up
+## Mock up prototypes
 ![mockup2](/mockup1.png)
 ![mockup1](/mockup2.png)
 
