@@ -97,14 +97,33 @@ Users will be able to leave thumbs up or down on prices to validate them.
 
 **NoSQL and MongoDB**
 - MongoDB Atlas for cloud database. 
-- Data-structure for each field. 
+- Example item object in the database.
+
+```
+{  
+   "_id":"FhuZdERA3mqC394jx",
+   "name":"Papaya",
+   "price":1.66,
+   "unit":"per lb",
+   "createdAt":"2019-08-06T02:52:09.389Z",
+   "rating":0,
+   "imageSrc":"/images/Papaya.png",
+   "location":{  
+      "address":"Real Canadian Superstore, Southeast Marine Drive, Vancouver, BC, Canada",
+      "coords":{  
+         "lat":49.2084913,
+         "lng":-123.0996485
+      }
+   }
+}
+```
 
 **Release Engineering**
 - Setting up and deploying on heroku was straightforward using commonly used Meteor buildpack. Additional environment variables configured and automated Master branch deployments enabled. 
 
 ### Basic Contribution Requirements
 
-Erica: Creation of autocomplete geo-suggest component using Google Maps API, addition of marker on the map with lat/lng received. Incorporation of user accounts and logic of information hiding. Implmentation of the shopping list, which allows users to add, edit and clear grocery items. Setup of Email component that enables users to send themselves an email with their current shopping list. Formatting the form for new postings.
+Erica: Creation of autocomplete geo-suggest component using Google Maps API, addition of marker on the map component with lat/lng received. Incorporation of user accounts and logic of information hiding from random users. Implmentation of the shopping list, which allows users to add, edit and clear grocery items from the database. Setup of Email component that enables users to send themselves an email with their current shopping list using Meteor methods. Formatting the form for new postings, submit button disabled until every field is filled out. Making and reviewing PRS for code-review and feedback. 
 
 Nicole: For project implementation, I contributed to the frontend React/Redux logic, such as implementing the sorting posts feature. I also worked on design and layout, which led the final app to look very similar to the original mock-ups. As a team player, I reviewed many PRs and pair-programmed.
 
@@ -113,11 +132,10 @@ Yao: Primarily involved in project setup, incorporating and initializing Meteor,
 ### Challenges, Learning, and Future Directions
 
 **Challenge Encountered**
-- Problem → Item cards took forever to load. 
-- Diagnosis → Attempting to display the uploaded images saved as an encoded string was timing out the database. 
-- Actions we took → We knew this started happening after the image upload feature was added. We isolated the problem and investigated through the developer console and realized it was our database timing out. 
-- Result → Instead of uploading image directly, first create a canvas and shrink the uploaded image to the smaller canvas which is then saved in the database. 6MB images were shrunk to ~200kb.  
-
+- Problem: Item cards took forever to load. 
+- Diagnosis: Attempting to display the uploaded images saved as an encoded string was timing out the database. 
+- Actions we took: We knew this started happening after the image upload feature was added. We isolated the problem and investigated through the developer console and realized it was our database timing out. 
+- Result: Instead of uploading image directly, first create a canvas and shrink the uploaded image to the smaller canvas which is then saved in the database. 6MB images were shrunk to ~200kb.  
 
 **Future Direction**
 - Add the ability to watch for deals and get notify on deals.
