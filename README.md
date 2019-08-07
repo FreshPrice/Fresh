@@ -94,14 +94,13 @@ Users will be able to leave thumbs up or down on prices to validate them.
 **NoSQL and MongoDB**
 - MongoDB Atlas for cloud database. 
 - Data-structure for each field. 
-- Setting up and deploying on heroku was straightforward using commonly used Meteor buildpack. Additional environment variables configured and automated Master branch deployments enabled. 
 
 **Release Engineering**
-- Used heroku for deployment.
+- Setting up and deploying on heroku was straightforward using commonly used Meteor buildpack. Additional environment variables configured and automated Master branch deployments enabled. 
 
 ### Basic Contribution Requirements
 
-Erica 
+Erica: Creation of autocomplete geo-suggest component using Google Maps API, addition of marker on the map with lat/lng received. Incorporation of user accounts and logic of information hiding. Implmentation of the shopping list, which allows users to add, edit and clear grocery items. Setup of Email component that enables users to send themselves an email with their current shopping list. Formatting the form for new postings.
 
 Nicole: For project implementation, I contributed to the frontend React/Redux logic, such as implementing the sorting posts feature. I also worked on design and layout, which led the final app to look very similar to the original mock-ups. As a team player, I reviewed many PRs and pair-programmed.
 
