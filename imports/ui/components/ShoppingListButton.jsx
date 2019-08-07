@@ -67,7 +67,7 @@ class ShoppingListButton extends Component {
 
   determineSource = item => {
     let image = new Image();
-    image.src = `/images/` + item.name + `.png`;
+    image.src = item.imageSrc;
     if (!image.complete || image.height === 0) return "/images/missing.png";
     else return image.src;
   };

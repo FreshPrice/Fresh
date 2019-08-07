@@ -52,17 +52,30 @@ class FreshForm extends Component {
       const image = e.target.files[0];
       reader.readAsDataURL(image);
       reader.onload = () => {
-        let result = reader.result;
-        this.setState({
-          imageSrc: result
-        });
-      };
+        const img = new Image();
+        const result = reader.result;
+        img.src = result;
+        (img.onload = () => {
+          const elem = document.createElement("canvas");
+          const width = img.width > 300 ? 300 : img.width;
+          const scaleFactor = width / img.width;
 
-      reader.onerror = error => {
-        console.log(error);
-        this.setState({
-          imageSrc: "/images/" + this.state.name + ".png"
-        });
+          elem.width = width;
+          elem.height = img.height * scaleFactor;
+          const ctx = elem.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, img.height * scaleFactor);
+          const data = ctx.canvas.toDataURL(img, "image/png", 1);
+
+          this.setState({
+            imageSrc: data
+          });
+        }),
+          (reader.onerror = error => {
+            console.log(error);
+            this.setState({
+              imageSrc: "/images/" + this.state.name + ".png"
+            });
+          });
       };
     } else {
       // Image was selected then unselected, need to revert to base image.
