@@ -11,15 +11,17 @@ Fresh is a web application that helps consumers make cost-friendly choices for g
    * [What type of data will it store?](#what-type-of-data-will-it-store)
    * [What will users be able to do with this data?](#what-will-users-be-able-to-do-with-this-data)
    * [What is some additional functionality you can add/remove based on the constraints?](#what-is-some-additional-functionality-you-can-addremove-based-on-the-constraints)
+   
 2. Requirements
    * [Basic Functionality Requirements](#basic-functionality-requirements)
    * [Basic Technology Requirements](#basic-technology-requirements)
    * [Basic Contribution Requirements](#basic-contribution-requirements)
    * [Challenges, Learning, and Future Directions](#challenges-learning-and-future-directions)
+   
 3. Development
    * [Mock up prototypes](#mock-up-prototypes)
    * [Local](#local)
-   * [Local, with Atlas hosted MongoDB](#Local-with-Atlas-hosted-MongoDB)
+   * [Local, with Atlas hosted MongoDB](#local-with-atlas-hosted-mongodb)
 
 ### Who is it for?
 
