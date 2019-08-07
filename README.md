@@ -5,10 +5,21 @@
 Fresh is a web application that helps consumers make cost-friendly choices for groceries. Users can post grocery prices, locations and images to the app, and see reported deals submitted by other people. Leave thumbs up or down to help validate posts. Compare the prices of groceries through the search and sort features. When you find a deal that you like, bookmark them for later and see them in the shopping list.
 
 ## Table of contents
-* [Basic Functionality Requirements](#basic-functionality-requirements)
-* [Basic Technology Requirements](#basic-technology-requirements)
-* [Basic Contribution Requirements](#basic-contribution-requirements)
-* [Challenges, Learning, and Future Directions](#challenges,-learning,-and-future-directions)
+1. Introduction
+   * [Who is it for?](#who-is-it-for)
+   * [What will it do?](#what-will-it-do)
+   * [What type of data will it store?](#what-type-of-data-will-it-store)
+   * [What will users be able to do with this data?](#what-will-users-be-able-to-do-with-this-data)
+   * [What is some additional functionality you can add/remove based on the constraints?](#what-is-some-additional-functionality-you-can-addremove-based-on-the-constraints)
+2. Requirements
+   * [Basic Functionality Requirements](#basic-functionality-requirements)
+   * [Basic Technology Requirements](#basic-technology-requirements)
+   * [Basic Contribution Requirements](#basic-contribution-requirements)
+   * [Challenges, Learning, and Future Directions](#challenges-learning-and-future-directions)
+3. Development
+   * [Mock up prototypes](#mock-up-prototypes)
+   * [Local](#local)
+   * [Local, with Atlas hosted MongoDB](#Local-with-Atlas-hosted-MongoDB)
 
 ### Who is it for?
 
@@ -104,12 +115,11 @@ Yao
 - Use mobile location to help report deals
 - Use image recognition to help report the item and prices
 
+# Development
 
 ## Mock up prototypes
 ![mockup2](/mockup1.png)
 ![mockup1](/mockup2.png)
-
-# Development
 
 ## Local
 Run `meteor run` in root directory to begin serving on `localhost:3000`
