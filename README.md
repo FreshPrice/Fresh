@@ -4,6 +4,10 @@
 
 Fresh is a web application that helps consumers make cost-friendly choices for groceries. Users can post grocery prices, locations and images to the app, and see reported deals submitted by other people. Leave thumbs up or down to help validate posts. Compare the prices of groceries through the search and sort features. When you find a deal that you like, bookmark them for later and see them in the shopping list.
 
+## Demo
+![](/fresh-demo-pt-1.gif)
+![](/fresh-demo-pt-2.gif)
+
 ## Table of contents
 1. Introduction
    * [Who is it for?](#who-is-it-for)
@@ -24,8 +28,8 @@ Fresh is a web application that helps consumers make cost-friendly choices for g
    * [Local](#local)
    * [Local, with Atlas hosted MongoDB](#local-with-atlas-hosted-mongodb)
    
-4. Demo
-   * [Powerpoint](https://docs.google.com/presentation/d/1CpITPKZkjOh5hbJ23dvpwpprxqKUkWSCMsCH39dXqNs/edit?usp=sharing)
+4. Presentation
+   * [Powerpoint](/Presentation.pdf)
    
   
 ## Introduction
